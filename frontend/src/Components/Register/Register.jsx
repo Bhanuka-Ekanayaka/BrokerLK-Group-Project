@@ -6,14 +6,12 @@ import image from '../Login/LoginAssets/image.png'
 import { FaUser, FaLock, FaMobileAlt, FaAddressCard, FaUserEdit } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { Link } from 'react-router-dom';
-import { useAuth } from '../../Context/AuthContext';
 import {Registerform} from '../../Services/authServices'
 import { showSuccessToast, showErrorToast, CommonToastContainer } from '../../Services/CommonToaster';
 
 
 const Register = () => {
 
-  const { register } = useAuth();
   const [ formData, setFormData ] = useState({
     fullName: '',
     email: '',

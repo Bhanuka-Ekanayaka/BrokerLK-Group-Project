@@ -1,12 +1,12 @@
 import { createContext, useContext, useState } from 'react';
-import { login as loginApi } from '../Services/authServices';
+import { Loginform as loginApi } from '../Services/authServices';
 
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
-  const login = async (formData) => {
+  const Loginform = async (formData) => {
     try {
       const response = await loginApi(formData);
       if (response.success) {
@@ -22,7 +22,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, logout}}>
+    <AuthContext.Provider value={{ user, Loginform, logout}}>
       {children}
     </AuthContext.Provider>
   );

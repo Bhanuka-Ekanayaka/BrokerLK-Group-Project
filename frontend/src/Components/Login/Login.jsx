@@ -6,16 +6,33 @@ import './LoginAssets/image.png'
 import image from './LoginAssets/image.png'
 import google from './LoginAssets/google.png'
 import { FaUser, FaLock, FaSignInAlt } from "react-icons/fa";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { Loginform } from '../../Services/authServices'
+import { showSuccessToast, showErrorToast, CommonToastContainer } from '../../Services/CommonToaster';
+
 import { useAuth } from '../../Context/AuthContext';
 
 const Login = () => {
 
   const { login } = useAuth();
-  const [formData, setFormData] = useState({ username: '', password: '' });
+  const [ formData, setFormData ] = useState({ username: '', password: '' });
+  const navigate = useNavigate();
 
-  const handleLogin = () => {
-    login(formData);
+  const handleLogin = async() => {
+    console.log('data', formData)
+    try{
+    const result =  await Loginform(formData);
+      console.log('result login ', result)
+    if(result.status === 201){
+      showSuccessToast('succesfully Logged')
+      navigate('/')
+    }else{
+      console.log('fail')
+      showErrorToast('Oops! Something went wrong.');
+    }
+    }catch(error){
+      showErrorToast('Try Again.');
+    }
   };
 
   return (
@@ -52,7 +69,9 @@ const Login = () => {
               </div>
             </div>
             <div className="input-group mb-3">
+              <Link to='/home'>
               <button onClick={handleLogin} className="btn btn-lg btn-danger w-100 fs-6">Login</button>
+              </Link>
             </div>
             <div className="input-group mb-3">
               <button className="btn btn-lg btn-light w-100 fs-6"><img src={google} style={{ width: '20px' }} className="me-2" alt="Google Icon" /><small>Sign In with Google</small></button>
@@ -63,6 +82,7 @@ const Login = () => {
           </div>
         </div>
       </div>
+      <CommonToastContainer/>
     </div>
   );
 };
