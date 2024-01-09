@@ -1,104 +1,61 @@
-import React from 'react'
-import './Login.css'
-import { Link, useNavigate } from 'react-router-dom'
-import { useState } from 'react'
-import axios from 'axios'
-import Validation from './LoginValidation'
-
-import image from '../Login/LoginAssets/image.png'
-
-import { FaLock, FaSignInAlt } from "react-icons/fa"
-import { MdEmail } from "react-icons/md";
-
+import React from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css'; 
+import './Login.css'; 
+import './LoginAssets/image.png'
+import image from './LoginAssets/image.png'
+import google from './LoginAssets/google.png'
+import { FaUser, FaLock, FaSignInAlt } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 
 const Login = () => {
 
-    const [errors, setErrors] = useState({})
-    const [values, setValues] = useState({
-        email: '',
-        password: ''
-    })
-    const navigate = useNavigate()
-    axios.defaults.withCredentials = true;
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        setErrors(Validation(values));
-        if(errors.email === "" && errors.password === ""){
-            axios.post('http://localhost:8081/login', values)
-            .then(res => {
-              if(res.data === "success") {
-                navigate('/home')
-              } else {
-                alert("No Record Existed")
-              }
-            })
-            .catch(err => console.log(err))
-          }
-    }
-    
-    const handleInput = (event) => {
-    setValues(prev => ({...prev, [event.target.name]:[event.target.value]}))
-    }    
-
   return (
-    <div className='loginPage flex'>
-      <div className='container flex'>
-
-        <div className='videoDiv'>
-          <img src={image}></img>
-          <div className='textDiv'>
-            <h2 className='title'>Create and Sell Your Rooms</h2>
-            <p><strong>Adopt The Boarding House</strong></p>
+    <div className="container d-flex justify-content-center align-items-center min-vh-100">
+      <div className="row border rounded-5 p-3 bg-white shadow box-area">
+        <div className="col-md-6 rounded-4 d-flex justify-content-center align-items-center flex-column left-box" style={{ background: '#103cbe' }}>
+          <div className="featured-image mb-3">
+            <img src={image} className="img-fluid" style={{ width: '250px' }} alt="Logo" />
           </div>
-
-          <div className='footerDiv flex'>
-            <span className='text'><strong>Don't have an Account?</strong></span>
-            <Link to={'./register'} className='signBtn'>
-              <button className='btn'><strong>Sign Up</strong></button>
-            </Link>
-          </div>
+          <p className="text-white fs-2" style={{ fontFamily: 'Courier New', fontWeight: 600 }}>realBROKER</p>
+          <strong><small className="text-white text-wrap text-center" style={{ width: '17rem', fontFamily: 'Courier New' }}>Create and Sell Your Rooms <br></br>Adopt The Boarding House</small></strong>
         </div>
 
-        <div className='formDiv flex'>
-          <div className='headerDiv'>
-            <img src='' alt='Logo Image' />
-            <h3>Welcome To realBROKER</h3>
+        <div className="col-md-6 right-box">
+          <div className="row align-items-center">
+            <div className="header-text mb-4">
+              <h2>Welcome Back</h2>
+              <p>We are happy to have you back.</p>
+            </div>
+            <div className="input-group mb-3">
+              <FaUser className='icon'/>
+              <input type="text" className="form-control form-control-lg bg-light fs-6" placeholder="Username" />
+            </div>
+            <div className="input-group mb-1">
+              <FaLock className='icon'/>
+              <input type="password" className="form-control form-control-lg bg-light fs-6" placeholder="Password" />
+            </div>
+            <div className="input-group mb-5 d-flex justify-content-between">
+              <div className="form-check">
+                <FaSignInAlt className='icon1'/>
+              </div>
+              <div className="forgot">
+                <small><a href="#">Forgot Password?</a></small>
+              </div>
+            </div>
+            <div className="input-group mb-3">
+              <button className="btn btn-lg btn-primary w-100 fs-6">Login</button>
+            </div>
+            <div className="input-group mb-3">
+              <button className="btn btn-lg btn-light w-100 fs-6"><img src={google} style={{ width: '20px' }} className="me-2" alt="Google Icon" /><small>Sign In with Google</small></button>
+            </div>
+            <div className="row">
+              <small>Don't have an account? <Link to='/register'>Sign Up</Link></small>
+            </div>
           </div>
-
-          <form action='POST' className='form grid' onSubmit={handleSubmit}>
-            <div className='inputDiv'>
-              <label htmlFor='email'><strong>Email</strong></label>
-              <div className='input flex'>
-                <MdEmail className='icon' />
-                <input type='text' id='email' name='email' placeholder='Enter Email' onChange={handleInput}></input>
-                {errors.email && <span className='text-danger'>{errors.email}</span>}
-              </div>
-            </div>
-
-            <div className='inputDiv'>
-              <label htmlFor='password'><strong>Password</strong></label>
-              <div className='input flex'>
-                <FaLock className='icon' />
-                <input type='password' id='password' name='password' placeholder='Enter Password' onChange={handleInput}></input>
-                {errors.password && <span className='text-danger'>{errors.password}</span>}
-              </div>
-            </div>
-
-            <button type='submit' className='btn flex'>
-              <span><strong>Login</strong></span>
-              <FaSignInAlt className='icon' />
-            </button>
-
-            <span className='forgotPassword'>
-              Forgot Your Password?  <a href=''>Click Here</a>
-            </span>
-
-          </form>
         </div>
-
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Login 
+export default Login;
