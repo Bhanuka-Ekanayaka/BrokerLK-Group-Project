@@ -1,8 +1,72 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
 
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: 'Montserrat', sans-serif;
-};
+body{
+    font-family: 'Poppins', sans-serif;
+    background: #ececec;
+}
+
+
+.box-area{
+    width: 930px;
+}
+
+
+.right-box{
+    padding: 40px 30px 40px 40px;
+}
+
+
+::placeholder{
+    font-size: 16px;
+}
+
+.rounded-4{
+    border-radius: 20px;
+}
+.rounded-5{
+    border-radius: 30px;
+}
+
+.icon {
+    width: 25px; 
+    height: 25px; 
+    position: relative; 
+    top: 10px;
+    left: -5px; 
+  }
+
+  .icon1 {
+    width: 25px; 
+    height: 25px; 
+    position: relative; 
+    top: 105px;
+    left: -40px; 
+  }
+
+  .input-group {
+    left: 5px;
+  }
+
+  button {
+    top: 15px;
+  }
+
+  .row1 {
+    top: 30px;
+  }
+
+@media only screen and (max-width: 768px){
+
+     .box-area{
+        margin: 0 10px;
+
+     }
+     .left-box{
+        height: 100px;
+        overflow: hidden;
+     }
+     .right-box{
+        padding: 20px;
+     }
+
+}
