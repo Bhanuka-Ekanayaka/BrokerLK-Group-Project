@@ -14,7 +14,7 @@ import { useAuth } from '../../Context/AuthContext';
 
 const Login = () => {
 
-  const { login } = useAuth();
+  const { Login } = useAuth();
   const [ formData, setFormData ] = useState({ username: '', password: '' });
   const navigate = useNavigate();
 
@@ -70,7 +70,7 @@ const Login = () => {
             </div>
             <div className="input-group mb-3">
               <Link to='/home'>
-              <button onClick={handleLogin} className="btn btn-lg btn-danger w-100 fs-6">Login</button>
+              <button onClick={handleLogin} className="btn btn-lg btn-danger w-100 fs-6" >Login</button>
               </Link>
             </div>
             <div className="input-group mb-3">

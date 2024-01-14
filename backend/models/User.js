@@ -27,5 +27,12 @@ const createUser = (fullName, email, nic, mobileNumber, username, hashedPassword
       });
     });
   };
+
   
   module.exports = { createUser, getUserByUsername };
+
+
+ /*  Purpose: The User.js file likely contains functions and methods related to user management, such as
+   creating a new user in the database or retrieving user information.
+  Reason for Use: Separating user-related logic into a dedicated file helps maintain a clean and modular codebase. 
+  Functions in this file may interact with the database to perform CRUD (Create, Read, Update, Delete) operations related to user data. */

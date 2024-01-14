@@ -21,3 +21,10 @@ export const Registerform = async (userData) => {
   }
 };
 
+
+
+/* Purpose: The AuthService.js file likely contains functions and methods related to authentication, 
+such as login, logout, and registration functionality. It may also handle interactions with an authentication API or manage authentication tokens.
+Reason for Use: Separating authentication-related logic into a service file helps keep your code modular and maintainable. 
+This file can be imported into various components that need to interact with the authentication system. 
+It allows you to centralize the authentication logic, making it easier to update and maintain. */

@@ -46,3 +46,10 @@ router.post('/login', async (req, res) => {
 });
 
 module.exports = router;
+
+
+/* Purpose: The AuthRoutes.js file defines the authentication-related routes for your backend API. 
+It includes endpoints for user registration, login, logout, and potentially other authentication-related actions.
+Reason for Use: Organizing routes related to authentication in a separate file helps keep your codebase organized. 
+It makes it clear which routes are specifically handling authentication concerns. 
+The file may use functions from User.js to interact with the database and perform authentication-related operations. */
