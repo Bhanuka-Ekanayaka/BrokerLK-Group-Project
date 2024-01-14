@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const authRoutes = require('./routes/authRoutes');
+const userRoutes = require('./routes/userRoutes')
 
 const app = express();
 const PORT = 5001;
@@ -21,4 +22,11 @@ app.use((err, req, res, next) => {
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
+
+
+/* Purpose: The Server.js file is the entry point for your Node.js server. 
+It sets up the Express application, configures middleware, defines routes, and starts the server listening on a specific port.
+Reason for Use: The server file is where you configure the entire backend application. 
+It brings together different parts of your application, such as routes, middleware, and database connections. 
+Keeping server-related logic in one file makes it easier to understand the overall structure of your backend and manage global configurations. */
 
