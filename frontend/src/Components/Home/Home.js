@@ -1,4 +1,4 @@
-import './style.css';
+import './Navbar.css';
 import {useRef} from 'react';
 import NavBar from './ChildComponents/NavBar';
 import Slider from './ChildComponents/Slider';
