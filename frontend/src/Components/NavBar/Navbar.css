@@ -1,0 +1,49 @@
+.navbar{
+    margin: 5px;
+    height: 80px;
+    background-color: #ff3951 ;
+    
+}
+spam{
+    color:white;
+    font-size: 35px;
+
+}
+.set{
+
+    align-items: right;
+}
+.container{
+    display: flex;
+}
+
+li{
+float: right;
+display: block;
+color: white;
+text-align: center;
+padding: 14px 16px;
+
+}
+
+@media screen and (max-width: 768px){
+    
+        spam{
+            font-size: 25px;
+        }
+
+        .nav-link{
+
+            font-size: 15px;
+        }
+
+        .navbar{
+            
+            height: 60px;
+           
+            
+        }
+        
+    
+
+}
