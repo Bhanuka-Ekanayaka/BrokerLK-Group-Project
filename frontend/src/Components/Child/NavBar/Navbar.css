@@ -24,6 +24,7 @@ header{
     padding: 0 2rem;/*top and bootom margin is 0 and left and right margin is 2rem*/
     background-color: var(--mainColor);
     color:var(--textColor);
+    border-radius: 10px;
 }
 
 .title-content{
