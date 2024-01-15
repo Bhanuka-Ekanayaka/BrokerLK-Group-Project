@@ -7,6 +7,21 @@
     font-family:"Poppins", sans-serif;
 }
 
+html{
+    width: auto;
+    height: auto;
+    margin: 10px; /* Space from this element (entire page) and others*/
+    padding: 15px; /*space from content and border*/
+    box-shadow: 0px 0px 4px #686767,
+                0px 0px 8px #a19090,
+                0px 0px 8px #b4a1a1;
+    display: block;
+    overflow:hidden;
+    border-radius: 5px;
+    
+}
+
+
 :root{
     --mainColor:#FF3951;
     --MainColorLight:#dd626c;
@@ -22,9 +37,13 @@ header{
     justify-content: space-between;
     height:80px;
     padding: 0 2rem;/*top and bootom margin is 0 and left and right margin is 2rem*/
-    background-color: var(--mainColor);
+    background: var(--mainColor);
     color:var(--textColor);
     border-radius: 10px;
+    box-shadow: 0px 0px 4px rgb(6, 6, 6),
+    0px 0px 8px rgb(9, 9, 9),
+    0px 0px 8px rgb(33, 32, 32);
+
 }
 
 .title-content{
@@ -55,6 +74,9 @@ nav a{
     padding: 5px 20px;
     background-color: #A70000;
     border-radius: 20px;
+    box-shadow: 0px 0px 1px #a6a6a6,
+                0px 0px 2px #989898,
+                0px 0px 4px #a4a3a3;
 }
 
 nav a:hover{
@@ -87,14 +109,40 @@ header img{
 
 
 .menubar{
+    margin:0 25px;
     position: absolute;
     padding:  0 1rem;
     width:20%;
     height: 80vh;
-    background-color: var(--secondaryColor);
+    background-color: var(--mainColor);
     transition: all 1.5s;
     left: -100%;
-    border-radius: 5px;
+    border-radius: 15px;
+    box-shadow: 0px 0px 4px rgb(6, 6, 6),
+    0px 0px 8px rgb(9, 9, 9),
+    0px 0px 8px rgb(33, 32, 32);
+}
+
+.menubar .menubar-Signin{
+    padding: 2px 0;
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    color:var(--textColor);
+}
+
+.menubar .menubar_content{
+    padding: 1px 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    color: var(--textColor);
+}
+
+#logo_imge{
+    background-color: transparent;
+    box-shadow: none;
+    font-size: 45px;
 }
 
 .menubar.active{
@@ -111,18 +159,19 @@ header img{
     list-style-type: none;
 }
 
-.menubar ul li a{
+.menubar ul li  a{
     text-decoration: none;
+    margin: 5px 0px;
     display: block;
-    padding: 5px 1px;
+    padding: 5px 5px;
     border-radius: 6px;
-    background-color:  var(--ButtonBackground);
+    background-color:  var(--mainColor);
     color: var(--textColor);
 }
 
 .menubar ul li a:hover{
     color: var(--textColor);
-    background: black;
+    font-weight: bolder;
 }
 
 
