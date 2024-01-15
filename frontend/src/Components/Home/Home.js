@@ -1,6 +1,6 @@
-import './Navbar.css';
+
 import {useRef} from 'react';
-import NavBar from './ChildComponents/NavBar';
+import NavBar from '../Child/NavBar/NavBar';
 
 const Home = () => {
   const navRef = useRef();
@@ -12,7 +12,7 @@ const Home = () => {
   return ( 
           <>
             <NavBar navRef={navRef} showNavBar={showNavbar}></NavBar>
-            <h1>Bhanuka Ekanayaka</h1>
+            <h1>This is Home Page</h1>
           </>
    );
 }
