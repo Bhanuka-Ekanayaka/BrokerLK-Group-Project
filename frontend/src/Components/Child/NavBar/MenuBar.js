@@ -2,6 +2,12 @@ const MenuBar = ({navRef}) => {
     return ( 
         <div className="menubar" ref={navRef}>
             <ul>
+                <li><a href='/login'>Sign-In</a></li>
+            </ul>
+            <ul>
+                <li><a href='/'>Post-Add</a></li>
+            </ul>
+            <ul>
                 <li><a href='/'>Home</a></li>
             </ul>
             <ul>
