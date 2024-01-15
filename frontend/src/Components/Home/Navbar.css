@@ -85,14 +85,44 @@ header img{
 }
 
 
-header .responsive_nav{
-    transform: none;
+.menubar{
+    position: absolute;
+    padding:  0 1rem;
+    width:20%;
+    height: 80vh;
+    background-color: var(--secondaryColor);
+    transition: all 1.5s;
+    left: -100%;
+    border-radius: 5px;
 }
 
-.additional{
-    display: none;
+.menubar.active{
+    left:0;
 }
 
+.menubar ul{
+    padding: 0;
+    margin:0.1rem 0;
+}
+
+.menubar ul li{
+    padding: 0 0px;
+    list-style-type: none;
+}
+
+.menubar ul li a{
+    text-decoration: none;
+    display: block;
+    padding: 5px 1px;
+    border-radius: 6px;
+    background-color:  var(--ButtonBackground);
+    color: var(--textColor);
+}
+
+.menubar ul li a:hover{
+    color: var(--textColor);
+    background: black;
+}
 
 
 @media only screen and (max-width:1024px){
@@ -100,43 +130,17 @@ header .responsive_nav{
         visibility: visible;
         opacity: 1;
     }
+    
     .additional{
-        display: contents;
-        display: flex;
-        justify-content: space-between;
-        align-items:center;
-        flex-direction: column;
-        gap:1.5rem;
+        display: none;
     }
 
-    header nav{
-        position:fixed;
-        top:0;
-        left:0;
-        height: 100%;
-        width:50%;
-        display:flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap:1.5rem;
-        background-color: var(--secondaryColor);
-        transition: 1s;
-        transform: translateX(-100vh);
+    .menubar{
+        width: 40%;
     }
-
-    header .responsive_nav{
-        transform: none;
-    }
-
-    nav .nav-close-button{
-        position: absolute;
-        top:0;
-        left:0;
-    }
-
-    nav a{
-        font-size: 1rem;
+    
+    .menubar ul li a{
+        font-size: 60%;
     }
 
     header .brand-title{
