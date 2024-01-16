@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const crypto = require('crypto');
 const { createUser, getUserByUsername } = require('../models/User');
 
 const SECRET_KEY = 'micset993150'; // Replace with a strong, random key
@@ -19,7 +20,7 @@ router.post('/register', async (req, res) => {
         res.status(404).json({message: 'failed'})
       }
     } catch (error) {
-      //console.error('Error during registration:', error.message); 
+      console.error('Error during registration:', error.message); 
       console.error(error.stack); 
       res.status(500).json({ success: false, error: 'Internal Server Error' });
     }
@@ -45,7 +46,9 @@ router.post('/login', async (req, res) => {
   }
 });
 
+
 module.exports = router;
+
 
 
 /* Purpose: The AuthRoutes.js file defines the authentication-related routes for your backend API. 

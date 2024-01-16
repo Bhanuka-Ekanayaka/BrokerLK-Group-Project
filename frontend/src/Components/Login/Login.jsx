@@ -1,11 +1,11 @@
 import React from 'react';
 import { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'; 
-import './Login.css'; 
+import '../Login/Login.css'
 import './LoginAssets/image.png'
 import image from './LoginAssets/image.png'
 import google from './LoginAssets/google.png'
-import { FaUser, FaLock, FaSignInAlt } from "react-icons/fa";
+import { FaUser, FaLock } from "react-icons/fa";
 import { Link, useNavigate } from 'react-router-dom';
 import { Loginform } from '../../Services/authServices'
 import { showSuccessToast, showErrorToast, CommonToastContainer } from '../../Services/CommonToaster';
@@ -62,10 +62,11 @@ const Login = () => {
             </div>
             <div className="input-group mb-5 d-flex justify-content-between">
               <div className="form-check">
-                <FaSignInAlt className='icon1'/>
               </div>
               <div className="forgot">
-                <small><a href="#">Forgot Password?</a></small>
+              <small>
+                <Link to="/forgot-password">Forgot Password?</Link>
+              </small>
               </div>
             </div>
             <div className="input-group mb-3">

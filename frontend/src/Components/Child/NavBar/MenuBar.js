@@ -18,7 +18,7 @@ const MenuBar = ({ navRef }) => {
             <ul>
                 <li>
                     <div className="menubar_content">
-                        <a href='/' id="logo_imge"><IoMdHome></IoMdHome></a>
+                        <a href='/' id="logo_imges"><IoMdHome></IoMdHome></a>
                         <a href='/' >Home</a>
                     </div>
                 </li>
@@ -26,7 +26,7 @@ const MenuBar = ({ navRef }) => {
             <ul>
                 <li>
                     <div className="menubar_content">
-                        <a href='/' id="logo_imge"><LuPackageOpen></LuPackageOpen></a>
+                        <a href='/' id="logo_imges"><LuPackageOpen></LuPackageOpen></a>
                         <a href='/packages' >Packages</a>
                     </div>
                 </li>
@@ -34,7 +34,7 @@ const MenuBar = ({ navRef }) => {
             <ul>
                 <li>
                     <div className="menubar_content">
-                        <a href='/' id="logo_imge"><IoIosAlert></IoIosAlert></a>
+                        <a href='/' id="logo_imges"><IoIosAlert></IoIosAlert></a>
                         <a href='/about' >About</a>
                     </div>
                 </li>

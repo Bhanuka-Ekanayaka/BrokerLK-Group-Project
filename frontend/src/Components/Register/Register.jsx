@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'; 
-import './Register.css'; 
+import '../Register/Register.css'
 import image from '../Login/LoginAssets/image.png'
 import { FaUser, FaLock, FaMobileAlt, FaAddressCard, FaUserEdit } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
@@ -49,33 +49,33 @@ const Register = () => {
         </div>
         <div className="col-md-6 right-box">
           <div className="row align-items-center">
-            <div className="header-text mb-4">
+            <div className="header mb-4">
               <h2>Welcome Back</h2>
               <p>We are happy to have you back</p>
             </div>
             <div className="input-group mb-3">
               <FaUser className='icon'/>
-              <input type="text" className="form-control form-control-lg bg-light fs-6" placeholder="Full Name" value={formData.fullName} onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}/>
+              <input type="text" className="form-control form-control-lg bg-light fs-6" name='fullName' placeholder="Full Name" value={formData.fullName} onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}/>
             </div>
             <div className="input-group mb-3">
               <MdEmail className='icon'/>
-              <input type="email" className="form-control form-control-lg bg-light fs-6" placeholder="Email" value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })}/>
+              <input type="email" className="form-control form-control-lg bg-light fs-6" name='email' placeholder="Email" value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })}/>
             </div>
             <div className="input-group mb-3">
               <FaAddressCard className='icon'/>
-              <input type="text" className="form-control form-control-lg bg-light fs-6" placeholder="NIC" value={formData.nic} onChange={(e) => setFormData({ ...formData, nic: e.target.value })}/>
+              <input type="text" className="form-control form-control-lg bg-light fs-6" name='nic' placeholder="NIC" value={formData.nic} onChange={(e) => setFormData({ ...formData, nic: e.target.value })}/>
             </div>
             <div className="input-group mb-3">
               <FaMobileAlt className='icon'/>
-              <input type="text" className="form-control form-control-lg bg-light fs-6" placeholder="Mobile" onChange={(e) => setFormData({ ...formData, mobileNumber: e.target.value })}/>
+              <input type="text" className="form-control form-control-lg bg-light fs-6" name='mobile' placeholder="Mobile" onChange={(e) => setFormData({ ...formData, mobileNumber: e.target.value })}/>
             </div>
             <div className="input-group mb-3">
               <FaUserEdit className='icon'/>
-              <input type="text" className="form-control form-control-lg bg-light fs-6" placeholder="Username" onChange={(e) => setFormData({ ...formData, username: e.target.value })}/>
+              <input type="text" className="form-control form-control-lg bg-light fs-6" name='username' placeholder="Username" onChange={(e) => setFormData({ ...formData, username: e.target.value })}/>
             </div>
             <div className="input-group mb-1">
               <FaLock className='icon'/>
-              <input type="password" className="form-control form-control-lg bg-light fs-6" placeholder="Password" onChange={(e) => setFormData({ ...formData, password: e.target.value })}/>
+              <input type="password" className="form-control form-control-lg bg-light fs-6" name='password' placeholder="Password" onChange={(e) => setFormData({ ...formData, password: e.target.value })}/>
             </div>
             <div className="input-group mb-3">
               <button onClick={handleRegister} className="btn btn-lg btn-danger w-100 fs-6">Sign Up</button>
