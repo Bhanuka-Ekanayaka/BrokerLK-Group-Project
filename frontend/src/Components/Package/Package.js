@@ -1,6 +1,6 @@
 import NavBar from "../Child/NavBar/NavBar";
 import {useRef} from 'react';
-
+import Footer from "../Child/Footer/Footer";
 
 const Package = () => {
     const navRef = useRef();
@@ -13,6 +13,7 @@ const Package = () => {
         <>
             <NavBar navRef={navRef} showNavBar={showNavbar}></NavBar>
             <h1>This is Package Page</h1>
+            <Footer></Footer>
         </>
      );
 }
