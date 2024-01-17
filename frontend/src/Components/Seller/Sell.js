@@ -2,11 +2,19 @@ import React, { useState } from "react";
 import { FaCloudUploadAlt } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import './Sell.css'
+import { useRef } from "react";
+import NavBar from "../Child/NavBar/NavBar";
 
 const categories = ["Room", "House", "Boarding"];
 const locations = ["Matara Town", "Meddawaththa", "Wellamadama", "Gandara", "SK Town"];
 
 const Sell = () => {
+
+  const navRef = useRef();
+
+    const showNavbar =()=>{
+        navRef.current.classList.toggle('active');
+    }
   const navigate = useNavigate();
 
   const [values, setValues] = useState({
@@ -43,8 +51,10 @@ const Sell = () => {
   };
   
   return (
-    <div className="container d-flex justify-content-center align-items-center min-vh-100">
-    <form className="form shadow rounded p-3 mt-5" onSubmit={handleSubmit}>
+    <>
+            <NavBar navRef={navRef} showNavBar={showNavbar}></NavBar>
+    <div className="container d-flex justify-content-center align-items-center min-vh-100" >
+    <form className="form shadow rounded p-3 mt-5"  onSubmit={handleSubmit}>
       <h3 className="text-center mb-3">Create An Ad</h3>
       <div className="mb-3 text-center">
         <label htmlFor="image">
@@ -99,6 +109,7 @@ const Sell = () => {
       </div>
     </form>
     </div>
+    </>
   );
 };
 

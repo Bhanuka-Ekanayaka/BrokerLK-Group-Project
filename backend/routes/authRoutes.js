@@ -20,7 +20,6 @@ router.post('/register', async (req, res) => {
         res.status(404).json({message: 'failed'})
       }
     } catch (error) {
-      console.error('Error during registration:', error.message); 
       console.error(error.stack); 
       res.status(500).json({ success: false, error: 'Internal Server Error' });
     }
@@ -38,7 +37,6 @@ router.post('/login', async (req, res) => {
     }
 
     const token = jwt.sign({ username: user.username }, SECRET_KEY);
-    //res.json({ success: true, token });
     res.status(201).json({ success: true , token});
   } catch (error) {
     console.error('Error during login:', error);
