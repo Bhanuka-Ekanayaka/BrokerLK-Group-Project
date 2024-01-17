@@ -32,6 +32,18 @@ html{
 
 header{
     margin: 0.25cm 0;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    box-shadow: 0px 0px 4px rgb(6, 6, 6),
+    0px 0px 8px rgb(9, 9, 9),
+    0px 0px 8px rgb(33, 32, 32);
+}
+
+.header-partA{
+    margin:0;
+    border-top-left-radius: 11px;
+    border-top-right-radius: 11px;
     display:flex;
     align-items:center;/*flexibale items get into the center*/
     justify-content: space-between;
@@ -39,11 +51,37 @@ header{
     padding: 0 2rem;/*top and bootom margin is 0 and left and right margin is 2rem*/
     background: var(--mainColor);
     color:var(--textColor);
-    border-radius: 10px;
-    box-shadow: 0px 0px 4px rgb(6, 6, 6),
-    0px 0px 8px rgb(9, 9, 9),
-    0px 0px 8px rgb(33, 32, 32);
+   
 
+}
+
+.header-partB{
+    margin:0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--textColor);
+    border-bottom-left-radius: 11px;
+    border-bottom-right-radius: 11px;
+    height:40px;
+}
+
+.header-partB a{
+    text-decoration: none;
+    margin: 0 40px;
+    color: var(--textColor);
+    background-color: var(--mainColor);
+    border-radius: 20px;
+    padding: 0 10px;
+    font-weight: 500px;
+    box-shadow: 0px 0px 4px #686767,
+    0px 0px 8px #a19090,
+    0px 0px 8px #b4a1a1;
+}
+
+.header-partB a:hover{
+    background-color: var(--ButtonBackground);
+    font-size: 110%;
 }
 
 .title-content{
@@ -123,6 +161,16 @@ header img{
     0px 0px 8px rgb(33, 32, 32);
 }
 
+.menubar .menu-icons{
+    margin-top: 10px;
+    display: none;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 45px;
+}
+
+
+
 .menubar .menubar-Signin{
     padding: 2px 0;
     display: flex;
@@ -137,7 +185,7 @@ header img{
     padding: 1px 0;
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
     color: var(--textColor);
     box-shadow: 0px 0px 4px #ece0e0,
     0px 0px 8px #e3cece,
@@ -150,12 +198,15 @@ header img{
     box-shadow: 0px 0px 4px hsl(0, 2%, 10%),
     0px 0px 8px #242424,
     0px 0px 8px hsl(0, 0%, 17%);
+    font-weight: 700;
+    cursor: pointer;
+    margin:10px 0;
 }
 
 #logo_imge{
     background-color: transparent;
     box-shadow: none;
-    font-size: 45px;
+    font-size: 60px;
 }
 
 #logo_imges{
@@ -200,6 +251,10 @@ header img{
         visibility: visible;
         opacity: 1;
     }
+
+    header .header-partB{
+        display: none;
+    }
     
     .additional{
         display: none;
@@ -208,14 +263,22 @@ header img{
     .menubar{
         width: 40%;
     }
+
+    #logo_imges{
+        font-size: 20px;
+    }
     
     .menubar ul li a{
         font-size: 60%;
     }
 
     header .brand-title{
-        font-size: 75%;
+        font-size: 60%;
+        font-weight: 600;
     }
 
+    .menubar .menu-icons{
+        display: flex;
+    }
 
 }
