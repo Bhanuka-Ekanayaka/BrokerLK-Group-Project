@@ -11,7 +11,15 @@ COPY package*.json ./
 RUN npm install --quiet
 
 # Copy the entire application code to the working directory
-COPY . .
+COPY models/ ./models/
+COPY routes/ ./routes/
+COPY .env/ ./.env/
+COPY .gitignore/ ./.gitignore/
+COPY db.js/ ./db.js/
+COPY Dockerfile/ ./Dockerfile/
+COPY package.json/ ./package.json/
+COPY package-lock.json/ ./package-lock.json/
+COPY server.js/ ./server.js/
 
 # Expose the port that the Express server will run on
 EXPOSE 5001
