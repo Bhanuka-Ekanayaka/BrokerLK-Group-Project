@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
+
+body{
+    font-family: 'Poppins', sans-serif;
+    background: #ececec;
+}
+
+.con{
+    display: flex;
+    
+}
+
+
+
+.c1{
+    background-color: aqua;
+    width: 500px;
+    height: 540px;
+}
+
+.c2{
+    background-color: blueviolet;
+    width: 500px;
+    height: 540px;
+}
+
+h2{
+    text-align: center;
+    font-weight: bold;
+}
+
+p{
+    text-align: center;
+}
+/* Custom CSS code */
+.custom-button {
+    width: 300px;
+    font-size: 1.25rem; /* Equivalent to Bootstrap's fs-6 for btn-lg */
+  
+  }
+  
+  .custom-button-danger {
+    background-color: #dc3545; /* Equivalent to Bootstrap's btn-danger */
+    color: #fff; /* Set text color to white or any color you prefer */
+    border-color: #dc3545; /* Set border color to match background color */
+  }
+  
+  /* Apply Bootstrap's btn and btn-lg styles */
+  .custom-button,
+  .custom-button:hover {
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: .5rem 1rem;
+    font-size: 1rem;
+    line-height: 1.25;
+    border-radius: .3rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  }
+  
+  .custom-button:focus,
+  .custom-button.focus {
+    outline: 0;
+    box-shadow: 0 0 0 .2rem rgba(220, 53, 69,.25);
+  }
+
+  /* Custom CSS code for centering button */
+.im{
+    width: 500px;
+    height: 540px;
+}
+
+.p1{
+    font-size: 15px;
+}
+  
