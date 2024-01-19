@@ -3,13 +3,13 @@ import { FaBars } from 'react-icons/fa';
 import logo from './assets/logo.png';
 import MenuBar from './MenuBar';
 
+
 const NavBar = ({ showNavBar, navRef }) => {
 
 
     return (
         <>
             <header>
-                <div className='header-partA'>
                     <div className="title-content">
 
                         <button className='nav-btn' onClick={showNavBar}>
@@ -31,12 +31,7 @@ const NavBar = ({ showNavBar, navRef }) => {
                         <a href='/postadd'>Post-Add</a>
 
                     </nav>
-                </div>
-                <div className='header-partB'>
-                        <a href='/'>Home</a>
-                        <a href='/'>Packages</a>
-                        <a href='/'>About-Us</a>
-                </div>
+              
             </header>
 
             <MenuBar navRef={navRef}></MenuBar>
