@@ -1,5 +1,6 @@
 import React from 'react';
 import Image from './Inputimage/verifiy.jpg'
+import './ImageComponent.css'
 
 const ImageComponent = () => {
   return (
