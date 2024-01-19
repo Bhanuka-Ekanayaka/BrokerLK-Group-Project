@@ -5,4 +5,20 @@ body{
     background: #ececec;
 }
 
+.container {
+  flex: 1;
+  overflow-y: auto;
+}
 
+
+@media only screen and (max-width: 768px){
+
+    .container {
+      width: 100%;
+    }
+
+    .form {
+        width: 100%;
+      }
+
+  }

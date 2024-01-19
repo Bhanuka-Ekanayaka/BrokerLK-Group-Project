@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import './Sell.css'
 import { useRef } from "react";
 import NavBar from "../Child/NavBar/NavBar";
+import Footer from "../Child/Footer/Footer";
 
 const categories = ["Room", "House", "Boarding"];
 const locations = ["Matara Town", "Meddawaththa", "Wellamadama", "Gandara", "SK Town"];
@@ -52,8 +53,8 @@ const Sell = () => {
   
   return (
     <>
-            <NavBar navRef={navRef} showNavBar={showNavbar}></NavBar>
-    <div className="container d-flex justify-content-center align-items-center min-vh-100" >
+    <NavBar navRef={navRef} showNavBar={showNavbar}></NavBar>
+    <div className="container d-flex justify-content-center align-items-center" >
     <form className="form shadow rounded p-3 mt-5"  onSubmit={handleSubmit}>
       <h3 className="text-center mb-3">Create An Ad</h3>
       <div className="mb-3 text-center">
@@ -109,6 +110,7 @@ const Sell = () => {
       </div>
     </form>
     </div>
+    <Footer></Footer>
     </>
   );
 };
