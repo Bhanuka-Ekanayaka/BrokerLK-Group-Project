@@ -1,6 +1,6 @@
 /*custom scroll Bar Changing*/
 
-::-webkit-scrollbar{
+/* ::-webkit-scrollbar{
     width:15px;
 }
 
@@ -10,4 +10,4 @@
 
 ::-webkit-scrollbar-thumb{
     background: linear-gradient(#A70000,#FFFFFF);
-}
+} */
