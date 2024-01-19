@@ -1,10 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
 
-*{
+
+* {
     font-family:"Poppins", sans-serif;
 }
+
+
 .carousel{
+    border-radius: 5px;
     z-index: 2;
+    margin-bottom: 5px;
+    box-shadow: 0px 0px 4px #686767,
+    0px 0px 8px #a19090,
+    0px 0px 8px #b4a1a1;
 }
 
 .carousel .carousel-indicators button{
