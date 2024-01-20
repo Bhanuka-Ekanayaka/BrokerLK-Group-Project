@@ -13,15 +13,18 @@ body{
 
 
 .c1{
-    background-color: aqua;
-    width: 500px;
+    background-color:white;
+    width: 384px;
     height: 540px;
+    padding-top: 25px;
+    border-top-left-radius:20px ;
 }
 
 .c2{
-    background-color: blueviolet;
+    background-color: white;
     width: 500px;
     height: 540px;
+    border-bottom-right-radius: 20px;
 }
 
 h2{
@@ -77,7 +80,26 @@ p{
     height: 540px;
 }
 
-.p1{
+.op1{
+    padding-top: 5px;
     font-size: 15px;
+    margin-bottom: 0px;
+    
 }
+
+.op2{
+    font-size: 13px;
+    color: gray;
+}
+
+.oc1{
+    border-radius: 20px;
+    display: flex;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    
+    
+}
+
+
   
