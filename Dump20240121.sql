@@ -1,10 +1,8 @@
-CREATE DATABASE  IF NOT EXISTS `newschema` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `newschema`;
--- MySQL dump 10.13  Distrib 8.0.34, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.2.0, for Win64 (x86_64)
 --
--- Host: localhost    Database: newschema
+-- Host: localhost    Database: brokerlk_complete
 -- ------------------------------------------------------
--- Server version	8.0.35
+-- Server version	8.2.0
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -35,7 +33,7 @@ CREATE TABLE `accommodationtb` (
   PRIMARY KEY (`post_id`),
   KEY `owner_accomadation_idx` (`owner_id`),
   CONSTRAINT `owner_accomadation` FOREIGN KEY (`owner_id`) REFERENCES `usertb` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -44,7 +42,7 @@ CREATE TABLE `accommodationtb` (
 
 LOCK TABLES `accommodationtb` WRITE;
 /*!40000 ALTER TABLE `accommodationtb` DISABLE KEYS */;
-INSERT INTO `accommodationtb` VALUES (1,'kurunagela','31','aludeniya','mawathagama',20022,2),(2,'kurunagela','32','aludeniya','mawathagama',20022,2),(3,'kurunagela','33','aludeniya','mawathagama',20022,2);
+INSERT INTO `accommodationtb` VALUES (1,'matara','282/A','address01','address02',25251,2);
 /*!40000 ALTER TABLE `accommodationtb` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -60,8 +58,7 @@ CREATE TABLE `boarding_buildingtb` (
   `description` varchar(1000) NOT NULL,
   `post_id` int NOT NULL,
   PRIMARY KEY (`post_id`),
-  CONSTRAINT `bulilding_id` FOREIGN KEY (`post_id`) REFERENCES `accommodationtb` (`post_id`),
-  CONSTRAINT `post_id_to_rooms` FOREIGN KEY (`post_id`) REFERENCES `boarding_roomstb` (`post_id`)
+  CONSTRAINT `bulilding_id` FOREIGN KEY (`post_id`) REFERENCES `accommodationtb` (`post_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -71,7 +68,6 @@ CREATE TABLE `boarding_buildingtb` (
 
 LOCK TABLES `boarding_buildingtb` WRITE;
 /*!40000 ALTER TABLE `boarding_buildingtb` DISABLE KEYS */;
-INSERT INTO `boarding_buildingtb` VALUES (30,'only girls',3);
 /*!40000 ALTER TABLE `boarding_buildingtb` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -83,15 +79,15 @@ DROP TABLE IF EXISTS `boarding_room_imgtb`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `boarding_room_imgtb` (
-  `roomAlbum_id` int NOT NULL,
+  `img_id` int NOT NULL,
   `room_inside_img1` varchar(500) NOT NULL,
   `washroom_img` varchar(500) NOT NULL,
   `kitchen_img` varchar(500) DEFAULT NULL,
   `room_inside_img2` varchar(500) NOT NULL,
   `room_outside_img1` varchar(500) NOT NULL,
   `room_outside_img2` varchar(500) NOT NULL,
-  `room_id` int DEFAULT NULL,
-  PRIMARY KEY (`roomAlbum_id`),
+  `room_id` int NOT NULL,
+  PRIMARY KEY (`img_id`,`room_id`),
   KEY `bodim_room_id_idx` (`room_id`),
   CONSTRAINT `bodim_room_id` FOREIGN KEY (`room_id`) REFERENCES `boarding_roomstb` (`post_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -103,7 +99,6 @@ CREATE TABLE `boarding_room_imgtb` (
 
 LOCK TABLES `boarding_room_imgtb` WRITE;
 /*!40000 ALTER TABLE `boarding_room_imgtb` DISABLE KEYS */;
-INSERT INTO `boarding_room_imgtb` VALUES (1,'img','img','img','img','img','img',1);
 /*!40000 ALTER TABLE `boarding_room_imgtb` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -119,9 +114,12 @@ CREATE TABLE `boarding_roomstb` (
   `building_room_no` int DEFAULT NULL,
   `description` varchar(1000) NOT NULL,
   `no_tenants` int NOT NULL,
-  `is_boarding_building` tinyint NOT NULL,
+  `is_boarding_building` binary(5) DEFAULT NULL,
   `post_id` int NOT NULL,
+  `building_room_id` int DEFAULT NULL,
   PRIMARY KEY (`post_id`),
+  KEY `building_room_id_idx` (`building_room_id`),
+  CONSTRAINT `building_room_id` FOREIGN KEY (`building_room_id`) REFERENCES `boarding_roomstb` (`post_id`),
   CONSTRAINT `post_id_rooms` FOREIGN KEY (`post_id`) REFERENCES `accommodationtb` (`post_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -132,7 +130,7 @@ CREATE TABLE `boarding_roomstb` (
 
 LOCK TABLES `boarding_roomstb` WRITE;
 /*!40000 ALTER TABLE `boarding_roomstb` DISABLE KEYS */;
-INSERT INTO `boarding_roomstb` VALUES (2,NULL,'No KeyMoney',4,0,1),(1,23,'no keyMoney',2,1,3);
+INSERT INTO `boarding_roomstb` VALUES (2,NULL,'specially for university students',2,_binary '0\0\0\0\0',1,NULL);
 /*!40000 ALTER TABLE `boarding_roomstb` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -144,17 +142,17 @@ DROP TABLE IF EXISTS `building_imagetb`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `building_imagetb` (
-  `buildingAlbum_id` int NOT NULL AUTO_INCREMENT,
+  `img_id` int NOT NULL AUTO_INCREMENT,
   `gate_img` varchar(500) NOT NULL,
   `outdoor_img1` varchar(500) NOT NULL,
   `outdoor_img2` varchar(500) NOT NULL,
   `inside_img1` varchar(500) NOT NULL,
   `inside_img2` varchar(500) NOT NULL,
-  `building_id` int DEFAULT NULL,
-  PRIMARY KEY (`buildingAlbum_id`),
+  `building_id` int NOT NULL,
+  PRIMARY KEY (`img_id`,`building_id`),
   KEY `building_id_idx` (`building_id`),
   CONSTRAINT `building_id` FOREIGN KEY (`building_id`) REFERENCES `boarding_buildingtb` (`post_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -163,7 +161,6 @@ CREATE TABLE `building_imagetb` (
 
 LOCK TABLES `building_imagetb` WRITE;
 /*!40000 ALTER TABLE `building_imagetb` DISABLE KEYS */;
-INSERT INTO `building_imagetb` VALUES (1,'img','img','img','img','img',3);
 /*!40000 ALTER TABLE `building_imagetb` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -178,10 +175,10 @@ CREATE TABLE `compartmenttb` (
   `size_ft` int NOT NULL,
   `status` varchar(50) NOT NULL,
   `room_id` int NOT NULL,
-  `house_id` int DEFAULT NULL,
+  `post_id` int DEFAULT NULL,
   PRIMARY KEY (`room_id`),
-  KEY `house_id_rooms_idx` (`house_id`),
-  CONSTRAINT `house_id_rooms` FOREIGN KEY (`house_id`) REFERENCES `rental_housetb` (`post_id`)
+  KEY `post_id_fk_idx` (`post_id`),
+  CONSTRAINT `post_id_fk` FOREIGN KEY (`post_id`) REFERENCES `rental_housetb` (`post_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -191,7 +188,6 @@ CREATE TABLE `compartmenttb` (
 
 LOCK TABLES `compartmenttb` WRITE;
 /*!40000 ALTER TABLE `compartmenttb` DISABLE KEYS */;
-INSERT INTO `compartmenttb` VALUES (100,'have bed',1,2);
 /*!40000 ALTER TABLE `compartmenttb` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -203,16 +199,16 @@ DROP TABLE IF EXISTS `house_room_imgtb`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `house_room_imgtb` (
+  `img_id` int NOT NULL,
   `room_img1` varchar(500) DEFAULT NULL,
   `room_img2` varchar(500) DEFAULT NULL,
   `room_img3` varchar(500) DEFAULT NULL,
   `washroom_img` varchar(500) DEFAULT NULL,
   `kitchen_img` varchar(500) DEFAULT NULL,
-  `room_id` int DEFAULT NULL,
-  `room_album_id` int NOT NULL,
-  PRIMARY KEY (`room_album_id`),
-  KEY `room_id_idx` (`room_id`),
-  CONSTRAINT `room_id` FOREIGN KEY (`room_id`) REFERENCES `compartmenttb` (`room_id`)
+  `room_id` int NOT NULL,
+  PRIMARY KEY (`img_id`,`room_id`),
+  KEY `room_img_idx` (`room_id`),
+  CONSTRAINT `room_img` FOREIGN KEY (`room_id`) REFERENCES `compartmenttb` (`room_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -222,7 +218,6 @@ CREATE TABLE `house_room_imgtb` (
 
 LOCK TABLES `house_room_imgtb` WRITE;
 /*!40000 ALTER TABLE `house_room_imgtb` DISABLE KEYS */;
-INSERT INTO `house_room_imgtb` VALUES ('img1','img2','img3','img4','img5',1,0);
 /*!40000 ALTER TABLE `house_room_imgtb` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -257,7 +252,7 @@ CREATE TABLE `paymenttb` (
 
 LOCK TABLES `paymenttb` WRITE;
 /*!40000 ALTER TABLE `paymenttb` DISABLE KEYS */;
-INSERT INTO `paymenttb` VALUES (1,5000.00,'card','ImageHere',2,1,1);
+INSERT INTO `paymenttb` VALUES (1,5000.00,'bank','image01',2,1,1);
 /*!40000 ALTER TABLE `paymenttb` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -273,13 +268,13 @@ CREATE TABLE `price_detailstb` (
   `agreed_price` decimal(10,2) NOT NULL,
   `advertised_price` decimal(10,2) NOT NULL,
   `agreed_date` date NOT NULL,
-  `incremental_amount` decimal(10,2) DEFAULT NULL,
-  `incremental_date` decimal(10,2) DEFAULT NULL,
+  `incremental_amount` decimal(10,2) NOT NULL,
+  `incremental_date` decimal(10,2) NOT NULL,
   `post_id` int NOT NULL,
   PRIMARY KEY (`detail_id`,`post_id`),
   KEY `price_post_idx` (`post_id`),
   CONSTRAINT `price_post` FOREIGN KEY (`post_id`) REFERENCES `accommodationtb` (`post_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -288,7 +283,6 @@ CREATE TABLE `price_detailstb` (
 
 LOCK TABLES `price_detailstb` WRITE;
 /*!40000 ALTER TABLE `price_detailstb` DISABLE KEYS */;
-INSERT INTO `price_detailstb` VALUES (1,5000.00,6000.00,'2024-01-02',NULL,NULL,1);
 /*!40000 ALTER TABLE `price_detailstb` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -303,10 +297,7 @@ CREATE TABLE `registrationtb` (
   `user_name` varchar(100) NOT NULL,
   `password` varchar(15) NOT NULL,
   `Role` varchar(10) NOT NULL,
-  `admn_id` int DEFAULT NULL,
-  PRIMARY KEY (`user_name`),
-  KEY `animin_id_idx` (`admn_id`),
-  CONSTRAINT `animin_id` FOREIGN KEY (`admn_id`) REFERENCES `usertb` (`user_id`)
+  PRIMARY KEY (`user_name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -316,7 +307,7 @@ CREATE TABLE `registrationtb` (
 
 LOCK TABLES `registrationtb` WRITE;
 /*!40000 ALTER TABLE `registrationtb` DISABLE KEYS */;
-INSERT INTO `registrationtb` VALUES ('epbhanuka98@gmail.com','sc11725','tenant',NULL),('epkasun98@gmail.com','sc11725','owner',NULL),('epsandun98@gmail.com','sc11726','admin',NULL);
+INSERT INTO `registrationtb` VALUES ('ashan@email.com','11684','tenant'),('banuka@email.com','11114','owner'),('sadun@email.com','11114','admin');
 /*!40000 ALTER TABLE `registrationtb` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -328,17 +319,17 @@ DROP TABLE IF EXISTS `rental_house_imgtb`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `rental_house_imgtb` (
-  `rentalAlbum_jd` int NOT NULL AUTO_INCREMENT,
+  `img_jd` int NOT NULL AUTO_INCREMENT,
   `gate_img` varchar(500) NOT NULL,
   `outdoor_img1` varchar(500) NOT NULL,
   `outdoor_img2` varchar(500) NOT NULL,
   `house_front_img` varchar(500) NOT NULL,
   `house_back_img` varchar(500) NOT NULL,
-  `reantal_id` int DEFAULT NULL,
-  PRIMARY KEY (`rentalAlbum_jd`),
+  `reantal_id` int NOT NULL,
+  PRIMARY KEY (`img_jd`,`reantal_id`),
   KEY `rentalhouse_idx` (`reantal_id`),
   CONSTRAINT `rentalhouse` FOREIGN KEY (`reantal_id`) REFERENCES `rental_housetb` (`post_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -347,7 +338,6 @@ CREATE TABLE `rental_house_imgtb` (
 
 LOCK TABLES `rental_house_imgtb` WRITE;
 /*!40000 ALTER TABLE `rental_house_imgtb` DISABLE KEYS */;
-INSERT INTO `rental_house_imgtb` VALUES (1,'img','img','img','img','img',2);
 /*!40000 ALTER TABLE `rental_house_imgtb` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -361,8 +351,8 @@ DROP TABLE IF EXISTS `rental_housetb`;
 CREATE TABLE `rental_housetb` (
   `furniture_status` varchar(45) NOT NULL,
   `no_living_rooms` int NOT NULL,
-  `no_kitchens` int NOT NULL,
-  `no_washrooms` int NOT NULL,
+  `no_kitchens` int DEFAULT NULL,
+  `no_washrooms` int DEFAULT NULL,
   `post_id` int NOT NULL,
   PRIMARY KEY (`post_id`),
   KEY `post_house_id_idx` (`post_id`),
@@ -376,7 +366,6 @@ CREATE TABLE `rental_housetb` (
 
 LOCK TABLES `rental_housetb` WRITE;
 /*!40000 ALTER TABLE `rental_housetb` DISABLE KEYS */;
-INSERT INTO `rental_housetb` VALUES ('have desks and chairs',4,1,3,2);
 /*!40000 ALTER TABLE `rental_housetb` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -390,18 +379,18 @@ DROP TABLE IF EXISTS `reporttb`;
 CREATE TABLE `reporttb` (
   `rep_id` int NOT NULL AUTO_INCREMENT,
   `description` varchar(150) DEFAULT NULL,
-  `not_related` tinyint DEFAULT NULL,
-  `spamming` tinyint DEFAULT NULL,
-  `other` tinyint DEFAULT NULL,
-  `fake_account` tinyint DEFAULT NULL,
+  `not_related` binary(5) DEFAULT NULL,
+  `spamming` binary(5) DEFAULT NULL,
+  `other` binary(5) DEFAULT NULL,
+  `fake_account` binary(5) DEFAULT NULL,
   `post_id` int NOT NULL,
-  `admin_id` int DEFAULT NULL,
-  PRIMARY KEY (`rep_id`),
-  KEY `post_id_idx` (`post_id`),
-  KEY `admin_id_idx` (`admin_id`),
-  CONSTRAINT `admin_id` FOREIGN KEY (`admin_id`) REFERENCES `usertb` (`user_id`),
-  CONSTRAINT `post_id` FOREIGN KEY (`post_id`) REFERENCES `accommodationtb` (`post_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `admin_id` int NOT NULL,
+  PRIMARY KEY (`rep_id`,`post_id`,`admin_id`),
+  KEY `post_reports_idx` (`post_id`),
+  KEY `admin_reports_idx` (`admin_id`),
+  CONSTRAINT `admin_reports` FOREIGN KEY (`admin_id`) REFERENCES `usertb` (`user_id`),
+  CONSTRAINT `post_reports` FOREIGN KEY (`post_id`) REFERENCES `accommodationtb` (`post_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -410,7 +399,6 @@ CREATE TABLE `reporttb` (
 
 LOCK TABLES `reporttb` WRITE;
 /*!40000 ALTER TABLE `reporttb` DISABLE KEYS */;
-INSERT INTO `reporttb` VALUES (1,'afasfa',1,0,0,0,1,NULL);
 /*!40000 ALTER TABLE `reporttb` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -424,7 +412,7 @@ DROP TABLE IF EXISTS `reviewstb`;
 CREATE TABLE `reviewstb` (
   `rev_id` int NOT NULL AUTO_INCREMENT,
   `description` varchar(250) NOT NULL,
-  `rating` int NOT NULL,
+  `rating` float NOT NULL,
   `user_id` int DEFAULT NULL,
   `post_id` int DEFAULT NULL,
   PRIMARY KEY (`rev_id`),
@@ -432,7 +420,7 @@ CREATE TABLE `reviewstb` (
   KEY `post_id_review_idx` (`post_id`),
   CONSTRAINT `post_id_review` FOREIGN KEY (`post_id`) REFERENCES `accommodationtb` (`post_id`),
   CONSTRAINT `user_id` FOREIGN KEY (`user_id`) REFERENCES `usertb` (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -441,6 +429,7 @@ CREATE TABLE `reviewstb` (
 
 LOCK TABLES `reviewstb` WRITE;
 /*!40000 ALTER TABLE `reviewstb` DISABLE KEYS */;
+INSERT INTO `reviewstb` VALUES (1,'good place',4.5,1,1);
 /*!40000 ALTER TABLE `reviewstb` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -477,7 +466,7 @@ CREATE TABLE `usertb` (
 
 LOCK TABLES `usertb` WRITE;
 /*!40000 ALTER TABLE `usertb` DISABLE KEYS */;
-INSERT INTO `usertb` VALUES ('Bhanuka','Ekanayaka','0767454068','epbhanuka98@gmail.com',NULL,'pussegoda','ambaruppa','harankahawa',1,1,0,0,0),('Kasun','Dushmantha','0766457034','epkasun98@gmail.com',NULL,'kiwisigamuwa','malsiripura','kurunegala',2,1,1,0,0),('Sandun','Sanjeewa','0754678034','epsandun98@gmail.com',NULL,'aluthgama','dakunu kalutara','kalutara',3,1,1,1,1);
+INSERT INTO `usertb` VALUES ('ashan','jayasinghe','0123456789','ashan@email.com','street01','address01','address02','matara',1,1,0,0,0),('bhanuka','surname','0123456789','banuka@email.com','street01','address01','address02','matara',2,0,1,0,0),('sadun','surname','0123456789','sadun@email.com','street03','address01','address02','matara',3,0,0,0,1);
 /*!40000 ALTER TABLE `usertb` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -490,4 +479,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-01-21 13:50:51
+-- Dump completed on 2024-01-21 14:45:12
