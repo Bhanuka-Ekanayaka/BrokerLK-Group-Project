@@ -1,10 +1,8 @@
 import React from 'react'
 import './Otpinput.css'
-import ImageComponent from './ImageComponent';
-import { button } from 'bootstrap';
 import { FaArrowCircleLeft } from "react-icons/fa";
 import { Link } from 'react-router-dom';
-
+import Image from './Inputimage/verifiy.jpg'
 
 
 export default function Otpinput() {
@@ -14,7 +12,7 @@ export default function Otpinput() {
         <div className='c1 '>
             <h2 className='oh2'>Almost There</h2>
             <br></br>
-            <p>Please enter the 6-digit code sent to your <br/>
+            <p className='op3'>Please enter the 6-digit code sent to your <br/>
 email contact.uiuxexperts@gmail.com for <br></br>verification.
             </p><div style={{ height: '20vh' }}></div>
            
@@ -34,7 +32,7 @@ email contact.uiuxexperts@gmail.com for <br></br>verification.
             
         </div>
         
-        <div className='c2 d-none d-md-block '><ImageComponent /></div>
+        <div className='c2 d-none d-md-block '> <img className='im'  src={Image} alt="Description of the image" /></div>
       </div>
     </div>
   )
