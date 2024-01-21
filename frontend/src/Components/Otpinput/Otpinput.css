@@ -5,12 +5,6 @@ body{
     background: #ececec;
 }
 
-.con{
-    display: flex;
-    
-}
-
-
 
 .c1{
     background-color:white;
@@ -96,10 +90,62 @@ p{
     border-radius: 20px;
     display: flex;
     border: 1px solid #ddd;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-    
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);   
     
 }
+
+.icon-a{
+   
+    margin-left: 35px;
+    transition: all 0.1s ease-in-out;
+}
+
+Link.icon-a:hover{
+    
+    height: '45px';
+    width: '45px';
+    color: rgb(88, 88, 88);
+}
+
+@media (max-width: 1088px) {
+    
+
+    .c1{
+       
+        width: 300px;
+        height: 540px;
+        padding-top: 20px;
+        border-top-left-radius:20px ;
+        
+    }
+
+    .c2{
+        
+        width: 400px;
+        height: 540px;
+        border-bottom-right-radius: 20px;
+    }
+    
+   
+  
+   
+  }
+  
+
+@media (max-width:767.5px) {
+    
+  
+   
+
+    .c1{
+        background-color:white;
+        width: 384px;
+        height: 540px;
+        border-bottom-right-radius: 20px;
+       
+    }
+  }
+  
 
 
   
