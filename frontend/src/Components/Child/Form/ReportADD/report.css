@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
+
+*{
+    font-family:"Poppins", sans-serif;
+}
+
+.report-content{
+    position: absolute;
+    padding: 10px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: brown;
+    border-radius: 10px;
+    z-index: 2;
+    box-shadow: 0px 0px 4px #686767,
+    0px 0px 8px #a19090,
+    0px 0px 8px #b4a1a1;
+}
+
+.report-content .report-header{
+    height: 40px;
+    width:250px;
+    font-weight: 700;
+    border:1px solid;
+    background: lightcoral;
+    border-radius: 10px;
+    text-align: center;
+}
