@@ -6,19 +6,27 @@ body{
 }
 
 .container {
-  flex: 1;
-  overflow-y: auto;
-}
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
 
-@media only screen and (max-width: 768px){
 
+@media only screen and (max-width: 1024px){
     .container {
-      width: 100%;
+      width: 80%;
     }
-
     .form {
         width: 100%;
-      }
+    }
+  }
 
+  @media only screen and (max-width: 768px){
+    .container {
+      width: 85%;
+    }
+    .form {
+        width: 100%;
+    }
   }
