@@ -177,6 +177,31 @@ Link.icon-a:hover{
         border-bottom-right-radius: 20px;
        
     }
+
+    .oh2{
+        font-size: 25px;
+        padding-top: 15px;
+    }
+
+    .op3{
+        margin: 5px;
+        font-size: 15px;
+    }
+
+    .op1{
+        font-size: 14px;
+    }
+
+    .op2{
+        font-size: 13px;
+    }
+    
+    .custom-button {
+        width: 300px;
+        font-size: 1.25rem; /* Equivalent to Bootstrap's fs-6 for btn-lg */
+      
+      }
+   
   }
   
 
