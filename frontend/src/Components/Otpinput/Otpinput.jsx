@@ -2,7 +2,8 @@ import React from 'react'
 import './Otpinput.css'
 import { FaArrowCircleLeft } from "react-icons/fa";
 import { Link } from 'react-router-dom';
-import Image from './Inputimage/verifiy.jpg'
+import Image from './Inputimage/verifiy.jpg';
+import OtpInput from "react-otp-input"
 
 
 export default function Otpinput() {
@@ -14,7 +15,10 @@ export default function Otpinput() {
             <br></br>
             <p className='op3'>Please enter the 6-digit code sent to your <br/>
 email contact.uiuxexperts@gmail.com for <br></br>verification.
-            </p><div style={{ height: '20vh' }}></div>
+            </p>
+            <div style={{ height: '20vh' }}>
+              <OtpInput></OtpInput>
+            </div>
            
             <div className="d-flex justify-content-center align-items-center" style={{ height: '30px' }}>
                 <button  className="custom-button custom-button-danger  ">Verify</button>
@@ -25,7 +29,7 @@ email contact.uiuxexperts@gmail.com for <br></br>verification.
             </div>
             
             <div>
-              <Link to='../Register'>
+              <Link to='../Register' className='ol1'>
                 <FaArrowCircleLeft  className='icon-a'  style={{ height: '25px', width: '25px', color:'black' } }/>
               </Link>
             </div>
