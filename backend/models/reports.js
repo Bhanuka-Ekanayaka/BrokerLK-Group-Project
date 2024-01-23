@@ -1,11 +1,18 @@
 const db = require('../db');
 
-const getReports = (req,res)=>{
-    const sql='SELECT * FROM reporttb';
-    db.query(sql,(err,data)=> {
-      if(err) return res.json(err);
-      return res.json(data);
-    }
-)}
+const createReport = (name, email, reason, description)=>{
+  return new Promise((resolve,reject)=>{
+    const sql="";
+    db.query(sql,[name,email,reason,description],(err,results)=>{
+      if(err){
+        reject(err);
+        return;
+      }
+      resolve(results);
+    });
+  });
 
-module.exports = getReports;
+ }
+
+
+module.exports = createReport;
