@@ -18,7 +18,6 @@ const Home = () => {
             <NavBar navRef={navRef} showNavBar={showNavbar}></NavBar>
             <SlideShow></SlideShow>
             <PageNavbar></PageNavbar>
-            <ReportAdd></ReportAdd>
             <Footer></Footer>
           </>
    );

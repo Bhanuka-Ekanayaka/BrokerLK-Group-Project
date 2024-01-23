@@ -107,13 +107,19 @@ Link.icon-a:hover{
     color: rgb(88, 88, 88);
 }
 
+.im{
+    border-bottom-right-radius: 20px;
+    max-width: 100%;
+    height: auto;
+}
+
 @media (max-width: 1088px) {
     
 
     .c1{
        
         width: 300px;
-        height: 540px;
+        height: 500px;
         padding-top: 20px;
         border-top-left-radius:20px ;
         
@@ -122,10 +128,37 @@ Link.icon-a:hover{
     .c2{
         
         width: 400px;
-        height: 540px;
+        height: 500px;
         border-bottom-right-radius: 20px;
     }
+
+    .im{
+       padding-top: 30px;
+    }
+
+    .oh2{
+        font-size: 22px;
+        padding-top: 15px;
+    }
+
+    .op3{
+        margin: 5px;
+        font-size: 13px;
+    }
+
+    .op1{
+        font-size: 12px;
+    }
+
+    .op2{
+        font-size: 11px;
+    }
     
+    .custom-button {
+        width: 250px;
+        font-size: 1.rem; /* Equivalent to Bootstrap's fs-6 for btn-lg */
+      
+      }
    
   
    
@@ -144,6 +177,31 @@ Link.icon-a:hover{
         border-bottom-right-radius: 20px;
        
     }
+
+    .oh2{
+        font-size: 25px;
+        padding-top: 15px;
+    }
+
+    .op3{
+        margin: 5px;
+        font-size: 15px;
+    }
+
+    .op1{
+        font-size: 14px;
+    }
+
+    .op2{
+        font-size: 13px;
+    }
+    
+    .custom-button {
+        width: 300px;
+        font-size: 1.25rem; /* Equivalent to Bootstrap's fs-6 for btn-lg */
+      
+      }
+   
   }
   
 

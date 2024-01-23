@@ -11,6 +11,7 @@ import ForgotPassword from './Components/Login/ForgotPassword';
 import Package from './Components/Package/Package';
 import About from './Components/About/About';
 import Otpinput from './Components/Otpinput/Otpinput';
+import Welcome from './Components/Welcome/Welcome'
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
           <Route path='/seller' element={<Sell/>}/>
           <Route path='/forgot-password' element={<ForgotPassword />} />
           <Route path='/Otpinput' element={<Otpinput/>}/>
+          <Route path='/Welcome' element={<Welcome/>}/>
         </Routes>
     </Router>
     </div>
