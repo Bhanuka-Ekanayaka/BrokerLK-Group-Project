@@ -51,3 +51,10 @@
 .carousel .carousel-inner .carousel-item .carousel-caption p{
     text-align: right;
 }
+
+@media only screen and (max-width:1024px){
+
+    .hide-slideShow{
+        display: none;
+    }
+}
