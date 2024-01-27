@@ -22,3 +22,10 @@
 .navbar-expand {
     justify-content: center;
 }
+
+@media only screen and (max-width:1024px){
+
+    .hide-navbar{
+        display: none;
+    }
+}
