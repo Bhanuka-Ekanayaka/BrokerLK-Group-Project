@@ -2,7 +2,7 @@
 import { FaBars } from 'react-icons/fa';
 import logo from './assets/logo.png';
 import MenuBar from './MenuBar';
-
+import { Link } from 'react-router-dom';
 
 const NavBar = ({ showNavBar, navRef }) => {
 
@@ -27,8 +27,8 @@ const NavBar = ({ showNavBar, navRef }) => {
 
                     <nav className='additional'>
 
-                        <a href='/login'>Sign-In</a>
-                        <a href='/postadd'>Post-Add</a>
+                        <Link to='/login'>Sign-In</Link>
+                        <Link to='/postadd'>Post-Add</Link>
 
                     </nav>
               

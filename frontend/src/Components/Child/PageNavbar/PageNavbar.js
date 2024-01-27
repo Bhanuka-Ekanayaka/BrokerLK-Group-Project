@@ -5,18 +5,18 @@ import './PageNavbar.css';
 
 const PageNavbar = () => {
     return (
-        <>
+        <div className="hide-navbar">
             <Navbar className='navar-mypage'>
                 <Container>
                     <Nav className='m-auto'>
-                        <Nav.Link href="#home">Home</Nav.Link>
-                        <Nav.Link href="#features">Packages</Nav.Link>
-                        <Nav.Link href="#pricing">About us</Nav.Link>
+                        <Nav.Link href="/">Home</Nav.Link>
+                        <Nav.Link href="/packages">Packages</Nav.Link>
+                        <Nav.Link href="/about">About us</Nav.Link>
                     </Nav>
                 </Container>
             </Navbar>
 
-        </>
+        </div>
     );
 }
 
