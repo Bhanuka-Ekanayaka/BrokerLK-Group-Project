@@ -5,6 +5,7 @@ import Footer from '../Child/Footer/Footer';
 import SlideShow from '../Child/SlideShow/SlideShow';
 import PageNavbar from '../Child/PageNavbar/PageNavbar';
 import ReportAdd from '../Child/Form/ReportADD/ReportAdd';
+import Otpinput from '../Otpinput/Otpinput';
 
 const Home = () => {
   const navRef = useRef();
@@ -18,7 +19,7 @@ const Home = () => {
             <NavBar navRef={navRef} showNavBar={showNavbar}></NavBar>
             <SlideShow></SlideShow>
             <PageNavbar></PageNavbar>
-            <ReportAdd></ReportAdd>
+            <Otpinput></Otpinput>
             <Footer></Footer>
           </>
    );
