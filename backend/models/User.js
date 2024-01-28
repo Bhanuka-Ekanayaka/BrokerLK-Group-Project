@@ -1,10 +1,10 @@
 const db = require('../db');
 
-const createUser = (fullName, email, nic, mobileNumber, username, hashedPassword) => {
+const createUser = (email, hashedPassword, role) => {
     return new Promise((resolve, reject) => {
       db.query(
-        'INSERT INTO users (full_name, email, nic, mobile_number, username, password) VALUES (?, ?, ?, ?, ?, ?)',
-        [fullName, email, nic, mobileNumber, username, hashedPassword],
+        'INSERT INTO registrationtb (email, password, role) VALUES (?, ?, ?)',
+        [email, hashedPassword, role],
         (err, results) => {
           if (err) {
             reject(err);
@@ -16,9 +16,9 @@ const createUser = (fullName, email, nic, mobileNumber, username, hashedPassword
     });
   };
   
-  const getUserByUsername = (username) => {
+  const getUserByUsername = (email) => {
     return new Promise((resolve, reject) => {
-      db.query('SELECT * FROM users WHERE username = ?', [username], (err, results) => {
+      db.query('SELECT * FROM registrationtb WHERE email = ?', [email], (err, results) => {
         if (err) {
           reject(err);
           return;

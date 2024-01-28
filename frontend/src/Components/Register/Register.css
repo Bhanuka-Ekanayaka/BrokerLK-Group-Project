@@ -41,14 +41,18 @@ body{
     left: -5px; 
   }
 
-  .icon1 {
+/*   .icon1 {
     width: 25px; 
     height: 25px; 
     position: relative; 
     top: 105px;
     left: -40px; 
-  }
+  } */
 
+  .placeholder-option {
+    filter: blur(4px);
+    color: #808080; /* Adjust the color of the blurred text */
+  }
 
 @media only screen and (max-width: 768px){
 

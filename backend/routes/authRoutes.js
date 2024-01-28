@@ -8,16 +8,16 @@ const { createUser, getUserByUsername } = require('../models/User');
 const SECRET_KEY = 'micset993150'; // Replace with a strong, random key
 
 router.post('/register', async (req, res) => {
-    const { fullName, email, nic, mobileNumber, username, password } = req.body;  
+    const { email, password, role } = req.body;  
 
     try {
       const hashedPassword = await bcrypt.hash(password, 10);
-      const result = await createUser(fullName, email, nic, mobileNumber, username, hashedPassword);
+      const result = await createUser(email, hashedPassword, role);
 
-      if(result.insertId >0){
+      if (result.insertId > 0) {
         res.status(201).json({ success: true });
-      }else{
-        res.status(404).json({message: 'failed'})
+      } else {
+        res.status(400).json({ success: false, message: 'Registration failed' });
       }
     } catch (error) {
       console.error(error.stack); 
@@ -26,17 +26,17 @@ router.post('/register', async (req, res) => {
   });
 
 router.post('/login', async (req, res) => {
-  const { username, password } = req.body;
+  const { email, password } = req.body;
 
   try {
-    const user = await getUserByUsername(username);
+    const user = await getUserByUsername(email);
       console.log('result is', user)
     if (!user || !(await bcrypt.compare(password, user.password))) {
       res.status(401).json({ success: false, error: 'Invalid credentials' });
       return;
     }
 
-    const token = jwt.sign({ username: user.username }, SECRET_KEY);
+    const token = jwt.sign({ email: user.email }, SECRET_KEY);
     res.status(201).json({ success: true , token});
   } catch (error) {
     console.error('Error during login:', error);

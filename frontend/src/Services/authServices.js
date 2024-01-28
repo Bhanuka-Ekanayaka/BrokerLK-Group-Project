@@ -11,10 +11,11 @@ export const Loginform = async (email, password) => {
   }
 };
 
-export const Registerform = async (userData) => {
+export const Registerform = async (formData) => {
   try {
-    const response = await axios.post(`${API_URL}/register`, userData);
-      return response;
+    const response = await axios.post(`${API_URL}/register`, formData
+    );
+      return response.data;
   } catch (error) {
         throw error;
   }
