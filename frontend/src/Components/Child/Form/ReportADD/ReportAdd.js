@@ -2,6 +2,9 @@ import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import './report.css';
 import { useState } from 'react';
+import {ReportForm} from '../../../../Services/reportServices';
+import {useNavigate} from 'react-router-dom';
+
 
 const ReprtAdd = () => {
 
@@ -10,11 +13,25 @@ const ReprtAdd = () => {
     const [reason, setReason] = useState('');
     const [description, setDescription] = useState('');
 
+    const navigate = useNavigate();
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async(e) => {
         e.preventDefault();
         const report = { name, email, reason, description };
-        console.log(report);
+
+        try{
+            const result= ReportForm(report);
+            if(result.status === 201){
+                alert('Succesfully Reported');
+                navigate('/')
+              }else{
+                console.log('fail')
+                alert('Your Report is Fail');
+              }
+        }catch(err){
+            console.log(err);
+        }
+       
     }
 
     return (
@@ -62,10 +79,6 @@ const ReprtAdd = () => {
                     </FloatingLabel>
                     <button>Submit Report</button>
                 </Form>
-                <p>{name}</p>
-                <p>{email}</p>
-                <p>{reason}</p>
-                <p>{description}</p>
             </div>
         </>
     );
