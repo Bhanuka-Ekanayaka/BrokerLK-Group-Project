@@ -32,20 +32,9 @@ p{
 /* Custom CSS code */
 .custom-button {
     width: 300px;
-    font-size: 1.25rem; /* Equivalent to Bootstrap's fs-6 for btn-lg */
-  
-  }
-  
-  .custom-button-danger {
-    background-color: #dc3545; /* Equivalent to Bootstrap's btn-danger */
-    color: #fff; /* Set text color to white or any color you prefer */
-    border-color: #dc3545; /* Set border color to match background color */
-  }
-  
-  /* Apply Bootstrap's btn and btn-lg styles */
-  .custom-button,
-  .custom-button:hover {
+    font-size: 1.25rem;
     display: inline-block;
+    
     font-weight: 400;
     text-align: center;
     white-space: nowrap;
@@ -58,7 +47,35 @@ p{
     padding: .5rem 1rem;
     font-size: 1rem;
     line-height: 1.25;
-    border-radius: .3rem;
+    border-radius: .5rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out; /* Equivalent to Bootstrap's fs-6 for btn-lg */
+  
+  }
+  
+  .custom-button-danger {
+    background-color: #dc3545; /* Equivalent to Bootstrap's btn-danger */
+    color: #fff; /* Set text color to white or any color you prefer */
+    border-color: #dc3545; /* Set border color to match background color */
+  }
+  
+  /* Apply Bootstrap's btn and btn-lg styles */
+  
+  .custom-button:hover {
+    display: inline-block;
+    background-color:#a00f1e ;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: .5rem 1rem;
+    font-size: 1rem;
+    line-height: 1.25;
+    border-radius: .5rem;
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
   }
   
@@ -100,7 +117,7 @@ p{
     transition: all 0.1s ease-in-out;
 }
 
-Link.icon-a:hover{
+.ol1:hover .icon-a{
     
     height: '45px';
     width: '45px';
