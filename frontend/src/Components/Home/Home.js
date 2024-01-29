@@ -4,8 +4,7 @@ import NavBar from '../Child/NavBar/NavBar';
 import Footer from '../Child/Footer/Footer';
 import SlideShow from '../Child/SlideShow/SlideShow';
 import PageNavbar from '../Child/PageNavbar/PageNavbar';
-import ReportAdd from '../Child/Form/ReportADD/ReportAdd';
-import Otpinput from '../Otpinput/Otpinput';
+
 
 const Home = () => {
   const [hasClass, setclass] = useState(false);
@@ -38,10 +37,10 @@ const Home = () => {
 
   return (
     <>
-      <NavBar navRef={navRef} showNavBar={showNavbar}></NavBar>
+      <NavBar navRef={navRef} showNavBar={showNavbar} title={'BrokerLk.lk'}></NavBar>
       <SlideShow></SlideShow>
       <PageNavbar></PageNavbar>
-      <Otpinput></Otpinput>
+      
       <Footer></Footer>
     </>
   );
