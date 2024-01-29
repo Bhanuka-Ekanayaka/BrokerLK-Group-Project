@@ -1,12 +1,13 @@
-import { MdDashboard,MdManageAccounts} from "react-icons/md";
-import { IoMdHome,IoIosAlert,IoIosNotifications } from "react-icons/io";
+import { MdDashboard, MdManageAccounts } from "react-icons/md";
+import { IoMdHome, IoIosAlert, IoIosNotifications } from "react-icons/io";
 import { LuPackageOpen } from "react-icons/lu";
-import { CgProfile } from "react-icons/cg";
-
+import Button from 'react-bootstrap/Button';
+import img1 from './assets/1.jpg';
+import Image from 'react-bootstrap/Image';
 
 const MenuBar = ({ navRef }) => {
     return (
-        <div className="menubar" ref={navRef}>
+        <div className="menubar" ref={navRef} >
             <ul>
                 <li>
                     <div className="menu-icons">
@@ -20,7 +21,12 @@ const MenuBar = ({ navRef }) => {
             <ul>
                 <li>
                     <div className="menubar-Signin">
-                        <a href='/login' id="logo_imge"><CgProfile></CgProfile></a>
+                        <a href='/login'><Image src={img1} width={'85px'} height={'75px'} roundedCircle thumbnail/></a>
+                    </div>
+                    <div className="profile-deatils">
+                        <h8>Bhanuka Ekanayaka</h8>
+                        <p>epbhanuka98@gmail.com</p>
+                        <Button variant="outline-dark">Sign Out</Button>
                     </div>
                 </li>
             </ul>
@@ -48,7 +54,7 @@ const MenuBar = ({ navRef }) => {
                     </div>
                 </li>
             </ul>
-          
+
         </div>
     );
 }

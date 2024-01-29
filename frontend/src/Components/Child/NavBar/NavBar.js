@@ -4,9 +4,8 @@ import logo from './assets/logo.png';
 import MenuBar from './MenuBar';
 import { Link } from 'react-router-dom';
 
-const NavBar = ({ showNavBar, navRef }) => {
-
-
+const NavBar = ({ showNavBar, navRef,wraperRef }) => {
+  
     return (
         <>
             <header>
