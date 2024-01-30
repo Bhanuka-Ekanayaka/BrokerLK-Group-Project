@@ -5,6 +5,11 @@ import Footer from '../Child/Footer/Footer';
 import SlideShow from '../Child/SlideShow/SlideShow';
 import PageNavbar from '../Child/PageNavbar/PageNavbar';
 
+import ReportAdd from '../Child/Form/ReportADD/ReportAdd';
+import Otpinput from '../Otpinput/Otpinput';
+import AutoLayout from '../Card/AutoLayout';
+import './home.css';
+
 
 const Home = () => {
   const [hasClass, setclass] = useState(false);
@@ -41,6 +46,12 @@ const Home = () => {
       <SlideShow></SlideShow>
       <PageNavbar></PageNavbar>
       
+
+      <div className='hd1'>
+        <AutoLayout/>
+      </div>
+
+
       <Footer></Footer>
     </>
   );
