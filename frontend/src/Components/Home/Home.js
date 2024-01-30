@@ -6,7 +6,7 @@ import SlideShow from '../Child/SlideShow/SlideShow';
 import PageNavbar from '../Child/PageNavbar/PageNavbar';
 import ReportAdd from '../Child/Form/ReportADD/ReportAdd';
 import Otpinput from '../Otpinput/Otpinput';
-import Card from '../Card/Card';
+import AutoLayout from '../Card/AutoLayout';
 import './home.css';
 
 const Home = () => {
@@ -43,9 +43,9 @@ const Home = () => {
       <NavBar navRef={navRef} showNavBar={showNavbar}></NavBar>
       <SlideShow></SlideShow>
       <PageNavbar></PageNavbar>
-      <Otpinput></Otpinput>
+      
       <div className='hd1'>
-        <Card/>
+        <AutoLayout/>
       </div>
       <Footer></Footer>
     </>
