@@ -4,7 +4,8 @@ import './report.css';
 import { useState } from 'react';
 import {ReportForm} from '../../../../Services/reportServices';
 import {useNavigate} from 'react-router-dom';
-
+import Button from 'react-bootstrap/Button';
+import { GrAddCircle } from "react-icons/gr";
 
 const ReprtAdd = () => {
 
@@ -39,7 +40,7 @@ const ReprtAdd = () => {
             <div className="report-content">
 
                 <div className="report-header mb-3">
-                    <h3>Report the Add</h3>
+                    <h3>Report The Add</h3>
                 </div>
 
                 <Form onSubmit={handleSubmit}>
@@ -77,8 +78,10 @@ const ReprtAdd = () => {
                             onChange={(e) => setDescription(e.target.value)}
                         />
                     </FloatingLabel>
-                    <button>Submit Report</button>
+
+                    <Button variant="primary"><GrAddCircle/> Send</Button>
                 </Form>
+               
             </div>
         </>
     );
