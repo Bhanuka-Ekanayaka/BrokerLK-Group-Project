@@ -1,18 +1,16 @@
-
 import { useRef, useEffect, useState } from 'react';
 import NavBar from '../Child/NavBar/NavBar';
 import Footer from '../Child/Footer/Footer';
-import SlideShow from '../Child/SlideShow/SlideShow';
-import PageNavbar from '../Child/PageNavbar/PageNavbar';
+import Image from 'react-bootstrap/esm/Image';
 
-import ReportAdd from '../Child/Form/ReportADD/ReportAdd';
-import Otpinput from '../Otpinput/Otpinput';
-import AutoLayout from '../Card/AutoLayout';
-import './home.css';
+import{ IoIosNotifications } from "react-icons/io";
+import './profile.css';
+import ProfileCard from './Child/ProfileCard';
 
 
-const Home = () => {
-  const [hasClass, setclass] = useState(false);
+const Profile = () => {
+
+    const [hasClass, setclass] = useState(false);
   const [outClass, setOutClass] = useState(true)
 
   const navRef = useRef();
@@ -40,21 +38,14 @@ const Home = () => {
   }, []);
 
 
-  return (
-    <>
-      <NavBar navRef={navRef} showNavBar={showNavbar} title={'BrokerLk.lk'}></NavBar>
-      <SlideShow></SlideShow>
-      <PageNavbar></PageNavbar>
-      
 
-      <div className='hd1'>
-        <AutoLayout/>
-      </div>
-
-
-      <Footer></Footer>
-    </>
-  );
+    return ( 
+        <>
+        <NavBar showNavBar={showNavbar} navRef={navRef} title={'Profile'}></NavBar>
+        <ProfileCard></ProfileCard>
+        <Footer></Footer>
+        </>
+     );
 }
-
-export default Home;
+ 
+export default Profile;
