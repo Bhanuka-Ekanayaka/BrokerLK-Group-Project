@@ -41,8 +41,8 @@ const MenuBar = ({ navRef }) => {
             <ul>
                 <li>
                     <div className="menubar_content">
-                        <a href='/' id="logo_imges"><MdManageAccounts></MdManageAccounts></a>
-                        <a href='/' >Profile</a>
+                        <a href='/profile' id="logo_imges"><MdManageAccounts></MdManageAccounts></a>
+                        <a href='/profile' >Profile</a>
                     </div>
                 </li>
             </ul>
