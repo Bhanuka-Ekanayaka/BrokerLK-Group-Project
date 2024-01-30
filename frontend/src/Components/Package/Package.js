@@ -3,6 +3,7 @@ import {useRef,useEffect,useState} from 'react';
 import Footer from "../Child/Footer/Footer";
 import SlideShow from '../Child/SlideShow/SlideShow';
 import PageNavbar from '../Child/PageNavbar/PageNavbar';
+import ReportADD from '../Child/Form/ReportADD/ReportAdd';
 
 const Package = () => {
 
@@ -38,7 +39,8 @@ const Package = () => {
             <NavBar navRef={navRef} showNavBar={showNavbar} title={'Packages'}></NavBar>
             <SlideShow></SlideShow>
             <PageNavbar></PageNavbar>
-            <h1>This is Package Page</h1>
+            <h1>This is Reprot Form of a Advertisement</h1>
+            <ReportADD></ReportADD>
             <Footer></Footer>
         </>
      );
