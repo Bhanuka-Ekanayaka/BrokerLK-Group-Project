@@ -44,7 +44,7 @@ const Home = () => {
     <>
       <NavBar navRef={navRef} showNavBar={showNavbar} title={'BrokerLk.lk'}></NavBar>
       <SlideShow></SlideShow>
-      <PageNavbar></PageNavbar>
+      <PageNavbar className='hp1'></PageNavbar>
       
 
       <div className='hd1'>
