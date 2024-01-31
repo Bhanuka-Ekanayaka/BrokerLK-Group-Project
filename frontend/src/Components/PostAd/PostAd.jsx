@@ -71,7 +71,7 @@ const handleSubmit = async (e) => {
     
   return (
     <>
-    <NavBar navRef={navRef} showNavBar={showNavbar} />
+    <NavBar navRef={navRef} showNavBar={showNavbar} title={'post-add'}/>
     <div className="container d-flex justify-content-center align-items-center" >
     <form className="form shadow rounded p-3 mt-5" onSubmit={handleSubmit}>
       <h3 className="text-center mb-3">Create An Ad</h3>

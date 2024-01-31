@@ -28,7 +28,7 @@ function App() {
           <Route path='/login' element={<Login isAuthenticated={isAuthenticated} setisAuthenticated={setisAuthenticated}/>} />
           <Route path='/register' element={<Register/>} />
           <Route path='/profile' element={<Profile/>}/>
-          <Route path='/postad' element={<PostAd/>}/>
+          <Route path='/postad' element={<PostAd />}/>
           <Route path='/forgotpassword' element={<ForgotPassword />} />
           <Route path='/Otpinput' element={<Otpinput/>}/>
           <Route path='/Welcome' element={<Welcome/>}/>
