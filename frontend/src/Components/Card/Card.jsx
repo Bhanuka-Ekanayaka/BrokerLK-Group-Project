@@ -11,11 +11,12 @@ export default function Card({al,image}) {
       <card.Img variant="top" src={image}  alt={al}/>
       <card.Body>
         <card.Title>Card Title</card.Title>
-        <card.Text>
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
+        <card.Text className='ct1'>
+          Distance to nearest town - 2Km<br/>
+          Type - Boarding Room<br/>
+          For Boys
         </card.Text>
-        <Button className='cb1' variant="primary">Go somewhere</Button>
+        <Button className='cb1' variant="primary">More Details...</Button>
       </card.Body>
     </card>
   )

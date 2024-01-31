@@ -17,7 +17,11 @@ export default function Otpinput() {
 email contact.uiuxexperts@gmail.com for <br></br>verification.
             </p>
             <div style={{ height: '20vh' }}>
-              <div></div>
+              <div>
+                <h1>
+                  welcome
+                </h1>
+              </div>
              
             </div>
            
