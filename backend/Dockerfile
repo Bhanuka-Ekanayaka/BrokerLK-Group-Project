@@ -8,16 +8,10 @@ WORKDIR /app
 COPY package*.json ./
 
 # Install dependencies
-RUN npm install 
+RUN npm install --ignore-scripts
 
 # Copy the entire application code to the working directory
-COPY models/ ./models/
-COPY routes/ ./routes/
-COPY .env/ ./.env/
-COPY .gitignore/ ./.gitignore/
-COPY db.js/ ./db.js/
-COPY Dockerfile/ ./Dockerfile/
-COPY server.js/ ./server.js/
+COPY . .
 
 # Expose the port that the Express server will run on
 EXPOSE 5001

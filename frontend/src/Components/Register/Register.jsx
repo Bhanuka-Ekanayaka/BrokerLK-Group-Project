@@ -13,19 +13,18 @@ import { showSuccessToast, showErrorToast, CommonToastContainer } from '../../Se
 const Register = () => {
 
   const [ formData, setFormData ] = useState({
-    fullName: '',
     email: '',
-    nic: '',
-    mobileNumber: '',
-    username: '',
     password: '',
+    confirmPassword: '',
+    role: '',
+
   });
 
   const handleRegister = async() => {
-    console.log('data', formData)
+
     try{
     const result =  await Registerform(formData);
-      console.log('result are ', result)
+
     if(result.status === 201){
       showSuccessToast('succesfully Registred')
     }else{
@@ -33,8 +32,14 @@ const Register = () => {
       showErrorToast('Oops! Something went wrong.');
     }
     }catch(error){
+      console.error(error);
       showErrorToast('Try Again.');
     }
+  };
+
+
+  const handleSelectChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   return (
@@ -54,28 +59,30 @@ const Register = () => {
               <p>We are happy to have you back</p>
             </div>
             <div className="input-group mb-3">
-              <FaUser className='icon'/>
-              <input type="text" className="form-control form-control-lg bg-light fs-6" name='fullName' placeholder="Full Name" value={formData.fullName} onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}/>
-            </div>
-            <div className="input-group mb-3">
               <MdEmail className='icon'/>
               <input type="email" className="form-control form-control-lg bg-light fs-6" name='email' placeholder="Email" value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })}/>
-            </div>
-            <div className="input-group mb-3">
-              <FaAddressCard className='icon'/>
-              <input type="text" className="form-control form-control-lg bg-light fs-6" name='nic' placeholder="NIC" value={formData.nic} onChange={(e) => setFormData({ ...formData, nic: e.target.value })}/>
-            </div>
-            <div className="input-group mb-3">
-              <FaMobileAlt className='icon'/>
-              <input type="text" className="form-control form-control-lg bg-light fs-6" name='mobile' placeholder="Mobile" onChange={(e) => setFormData({ ...formData, mobileNumber: e.target.value })}/>
-            </div>
-            <div className="input-group mb-3">
-              <FaUserEdit className='icon'/>
-              <input type="text" className="form-control form-control-lg bg-light fs-6" name='username' placeholder="Username" onChange={(e) => setFormData({ ...formData, username: e.target.value })}/>
             </div>
             <div className="input-group mb-1">
               <FaLock className='icon'/>
               <input type="password" className="form-control form-control-lg bg-light fs-6" name='password' placeholder="Password" onChange={(e) => setFormData({ ...formData, password: e.target.value })}/>
+            </div>
+            <div className="input-group mb-1">
+              <FaLock className='icon'/>
+              <input type="password" className="form-control form-control-lg bg-light fs-6" name='confirmPassword' placeholder="Confirm Password" onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })}/>
+            </div>
+            <div className="input-group mb-3">
+            <FaLock className="icon" />
+            <select name='role' className="form-control form-control-lg bg-light fs-6" value={formData.role} onChange={handleSelectChange}>
+              <option value="admin" className="form-control form-control-lg bg-light fs-6">
+                Admin
+              </option>
+              <option value="owner" className="form-control form-control-lg bg-light fs-6">
+                Owner
+              </option>
+              <option value="tenant" className="form-control form-control-lg bg-light fs-6">
+                Tenant
+              </option>
+            </select>
             </div>
             <div className="input-group mb-3">
               <button onClick={handleRegister} className="btn btn-lg btn-danger w-100 fs-6">Sign Up</button>

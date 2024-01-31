@@ -8,7 +8,7 @@ WORKDIR /app
 COPY package*.json ./
 
 # Install dependencies
-RUN npm install 
+RUN npm install -g npm@10.4.0 --ignore-scripts
 
 # Copy the entire application code to the working directory
 COPY . .

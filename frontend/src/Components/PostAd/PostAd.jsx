@@ -1,12 +1,24 @@
 import React, { useState } from "react";
 import { FaCloudUploadAlt } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import './Sell.css'
+import './PostAd.css'
+import { useRef } from "react";
+import NavBar from "../Child/NavBar/NavBar";
+import { showSuccessToast, showErrorToast, CommonToastContainer } from '../../Services/CommonToaster';
+
+import Footer from "../Child/Footer/Footer";
+import { PostingAd } from "../../Services/authServices";
 
 const categories = ["Room", "House", "Boarding"];
 const locations = ["Matara Town", "Meddawaththa", "Wellamadama", "Gandara", "SK Town"];
 
-const Sell = () => {
+const PostAd = () => {
+
+  const navRef = useRef();
+
+    const showNavbar =()=>{
+        navRef.current.classList.toggle('active');
+    }
   const navigate = useNavigate();
 
   const [values, setValues] = useState({
@@ -20,6 +32,7 @@ const Sell = () => {
     error: "",
     loading: false,
   });
+
   const {
     images,
     title,
@@ -33,17 +46,33 @@ const Sell = () => {
   } = values;
 
   const handleChange = (e) =>
-    setValues({ ...values, [e.target.name]: e.target.value });
+  setValues({ ...values, [e.target.name]: e.target.value });
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+const handleSubmit = async (e) => {
+  e.preventDefault(); // Prevent the default form submission behavior
 
-    setValues({ ...values, error: "", loading: true });
+  console.log('data', values);
 
-  };
-  
+  try {
+    const result = await PostingAd(values);
+    console.log('result AD', result);
+
+    if (result.status === 201) {
+      showSuccessToast('Successfully Posted');
+      navigate('/');
+    } else {
+      console.log('fail');
+      showErrorToast('Oops! Something went wrong.');
+    }
+  } catch (error) {
+    showErrorToast('Try Again.');
+  }
+};
+    
   return (
-    <div className="container d-flex justify-content-center align-items-center min-vh-100">
+    <>
+    <NavBar navRef={navRef} showNavBar={showNavbar} />
+    <div className="container d-flex justify-content-center align-items-center" >
     <form className="form shadow rounded p-3 mt-5" onSubmit={handleSubmit}>
       <h3 className="text-center mb-3">Create An Ad</h3>
       <div className="mb-3 text-center">
@@ -99,7 +128,10 @@ const Sell = () => {
       </div>
     </form>
     </div>
+    <Footer></Footer>
+    <CommonToastContainer/>
+    </>
   );
 };
 
-export default Sell;
+export default PostAd;
