@@ -1,11 +1,11 @@
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
-import './report.css';
 import { useState } from 'react';
 import {ReportForm} from '../../../../Services/reportServices';
 import {useNavigate} from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import { GrAddCircle } from "react-icons/gr";
+import './report.css';
 
 const ReprtAdd = () => {
 
@@ -41,6 +41,7 @@ const ReprtAdd = () => {
 
                 <div className="report-header mb-3">
                     <h3>Report The Add</h3>
+                   
                 </div>
 
                 <Form onSubmit={handleSubmit}>
@@ -80,6 +81,7 @@ const ReprtAdd = () => {
                     </FloatingLabel>
 
                     <Button variant="primary"><GrAddCircle/> Send</Button>
+                    
                 </Form>
                
             </div>
