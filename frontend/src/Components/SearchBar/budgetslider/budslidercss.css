@@ -1,0 +1,14 @@
+.MuiBox-root .MuiSlider-root .MuiSlider-thumb  {
+    color: rgb(220,53,69);  
+   }
+
+
+   .MuiSlider-root .MuiSlider-track {
+
+       color: rgb(220,53,69);
+   }
+
+   .MuiSlider-root .MuiSlider-rail{
+       color: rgb(220,53,69);
+
+   } 
