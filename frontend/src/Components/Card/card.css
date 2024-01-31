@@ -1,12 +1,11 @@
 
 
 .ca1{
-    margin-left: 5px;
-    margin-right: 5px;
-    background-color: aqua;
-    border: 1px solid #ddd;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); 
-    border-radius: 10px;
+    
+    background-color: rgba(255, 57, 81, 0.05);
+    border: 1px solid white;
+   
+    
 }
 
 .cb1{
@@ -19,6 +18,11 @@ button.cb1.btn.btn-primary{
     
 }
 
-div.card-body{
-    align-items: center;
+div.card-text{
+    
+    text-align: left;
+}
+
+div.card-img-top{
+    margin-top: 5px;
 }
