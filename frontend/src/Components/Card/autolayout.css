@@ -1,15 +1,16 @@
 div.ac1.container{
     margin: 0px;
     width: 100%;
+    display: flex;
+    justify-content: center; /* Horizontally center */
+    align-items: center;
    
 }
 
-.ar1{
-   
-}
+
 
 div.ac1.container{
-    margin: 0px;
+    
 }
 
 
@@ -20,3 +21,9 @@ div.ac1.container{
 footer{
     margin-top: 25px;
 }
+
+@media (max-width: 768px) {
+    .container {
+      flex-direction: column; /* Stack items vertically on smaller screens */
+    }
+  }

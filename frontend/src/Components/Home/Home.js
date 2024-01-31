@@ -45,9 +45,9 @@ const Home = () => {
 
       <PageNavbar className='hs1'></PageNavbar>
       
-      <div className='hd1'>
+     
         <AutoLayout/>
-      </div>
+      
       <Footer className='hf1'></Footer>
     </>
   );
