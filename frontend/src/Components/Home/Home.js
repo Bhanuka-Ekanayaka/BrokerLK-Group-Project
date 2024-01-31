@@ -4,9 +4,12 @@ import NavBar from '../Child/NavBar/NavBar';
 import Footer from '../Child/Footer/Footer';
 import SlideShow from '../Child/SlideShow/SlideShow';
 import PageNavbar from '../Child/PageNavbar/PageNavbar';
+
 import ReportAdd from '../Child/Form/ReportADD/ReportAdd';
-import Otpinput from '../Otpinput/Otpinput';
+import Otpinput from '../Otpinput/Otpinput'
 import { showSuccessToast, showErrorToast, CommonToastContainer } from '../../Services/CommonToaster';
+import AutoLayout from '../Card/AutoLayout';
+import './home.css';
 
 
 const Home = ({isAuthenticated}) => {
@@ -47,10 +50,16 @@ const Home = ({isAuthenticated}) => {
 
   return (
     <>
-      <NavBar navRef={navRef} showNavBar={showNavbar}></NavBar>
+      <NavBar navRef={navRef} showNavBar={showNavbar} title={'BrokerLk.lk'}></NavBar>
       <SlideShow></SlideShow>
       <PageNavbar></PageNavbar>
-      <Otpinput></Otpinput>
+      
+
+      <div className='hd1'>
+        <AutoLayout/>
+      </div>
+
+
       <Footer></Footer>
       <CommonToastContainer/>
     </>

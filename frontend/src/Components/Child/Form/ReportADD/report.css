@@ -10,7 +10,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: brown;
+    background-color: #FF3951;
     border-radius: 10px;
     z-index: 2;
     box-shadow: 0px 0px 4px #686767,
@@ -22,8 +22,38 @@
     height: 40px;
     width:250px;
     font-weight: 700;
-    border:1px solid;
-    background: lightcoral;
-    border-radius: 10px;
+    color: #FFFFFF;
     text-align: center;
+}
+
+.report-content .form-floating .form-control:focus{
+    border-color: #A70000;
+    box-shadow: 0 0 0 0.2rem #d00d0dd2;
+    background-color: #dd626c;
+    color: #FFFFFF;
+}
+
+.report-content .btn{
+    background-color: #A70000;
+    border-color: #A70000;
+    margin-top: auto;
+    margin-left: 33%;
+  
+
+}
+
+.report-content .btn:hover{
+    background-color: black;
+    border-color: #A70000;
+    color: #dd626c;
+    margin-left: auto;
+    margin-left: 33%;
+  
+
+}
+
+.report-content .btn-primary{
+    --bs-btn-active-bg: black;
+    margin-left: 33%;
+  
 }
