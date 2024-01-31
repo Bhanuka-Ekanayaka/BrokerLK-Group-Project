@@ -18,6 +18,11 @@ button.cb1.btn.btn-primary{
     
 }
 
-div.card-body{
-    align-items: center;
+div.card-text{
+    
+    text-align: left;
+}
+
+div.card-img-top{
+    margin-top: 5px;
 }
