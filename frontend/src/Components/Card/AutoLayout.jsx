@@ -10,10 +10,10 @@ export default function AutoLayout() {
   return (
     <Container className='ac1'>
         <Row className='ar1'>
-            <Col className = 'ca1'><Card al='image' image='./CardImage/b1.jpg' /></Col>
-            <Col className = 'ca1'><Card/></Col>
-            <Col className = 'ca1'><Card/></Col>
-            <Col className = 'ca1'><Card/></Col>
+            <Col lg={3} md={4} sm = {6} className = 'ca1'><Card al='image' image='./CardImage/b1.jpg' /></Col>
+            <Col lg={3} md={4} sm = {6} className = 'ca1'><Card/></Col>
+            <Col lg={3} md={4} sm = {6} className = 'ca1'><Card/></Col>
+            <Col lg={3} md={4} sm = {6} className = 'ca1'><Card/></Col>
         </Row>
         
     </Container>
