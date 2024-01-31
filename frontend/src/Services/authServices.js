@@ -1,10 +1,11 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:5001/api';
+const API_URL = 'http://localhost:5001';
 
 export const Loginform = async (email, password) => {
   try {
     const response = await axios.post(`${API_URL}/login`, {email, password});
+    console.log('pass',response)
     return response;
   } catch (error) {
       throw error;
@@ -13,9 +14,9 @@ export const Loginform = async (email, password) => {
 
 export const Registerform = async (formData) => {
   try {
-    const response = await axios.post(`${API_URL}/register`, formData
-    );
-      return response.data;
+    const response = await axios.post(`${API_URL}/register`, formData);
+
+      return response;
   } catch (error) {
         throw error;
   }
@@ -24,13 +25,28 @@ export const Registerform = async (formData) => {
 
 const forgotPassword = async (formData) => {
   try {
-      const response=  await axios.post(`${API_URL}/forgot-password`, formData);
+      const response=  await axios.post(`${API_URL}/forgotpassword`, formData);
       return response.data;
   } catch (error) {
       console.error('Error in resetPassword:', error);
       throw(error);
   }
 }
+
+export const PostingAd = async (values) => {
+  try {
+    const response = await axios.post(`${API_URL}/postad`, values);
+    console.log('reponse is' ,response)
+    return response;
+
+  } catch (error) {
+    console.error("Error:", error.message);
+    // Handle network errors or other issues
+    throw error; // Re-throw the error to the calling function
+  }
+};
+
+
 
 export { forgotPassword };
 

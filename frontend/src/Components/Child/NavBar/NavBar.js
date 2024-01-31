@@ -27,7 +27,7 @@ const NavBar = ({ showNavBar, navRef,wraperRef }) => {
                     <nav className='additional'>
 
                         <Link to='/login'>Sign-In</Link>
-                        <Link to='/postadd'>Post-Add</Link>
+                        <Link to='/postad'>Post-Add</Link>
 
                     </nav>
               

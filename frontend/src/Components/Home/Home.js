@@ -6,12 +6,21 @@ import SlideShow from '../Child/SlideShow/SlideShow';
 import PageNavbar from '../Child/PageNavbar/PageNavbar';
 import ReportAdd from '../Child/Form/ReportADD/ReportAdd';
 import Otpinput from '../Otpinput/Otpinput';
+import { showSuccessToast, showErrorToast, CommonToastContainer } from '../../Services/CommonToaster';
 
-const Home = () => {
+
+const Home = ({isAuthenticated}) => {
   const [hasClass, setclass] = useState(false);
   const [outClass, setOutClass] = useState(true)
 
   const navRef = useRef();
+
+  useEffect(()=>{
+    if(isAuthenticated){
+      showSuccessToast('Succesfully Logged')
+    }
+    console.log(isAuthenticated)
+  }, [])
 
   const showNavbar = () => {
     if (!hasClass && outClass) {
@@ -43,6 +52,7 @@ const Home = () => {
       <PageNavbar></PageNavbar>
       <Otpinput></Otpinput>
       <Footer></Footer>
+      <CommonToastContainer/>
     </>
   );
 }
