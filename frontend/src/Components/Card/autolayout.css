@@ -1,8 +1,22 @@
-.ac1{
+div.ac1.container{
     margin: 0px;
     width: 100%;
+   
 }
 
 .ar1{
-    width: 100%;
+   
+}
+
+div.ac1.container{
+    margin: 0px;
+}
+
+
+.hide-navbar{
+    margin-bottom: 15px;
+}
+
+footer{
+    margin-top: 25px;
 }

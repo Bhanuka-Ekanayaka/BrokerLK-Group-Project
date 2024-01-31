@@ -41,13 +41,14 @@ const Home = () => {
   return (
     <>
       <NavBar navRef={navRef} showNavBar={showNavbar}></NavBar>
-      <SlideShow></SlideShow>
-      <PageNavbar></PageNavbar>
+      <SlideShow ></SlideShow>
+
+      <PageNavbar className='hs1'></PageNavbar>
       
       <div className='hd1'>
         <AutoLayout/>
       </div>
-      <Footer></Footer>
+      <Footer className='hf1'></Footer>
     </>
   );
 }
