@@ -1,0 +1,190 @@
+.searchbar{
+    height:100px;
+   background-color:linear-gradient(rgba(33,33,33,0,522),rgba(33,33,33,0,522));
+    background-position: center;
+    background-size: cover;
+
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    position: relative;
+    /* background-color:rgb(80, 141, 105); */
+    
+}
+
+.homeCard{
+    height:auto;
+    width: 90%;
+    border-radius: 10px;
+    padding: 10px;
+    background:rgb(220,53,69);
+    
+    position: absolute;
+    gap: 5rem;
+    justify-content: center;
+    bottom: -35%;
+    transform: translate(-50%);
+    left:50%;
+    box-shadow: 0 2px 8px 4px rgba(178,178,178,0.45);
+                       
+
+}
+
+.formoption{
+
+    margin: 10px;
+    /* background-color:rgb(233,233,233); */
+   
+}
+.searchBtn{
+    margin: 0 20px 0 0;
+    
+}
+
+
+.formbutton{
+
+    margin: 10px;
+    width: 100%;
+    background-color:rgb(220,53,69);
+    /* border-color:rgb(220,53,69); */
+    border-color: rgb(220,53,69);
+    color: white;
+    padding: 7px 20px;
+    font-size: 14px;
+    text-transform: none;
+    
+}
+
+.icon {
+    width: 24px;
+    height: 24px;
+}
+
+.formbutton1{
+    
+    width: 100%;
+    margin: 10px;
+    background-color:rgb(220,53,69);
+    border-color:rgb(220,53,69);
+    color: white;
+    padding: 5px 5px;
+    font-size: 14px;
+    text-transform: none;
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+   
+    
+}
+
+.search-window{
+
+    width: 400px;
+    height: 500px;
+}
+
+
+
+
+       
+.newwindow{
+
+    display: flex;
+    flex-direction: column;
+}
+
+.window {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border: 1px solid black;
+    padding: 5px;
+    border-radius: 10px;
+   
+    
+    
+
+    
+    
+  }
+
+
+  .windowform{
+
+    display: grid;
+    grid-template-rows: 25% 50% 25%;
+
+
+  }
+
+  .windowform .windowform1{
+        grid-row:1;
+  }
+
+  .windowform .windowform1{
+    grid-row:2;
+  }
+
+  .windowform .windowform1{
+    grid-row: 3;
+  }
+
+  .windowform1{
+    /* background-color: green; */
+    display: grid;
+    grid-template-rows: 20% 70%;
+    padding: 10px;
+    margin: 10px;
+   
+  }
+  .windowform1 .budgetslider {
+    grid-row: 1; /* Place this item in the first row */
+}
+.windowform1 .budslid {
+    grid-row: 2; /* Place this item in the first row */
+}
+
+  .windowform2{
+/* background-color: yellow; */
+display: grid;
+grid-template-rows: 10% 90%;
+padding: 10px;
+margin: 10px;
+  }
+
+  .windowform3{
+    /* background-color: red; */
+    display: grid;
+grid-template-columns: 50% 50%;
+padding: 10px;
+margin: 10px;
+  }
+  
+  .maxminbed{
+    display: grid;
+    grid-template-columns: 50% 50%;
+  }
+ 
+  /* .subbut{
+background-color: rgb(220,53,69);
+
+  } */
+
+
+  .windowform3 button {
+    background-color:rgb(220,53,69); /* Your desired background color */
+    color: white; /* Text color */
+    padding: 10px 20px; /* Adjust padding as needed */
+    border: none; /* Remove border */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    margin: 5px; /* Add some margin between buttons */
+    width: 120px; /* Set width */
+    height: 40px; /* Set height */
+    font-size: 16px; /* Adjust font size as needed */
+}
+
