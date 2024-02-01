@@ -10,7 +10,7 @@ import Otpinput from '../Otpinput/Otpinput'
 import { showSuccessToast, showErrorToast, CommonToastContainer } from '../../Services/CommonToaster';
 import AutoLayout from '../Card/AutoLayout';
 import './home.css';
-
+import SearchBar from '../SearchBar/SearchBar';
 
 const Home = ({isAuthenticated}) => {
   const [hasClass, setclass] = useState(false);
@@ -52,8 +52,13 @@ const Home = ({isAuthenticated}) => {
     <>
       <NavBar navRef={navRef} showNavBar={showNavbar} title={'BrokerLk.lk'}></NavBar>
       <SlideShow></SlideShow>
+
       <PageNavbar className='hp1'></PageNavbar>
       
+
+      <PageNavbar></PageNavbar>
+      <SearchBar></SearchBar>
+
 
       <div className='hd1'>
         <AutoLayout/>
