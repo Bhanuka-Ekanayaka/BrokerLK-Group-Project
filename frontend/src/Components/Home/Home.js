@@ -55,8 +55,6 @@ const Home = ({isAuthenticated}) => {
 
       <PageNavbar className='hp1'></PageNavbar>
       
-
-      <PageNavbar></PageNavbar>
       <SearchBar></SearchBar>
 
 
