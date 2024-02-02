@@ -1,6 +1,5 @@
 import './App.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import './Components/Child/NavBar/Navbar.css';
 import { useState } from 'react';
 import Home from './Components/Home/Home'
 import Login from './Components/Login/Login';
