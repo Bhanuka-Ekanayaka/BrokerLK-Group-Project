@@ -4,6 +4,9 @@ import './index.css';
 import App from './App';
 import { AuthProvider } from './Context/AuthContext';
 import reportWebVitals from './reportWebVitals';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+AOS.init();
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
