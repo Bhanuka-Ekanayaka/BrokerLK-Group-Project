@@ -1,0 +1,24 @@
+.catergory-home .container .row .col-md-4{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.catergory-home{
+    background-color: #FFFFFF;
+}
+
+.catergory-home .container .row .col-md-4 .card-body .btn-primary{
+    --bs-btn-bg:#FF3951;
+    --bs-btn-border-color:#FF3951;
+    --bs-btn-active-border-color:#FF3951;
+    --bs-btn-hover-border-color:#FF3951;
+    opacity: 0.9;
+}
+
+.catergory-home .container .row .col-md-4 .card-body .btn-primary:hover{
+    --bs-btn-hover-bg:var(--bs-btn-bg);
+    --bs-btn-active-bg:var(--bs-btn-bg);
+    --bs-btn-active-border-color:var(var(--bs-btn-bg));
+    
+    opacity: 1.0;
+}
