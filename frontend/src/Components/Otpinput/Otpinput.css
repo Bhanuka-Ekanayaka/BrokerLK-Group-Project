@@ -2,7 +2,7 @@
 
 body{
     font-family: 'Poppins', sans-serif;
-    background: #ececec;
+    
 }
 
 
@@ -26,9 +26,9 @@ h2{
     font-weight: bold;
 }
 
-p{
+/* p{
     text-align: center;
-}
+} */
 /* Custom CSS code */
 .custom-button {
     width: 300px;
