@@ -17,7 +17,7 @@ const Catergory = () => {
                     </div>
                 </div>
                 <div className='container'>    
-                    <div className="row  my-3">
+                    <div className="row  my-3 gy-3">
                         <div className="col-md-4">
                             <Card >
                                 <Card.Img variant="top" src={img1} />
@@ -26,7 +26,7 @@ const Catergory = () => {
                                     <Card.Text>
                                     A boarding building is a place with many individual rooms, each a home for someone different. Students, travelers, and workers all come together under one roof. It's like a mini-town within a city.
                                     </Card.Text>
-                                    <Button variant="primary" className='position-absolute top-1'>Let's Find</Button>
+                                    <Button variant="primary" className='position-absolute top-1' href="#Boarding Building">Let's Find</Button>
                                 </Card.Body>
                             </Card>
                         </div>
@@ -38,7 +38,7 @@ const Catergory = () => {
                                     <Card.Text>
                                     Renting a house is all about! It's like having more space and privacy than an apartment, often with a yard or porch to enjoy.
                                     </Card.Text>
-                                    <Button variant="primary" className='position-absolute top-1'>Let's Find</Button>
+                                    <Button variant="primary" className='position-absolute top-1' href="#Rental Houses">Let's Find</Button>
                                 </Card.Body>
                             </Card>
                         </div>
@@ -50,7 +50,7 @@ const Catergory = () => {
                                     <Card.Text>
                                     Boarding rooms can vary in size and amenities, but they typically have a bed, dresser, and chair. Some boarding rooms also have a private bathroom or kitchenette.
                                     </Card.Text>
-                                    <Button variant="primary" className='position-absolute top-1'>Let's Find</Button>
+                                    <Button variant="primary" className='position-absolute top-1' href="#Boarding Rooms">Let's Find</Button>
                                 </Card.Body>
                             </Card>
                             </div>

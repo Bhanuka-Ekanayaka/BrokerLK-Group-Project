@@ -15,7 +15,9 @@ const Home = ({isAuthenticated}) => {
       <SlideShow/>
       <Catergory />
       <SearchBar/>
-      <Cards/>
+      <Cards title='Boarding Building' animation='flip-right' CardAnimate='flip-down'/>
+      <Cards title='Rental Houses'  animation='flip-left' CardAnimate='flip-up' />
+      <Cards title='Boarding Rooms'  animation='flip-right' CardAnimate='flip-down'/>
     </>
   );
 }
