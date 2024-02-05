@@ -1,0 +1,37 @@
+.post-add-card-home .container .row .holder .card .card-body .btn-primary{
+    --bs-btn-bg:#FF3951;
+    --bs-btn-border-color:#FF3951;
+    --bs-btn-active-border-color:#FF3951;
+    --bs-btn-hover-border-color:#FF3951;
+    opacity: 0.9;
+}
+
+.post-add-card-home .container .row .holder .card .card-body .btn-primary:hover{
+    --bs-btn-hover-bg:var(--bs-btn-bg);
+    --bs-btn-active-bg:var(--bs-btn-bg);
+    --bs-btn-active-border-color:var(var(--bs-btn-bg));
+    
+    opacity: 1.0;
+}
+
+.post-add-card-home .container .row .holder .card .card-body .price-reviews {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0.5rem;
+}
+
+.post-add-card-home .container .row .holder .card .card-body .price-reviews .card-link{
+    text-decoration: none;
+}
+
+
+
+.post-add-card-home .container .row .holder .card .card-body .card-img-overlay .card-link{
+    color: #FFFFFF;
+    background-color:#8A3DFD;
+    border-radius :5px;
+     padding-left: 2px;
+     padding-right: 2px;
+     text-decoration:none;
+}

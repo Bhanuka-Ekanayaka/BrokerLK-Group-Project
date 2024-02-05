@@ -43,14 +43,14 @@
     top: 120px;
     left: -40px; 
   }
-
-  .input-group {
+ 
+   .input-group {
     left: 5px;
-  }
+  } 
 
-  button {
+  /* button {
     left: 20px;
-  }
+  } */
 
 @media only screen and (max-width: 768px){
 
