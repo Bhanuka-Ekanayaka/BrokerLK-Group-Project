@@ -23,15 +23,11 @@
 
 .post-add-card-home .container .row .holder .card .card-body .price-reviews .card-link{
     text-decoration: none;
-}
-
-
-
-.post-add-card-home .container .row .holder .card .card-body .card-img-overlay .card-link{
     color: #FFFFFF;
     background-color:#8A3DFD;
     border-radius :5px;
      padding-left: 2px;
      padding-right: 2px;
-     text-decoration:none;
 }
+
+
