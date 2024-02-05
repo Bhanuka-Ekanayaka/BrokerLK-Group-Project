@@ -41,7 +41,6 @@ const SearchBar = () => {
                                 placeholder="Search"
                                 aria-label="Search"
                                 aria-describedby="basic-addon2"
-
                             />
                             <Button className="btn-danger" id="button-addon2">
                                 <i class="bi bi-search"></i>
