@@ -8,7 +8,7 @@ import './Catergory.css';
 const Catergory = () => {
     return (
         <>
-            <div className="catergory-home"  data-aos="zoom-in" data-aos-duration="2000" data-aos-delay="400" id="find">
+            <div className="catergory-home"  data-aos="zoom-in" data-aos-duration="2000"  id="find">
                 <div className="container">
                     <div className="row">
                         <div className="col-12 text-center" style={{ marginTop: '100px',color:'#4D4D4D' }}>
