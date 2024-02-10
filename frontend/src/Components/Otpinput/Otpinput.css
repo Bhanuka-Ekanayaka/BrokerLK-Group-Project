@@ -161,14 +161,17 @@ h2{
     .op3{
         margin: 5px;
         font-size: 13px;
+        text-align: center;
     }
 
     .op1{
         font-size: 12px;
+        text-align: center;
     }
 
     .op2{
         font-size: 11px;
+        text-align: center;
     }
     
     .custom-button {
