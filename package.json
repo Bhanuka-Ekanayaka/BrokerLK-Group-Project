@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "aos": "^2.3.4"
+    "aos": "^2.3.4",
+    "otp-input-react": "^0.3.0"
   }
 }

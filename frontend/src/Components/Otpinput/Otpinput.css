@@ -95,12 +95,18 @@ h2{
     padding-top: 5px;
     font-size: 15px;
     margin-bottom: 0px;
+    text-align: center;
     
 }
 
 .op2{
     font-size: 13px;
     color: gray;
+    text-align: center;
+}
+
+.op3{
+    text-align: center;
 }
 
 .oc1{
@@ -129,6 +135,20 @@ h2{
     max-width: 100%;
     height: auto;
 }
+
+.otp-container{
+   
+    font-size: 10px;
+   
+    
+   text-align: center;
+
+}
+
+.od1{
+    padding-left: 10px;
+}
+
 
 @media (max-width: 1088px) {
     
@@ -179,6 +199,10 @@ h2{
         font-size: 1.rem; /* Equivalent to Bootstrap's fs-6 for btn-lg */
       
       }
+
+      .od4{
+        width: 320px;
+      }
    
   
    
@@ -220,6 +244,10 @@ h2{
         width: 300px;
         font-size: 1.25rem; /* Equivalent to Bootstrap's fs-6 for btn-lg */
       
+      }
+
+      .od4{
+       width: 400px;
       }
    
   }

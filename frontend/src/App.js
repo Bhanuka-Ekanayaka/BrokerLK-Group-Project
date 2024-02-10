@@ -9,7 +9,7 @@ import PostAd from './Components/PostAd/PostAd';
 import ForgotPassword from './Components/Login/ForgotPassword';
 import Package from './Components/Package/Package';
 import About from './Components/About/About';
-import Otpinput from './Components/Otpinput/Otpinput';
+import Otpinpu from './Components/Otpinput/Otpinput';
 import Welcome from './Components/Welcome/Welcome'
 
 
@@ -29,7 +29,7 @@ function App() {
           <Route path='/profile' element={<Profile/>}/>
           <Route path='/postad' element={<PostAd/>}/>
           <Route path='/forgotpassword' element={<ForgotPassword />} />
-          <Route path='/Otpinput' element={<Otpinput/>}/>
+          <Route path='/Otpinput' element={<Otpinpu/>}/>
           <Route path='/Welcome' element={<Welcome/>}/>
         </Routes>
     </Router>
