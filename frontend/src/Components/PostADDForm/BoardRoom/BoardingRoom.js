@@ -45,7 +45,7 @@ const BoardingRoom = () => {
                         </Form.Group>
 
                         <Form.Group as={Col} controlId="formGridZip">
-                            <Form.Label>Post Code</Form.Label>
+                            <Form.Label>Kitchen</Form.Label>
                             <Form.Control />
                         </Form.Group>
                     </Row>
@@ -59,7 +59,7 @@ const BoardingRoom = () => {
                         </Form.Group>
 
                         <Form.Group as={Col} controlId="formGridState">
-                            <Form.Label>No of Wash Rooms</Form.Label>
+                            <Form.Label>Wash Rooms</Form.Label>
                             <Form.Select defaultValue="Choose...">
                                 <option>Choose...</option>
                                 <option>...</option>
@@ -67,7 +67,7 @@ const BoardingRoom = () => {
                         </Form.Group>
 
                         <Form.Group as={Col} controlId="formGridZip">
-                            <Form.Label>No of Beds</Form.Label>
+                            <Form.Label>Beds</Form.Label>
                             <Form.Control />
                         </Form.Group>
                     </Row>
