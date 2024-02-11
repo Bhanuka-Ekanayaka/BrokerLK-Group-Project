@@ -59,7 +59,7 @@ const BoardingRoom = () => {
                         </Form.Group>
 
                         <Form.Group as={Col} controlId="formGridState">
-                            <Form.Label>Wash Rooms</Form.Label>
+                            <Form.Label>Bath Rooms</Form.Label>
                             <Form.Select defaultValue="Choose...">
                                 <option>Choose...</option>
                                 <option>...</option>
