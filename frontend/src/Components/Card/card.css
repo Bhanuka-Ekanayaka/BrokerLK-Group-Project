@@ -10,6 +10,7 @@
 
 .cb1{
     font-size: 10px;
+    background-color: #FF3951;
 }
 
 button.cb1.btn.btn-primary{
@@ -25,4 +26,8 @@ div.card-text{
 
 div.card-img-top{
     margin-top: 5px;
+}
+
+.ct1{
+    text-align: left;
 }

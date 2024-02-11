@@ -42,10 +42,16 @@ const NavBar = () => {
                     </Nav>
                     <Nav>
                         <div className="nav-btn">
-                            <Nav.Link href="/postaddform" >Post-Add</Nav.Link>
+
+                           
+
+                            <Nav.Link href='postad' >Post-Add</Nav.Link>
+
                         </div>
                         <Nav.Link href="#memes">
-                            Notify < IoMdNotifications style={{ fontSize: 'larger' }} />
+                       
+                            < IoMdNotifications style={{ fontSize: '25px' }} />
+                           
                         </Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
