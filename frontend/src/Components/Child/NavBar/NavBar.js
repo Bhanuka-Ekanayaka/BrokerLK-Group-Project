@@ -12,7 +12,7 @@ const NavBar = () => {
         <Navbar expand="lg" className="bg-body-tertiary fixed-top" >
 
             <Container>
-                <Navbar.Brand href="#home">
+                <Navbar.Brand href="/">
                     <img
                         alt=""
                         src={logo}
@@ -42,7 +42,11 @@ const NavBar = () => {
                     </Nav>
                     <Nav>
                         <div className="nav-btn">
+
+                           
+
                             <Nav.Link href='postad' >Post-Add</Nav.Link>
+
                         </div>
                         <Nav.Link href="#memes">
                        
