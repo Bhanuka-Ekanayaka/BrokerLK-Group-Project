@@ -9,11 +9,16 @@ import PostAd from './Components/PostAd/PostAd';
 import ForgotPassword from './Components/Login/ForgotPassword';
 import Package from './Components/Package/Package';
 import About from './Components/About/About';
+
+import Otpinpu from './Components/Otpinput/Otpinput';
+import Welcome from './Components/Welcome/Welcome'
+
 import Otpinput from './Components/Otpinput/Otpinput';
-import Welcome from './Components/Welcome/Welcome';
+
 import CreateListingRentalHouse from './Components/PostAd/CreateListingRentalHouse';
 import CreateListingBoardingHouse from './Components/PostAd/CreateListingBoardingHouse';
 import CreateListingBoardingRoom from './Components/PostAd/CreateListingBoardingRoom';
+
 
 
 function App() {
@@ -32,7 +37,7 @@ function App() {
           <Route path='/profile' element={<Profile/>}/>
           <Route path='/postad' element={<PostAd/>}/>
           <Route path='/forgotpassword' element={<ForgotPassword />} />
-          <Route path='/Otpinput' element={<Otpinput/>}/>
+          <Route path='/Otpinput' element={<Otpinpu/>}/>
           <Route path='/Welcome' element={<Welcome/>}/>
           <Route path="/create-listing/rental-house" element={<CreateListingRentalHouse />} />
           <Route path="/create-listing/boarding-house" element={<CreateListingBoardingHouse />} />
