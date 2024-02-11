@@ -4,10 +4,10 @@ import { useState } from 'react';
 import Home from './Components/Home/Home'
 import Login from './Components/Login/Login';
 import Register from './Components/Register/Register';
-import Profile from './Components/Profile/Profile';
+import Rental from './Components/Rental/Rental';
 import PostAd from './Components/PostAd/PostAd';
 import ForgotPassword from './Components/Login/ForgotPassword';
-import Package from './Components/Package/Package';
+
 import About from './Components/About/About';
 
 import Otpinpu from './Components/Otpinput/Otpinput';
@@ -30,11 +30,11 @@ function App() {
       <Router>
         <Routes>
           <Route path='/' element={<Home isAuthenticated={isAuthenticated}/>} />
-          <Route path='/packages' element={<Package/>} />
+          <Route path='/rental-post' element={<Rental/>} />
           <Route path='/about' element={<About/>} />
           <Route path='/login' element={<Login isAuthenticated={isAuthenticated} setisAuthenticated={setisAuthenticated}/>} />
           <Route path='/register' element={<Register/>} />
-          <Route path='/profile' element={<Profile/>}/>
+        
           <Route path='/postadd' element={<PostAd/>}/>
           <Route path='/forgotpassword' element={<ForgotPassword />} />
           <Route path='/Otpinput' element={<Otpinpu/>}/>
