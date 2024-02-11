@@ -11,8 +11,7 @@ import Package from './Components/Package/Package';
 import About from './Components/About/About';
 import Otpinput from './Components/Otpinput/Otpinput';
 import Welcome from './Components/Welcome/Welcome'
-import ChooseForm from './Components/PostAddChooseForm/ChooseForm';
-import BoardingRoom from './Components/PostADDForm/BoardRoom/BoardingRoom';
+
 
 function App() {
 
@@ -32,8 +31,7 @@ function App() {
           <Route path='/forgotpassword' element={<ForgotPassword />} />
           <Route path='/Otpinput' element={<Otpinput/>}/>
           <Route path='/Welcome' element={<Welcome/>}/>
-          <Route path='/postaddform' element={<ChooseForm/>}/>
-          <Route path='/postaddform/boardingroom' element={<BoardingRoom/>} />
+        
         </Routes>
     </Router>
     </div>
