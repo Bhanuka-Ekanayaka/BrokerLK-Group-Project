@@ -13,12 +13,12 @@ import NavBar from "../../Child/NavBar/NavBar";
 
 const BoardingRoom = () => {
     return (
-             <>
-             <NavBar/>
-              <div className="postadd-room">
+        <>
+            <NavBar />
+            <div className="postadd-room">
                 <Container style={{ marginTop: '60px', backgroundColor: '#FFFFFF', borderRadius: '5px', border: '2px solid red' }}>
                     <Row>
-                        <Navbar style={{ color: '#4D4D4D', paddingLeft: '5px', paddingRight: '5px' }}>
+                        <Navbar style={{ color: 'Black', paddingLeft: '5px', paddingRight: '5px' }}>
                             <Nav className="me-auto">
                                 <h6> <i class="bi bi-pencil-fill" style={{ color: '#FF3951', opacity: '0.9' }}></i>  Fill in the following Form</h6>
                             </Nav>
@@ -31,22 +31,48 @@ const BoardingRoom = () => {
 
                     <Row>
 
-                        <Form.Group as={Col} controlId="formGridCity">
-                            <Form.Label>City</Form.Label>
-                            <Form.Control />
+                        <Form.Group as={Col} controlId="formGridDistrict">
+                            <Form.Label>District</Form.Label>
+                            <Form.Select defaultValue="Choose...">
+                                <option>Colombo</option>
+                                <option>Gampaha</option>
+                                <option>Kandy</option>
+                                <option>Matale</option>
+                                <option>Kalutara</option>
+                                <option>Nuwara Eliya</option>
+                                <option>Galle</option>
+                                <option>Matara</option>
+                                <option>Hambantota</option>
+                                <option>Jaffna</option>
+                                <option>Kilinochchi</option>
+                                <option>Mannar</option>
+                                <potion>Mullaitivu</potion>
+                                <option>Vavuniya</option>
+                                <option>Trincomalee</option>
+                                <option>Batticaloa</option>
+                                <option>Ampara</option>
+                                <option>Puttalam</option>
+                                <option>Kurunegala</option>
+                                <option>Anuradhapura</option>
+                                <option>Polonnaruwa</option>
+                                <option>Badulla</option>
+                                <option>Monaragala</option>
+                                <option>Kegalle</option>
+                                <option>Ratnapura</option>
+                            </Form.Select>
                         </Form.Group>
 
                         <Form.Group as={Col} controlId="formGridState">
                             <Form.Label>Room Size</Form.Label>
-                            <Form.Select defaultValue="Choose...">
-                                <option>Choose...</option>
-                                <option>...</option>
-                            </Form.Select>
+                            <Form.Control type="text" placeholder="eg:-100sq.ft" />
                         </Form.Group>
 
                         <Form.Group as={Col} controlId="formGridZip">
                             <Form.Label>Kitchen</Form.Label>
-                            <Form.Control />
+                            <Form.Select defaultValue="Choose...">
+                                <option>No</option>
+                                <option>Yes</option>
+                            </Form.Select>
                         </Form.Group>
                     </Row>
 
@@ -55,20 +81,34 @@ const BoardingRoom = () => {
 
                         <Form.Group as={Col} controlId="formGridCity">
                             <Form.Label>No of Tenants</Form.Label>
-                            <Form.Control />
+                            <Form.Select defaultValue="Choose...">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                                <option>6</option>
+                            </Form.Select>
                         </Form.Group>
 
                         <Form.Group as={Col} controlId="formGridState">
                             <Form.Label>Bath Rooms</Form.Label>
                             <Form.Select defaultValue="Choose...">
-                                <option>Choose...</option>
-                                <option>...</option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
                             </Form.Select>
                         </Form.Group>
 
                         <Form.Group as={Col} controlId="formGridZip">
                             <Form.Label>Beds</Form.Label>
-                            <Form.Control />
+                            <Form.Select defaultValue="Choose...">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                            </Form.Select>
                         </Form.Group>
                     </Row>
 
@@ -88,7 +128,7 @@ const BoardingRoom = () => {
                     <hr className="mb-4" style={{ color: "#4D4D4D" }} />
 
                     <Row>
-                        <h6 className="text-center text-muted">Insert Boarding Images</h6>
+                        <h6 className="text-center ">Insert Boarding Images</h6>
                         <Form.Group controlId="formFileMultiple" className="mb-3">
                             <Form.Label>Boarding House Image</Form.Label>
                             <Form.Control type="file" multiple />
@@ -113,7 +153,7 @@ const BoardingRoom = () => {
                     <hr className="mb-4" style={{ color: "#4D4D4D" }} />
 
                     <Row>
-                        <h6 className="text-center text-muted">Add Your Boarding Location</h6>
+                        <h6 className="text-center">Add Your Boarding Location</h6>
                         <Form.Group className="mb-3" controlId="formGridAddress1">
                             <Form.Label>Address</Form.Label>
                             <Form.Control placeholder="1234 Main St" />
@@ -129,7 +169,7 @@ const BoardingRoom = () => {
                     <hr className="mb-4" style={{ color: "#4D4D4D" }} />
 
                     <Row>
-                        <h6 className="text-center text-muted">Your Deatails</h6>
+                        <h6 className="text-center">Your Deatails</h6>
 
                         <Form.Group className="mb-3" controlId="formBasicEmail">
                             <Form.Label>Name</Form.Label>
@@ -156,8 +196,8 @@ const BoardingRoom = () => {
             </div>
 
             <Footer animation="flip-right" />
-            </>
-     );
+        </>
+    );
 }
- 
+
 export default BoardingRoom;
