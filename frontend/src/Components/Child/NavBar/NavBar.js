@@ -5,9 +5,18 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import logo from './assets/logo.png';
 import './Navbar.css';
 import { IoMdNotifications } from "react-icons/io";
+import Swal from 'sweetalert2';
+import im1 from './Navicon/orow.jpg';
+import im2 from './Navicon/Orte.jpg';
 
 
-const NavBar = () => {
+const NavBar = ({im1 , im2}) => {
+    const Alert = () =>{
+        Swal.fire({
+            title: 'Select Your profile',
+            html: '<div ><img src="${im1}" alt="Image 1" style="width: 200px; margin-right: 10px;"><img src="${im2}" alt="Image 2" style="width: 200px;"></div>',
+        });
+    }
     return (
         <Navbar expand="lg" className="bg-body-tertiary fixed-top" >
 
@@ -33,7 +42,7 @@ const NavBar = () => {
                             <NavDropdown.Item href="#action/3.1">
                                 Profile
                             </NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.2">DashBoard</NavDropdown.Item>
+                            <NavDropdown.Item href="#action/3.2" onClick={Alert}>DashBoard</NavDropdown.Item>
                             <NavDropdown.Divider />
                             <NavDropdown.Item href="#action/3.4">
                                 Log Out
