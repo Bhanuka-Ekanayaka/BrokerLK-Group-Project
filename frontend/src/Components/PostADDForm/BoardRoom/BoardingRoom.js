@@ -25,12 +25,15 @@ const BoardingRoom = () => {
     const [validated, setValidated] = useState(false);
     const [isValid, setIsValid] = useState(true);
 
+
+
     const handleChange = (e) => {
-        setNumber(e.target.value.replace(/\D/g,''));
+        const inputValue = e.target.value;
+        setNumber(inputValue);
         // Check if the entered value is a valid ten-digit mobile number
-        const mobileNumberRegex = /^0\d{8}$/;
-        if ( number.length <= 10 && (mobileNumberRegex.test(number) || number === '')) {
-            setMobileNumber(number);
+        const mobileNumberRegex = /^0\d{9}$/;
+        if (mobileNumberRegex.test(inputValue) || inputValue === '') {
+            setMobileNumber(inputValue);
             setIsValid(true);
         } else {
             setIsValid(false);
@@ -249,18 +252,17 @@ const BoardingRoom = () => {
 
                             <Form.Group className="mb-3" controlID="formMobileNumber">
                                 <Form.Label>Mobile Number</Form.Label>
-                                <Form.Control type="text" placeholder="0767454068" value={number} onChange={handleChange} isInvalid={!isValid  && number.length > 0} required />
+                                <Form.Control type="text" placeholder="0767454068" value={number} onChange={handleChange} isInvalid={!isValid} maxLength={10} required />
                                 <Form.Control.Feedback type="invalid">
                                     Please enter a valid ten-digit mobile number.
                                 </Form.Control.Feedback>
-
                             </Form.Group>
 
                         </Row>
                         <Button variant="primary" type="submit" style={{ marginBottom: '5px', marginRight: '5px' }} >
                             Submit
                         </Button>
-                     
+
                     </Form>
                 </Container>
 
