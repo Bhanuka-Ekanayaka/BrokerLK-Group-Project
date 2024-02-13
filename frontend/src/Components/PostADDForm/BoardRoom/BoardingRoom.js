@@ -7,16 +7,66 @@ import './Room.css';
 import Footer from "../../Child/Footer/Footer";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import React from 'react';
 import NavBar from "../../Child/NavBar/NavBar";
-
+import { useState } from "react";
 
 const BoardingRoom = () => {
+
+    const [district, setDistrict] = useState('Colombo');
+    const [size, setSize] = useState('');
+    const [kitchen, setKitchen] = useState('false');
+    const [tenant, setTenant] = useState(1);
+    const [bathroom, setBathroom] = useState(1);
+    const [beds, setBeds] = useState(0);
+    const [price, setPrice] = useState('');
+    const [description, setDescription] = useState('');
+    const [number, setNumber] = useState('');
+    const [mobileNumber, setMobileNumber] = useState('');
+    const [validated, setValidated] = useState(false);
+    const [isValid, setIsValid] = useState(true);
+
+    const handleChange = (e) => {
+        setNumber(e.target.value.replace(/\D/g,''));
+        // Check if the entered value is a valid ten-digit mobile number
+        const mobileNumberRegex = /^0\d{9}$/;
+        if (mobileNumberRegex.test(number) || number === '') {
+            setMobileNumber(number);
+            setIsValid(true);
+        } else {
+            setIsValid(false);
+        }
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const form = e.currentTarget;
+        if (form.checkValidity() === false) {
+            e.stopPropagation();
+        }
+        setValidated(true);
+        // Here, you can send the form data to your backend server or perform other actions
+        const formData = {
+            district,
+            size,
+            kitchen,
+            tenant,
+            bathroom,
+            beds,
+            price,
+            description,
+            mobileNumber
+        };
+        // For demonstration purposes, let's just log the data to the console
+        console.log('Form data:', formData);
+    };
+
+
+
     return (
         <>
             <NavBar />
             <div className="postadd-room">
-                <Container style={{ marginTop: '60px', backgroundColor: '#FFFFFF', borderRadius: '5px', border: '2px solid red' }}>
+                <Container style={{ marginTop: '60px', backgroundColor: '#FFFFFF', borderRadius: '5px' }}>
                     <Row>
                         <Navbar style={{ color: 'Black', paddingLeft: '5px', paddingRight: '5px' }}>
                             <Nav className="me-auto">
@@ -28,168 +78,190 @@ const BoardingRoom = () => {
                         </Navbar>
                         <hr className="mb-4" style={{ color: "#4D4D4D" }} />
                     </Row>
+                    <Form noValidate validated={validated} onSubmit={handleSubmit}>
+                        <Row>
+                            <Form.Group as={Col} controlId="formGridDistrict">
+                                <Form.Label>District</Form.Label>
+                                <Form.Select defaultValue="Colombo" value={district} onChange={(e) => setDistrict(e.target.value)} required>
+                                    <option value='Colombo'>Colombo</option>
+                                    <option value='Gampaha'>Gampaha</option>
+                                    <option value='Kandy'>Kandy</option>
+                                    <option value='Matale'>Matale</option>
+                                    <option value='Kalutara'>Kalutara</option>
+                                    <option value='Nuwara Eliya'>Nuwara Eliya</option>
+                                    <option value='Galle'>Galle</option>
+                                    <option value='Matara'>Matara</option>
+                                    <option value='Hambantota'>Hambantota</option>
+                                    <option value='Jaffna'>Jaffna</option>
+                                    <option value='Kilinochchi'>Kilinochchi</option>
+                                    <option value='Mannar'>Mannar</option>
+                                    <potion value='Mullaitivu'>Mullaitivu</potion>
+                                    <option value='Vavuniya'>Vavuniya</option>
+                                    <option value='Trincomalee'>Trincomalee</option>
+                                    <option value='Batticaloa'>Batticaloa</option>
+                                    <option value='Ampara'>Ampara</option>
+                                    <option value='Puttalam'>Puttalam</option>
+                                    <option Value='Kurunegala'>Kurunegala</option>
+                                    <option value='Anuradhapura'>Anuradhapura</option>
+                                    <option value='Polonnaruwa'>Polonnaruwa</option>
+                                    <option value='Badulla'>Badulla</option>
+                                    <option value='Monaragala'>Monaragala</option>
+                                    <option value='Kegalle'>Kegalle</option>
+                                    <option value='Ratnapura'>Ratnapura</option>
+                                </Form.Select>
+                                <Form.Control.Feedback type="invalid">
+                                    Please choose a district.
+                                </Form.Control.Feedback>
+                            </Form.Group>
 
-                    <Row>
+                            <Form.Group as={Col} controlId="formGridState">
+                                <Form.Label>Room Size<small className="text-muted"> *in sq.ft</small></Form.Label>
+                                <Form.Control type="number" placeholder="100" value={size} onChange={(e) => setSize(e.target.value)} min='0' required />
+                                <Form.Control.Feedback type="invalid">
+                                    Please provide a room size.
+                                </Form.Control.Feedback>
+                            </Form.Group>
 
-                        <Form.Group as={Col} controlId="formGridDistrict">
-                            <Form.Label>District</Form.Label>
-                            <Form.Select defaultValue="Choose...">
-                                <option>Colombo</option>
-                                <option>Gampaha</option>
-                                <option>Kandy</option>
-                                <option>Matale</option>
-                                <option>Kalutara</option>
-                                <option>Nuwara Eliya</option>
-                                <option>Galle</option>
-                                <option>Matara</option>
-                                <option>Hambantota</option>
-                                <option>Jaffna</option>
-                                <option>Kilinochchi</option>
-                                <option>Mannar</option>
-                                <potion>Mullaitivu</potion>
-                                <option>Vavuniya</option>
-                                <option>Trincomalee</option>
-                                <option>Batticaloa</option>
-                                <option>Ampara</option>
-                                <option>Puttalam</option>
-                                <option>Kurunegala</option>
-                                <option>Anuradhapura</option>
-                                <option>Polonnaruwa</option>
-                                <option>Badulla</option>
-                                <option>Monaragala</option>
-                                <option>Kegalle</option>
-                                <option>Ratnapura</option>
-                            </Form.Select>
-                        </Form.Group>
+                            <Form.Group as={Col} controlId="formGridZip">
+                                <Form.Label>Kitchen</Form.Label>
+                                <Form.Select defaultValue="false" value={kitchen} onChange={(e) => setKitchen(e.target.value)} required>
+                                    <option value='false'>No</option>
+                                    <option value='true'>Yes</option>
+                                </Form.Select>
+                                <Form.Control.Feedback type="invalid">
+                                    Please choose a kitchen option.
+                                </Form.Control.Feedback>
+                            </Form.Group>
 
-                        <Form.Group as={Col} controlId="formGridState">
-                            <Form.Label>Room Size</Form.Label>
-                            <Form.Control type="text" placeholder="eg:-100sq.ft" />
-                        </Form.Group>
-
-                        <Form.Group as={Col} controlId="formGridZip">
-                            <Form.Label>Kitchen</Form.Label>
-                            <Form.Select defaultValue="Choose...">
-                                <option>No</option>
-                                <option>Yes</option>
-                            </Form.Select>
-                        </Form.Group>
-                    </Row>
+                        </Row>
 
 
-                    <Row style={{ paddingTop: '5px' }}>
+                        <Row style={{ paddingTop: '5px' }}>
 
-                        <Form.Group as={Col} controlId="formGridCity">
-                            <Form.Label>No of Tenants</Form.Label>
-                            <Form.Select defaultValue="Choose...">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                                <option>6</option>
-                            </Form.Select>
-                        </Form.Group>
+                            <Form.Group as={Col} controlId="formGridCity">
+                                <Form.Label>No of Tenants</Form.Label>
+                                <Form.Control type='number' defaultValue='1' value={tenant} onChange={(e) => setTenant(e.target.value)} min='1' required />
 
-                        <Form.Group as={Col} controlId="formGridState">
-                            <Form.Label>Bath Rooms</Form.Label>
-                            <Form.Select defaultValue="Choose...">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                            </Form.Select>
-                        </Form.Group>
+                                <Form.Control.Feedback type="invalid">
+                                    Please choose a Tenant option.
+                                </Form.Control.Feedback>
+                            </Form.Group>
 
-                        <Form.Group as={Col} controlId="formGridZip">
-                            <Form.Label>Beds</Form.Label>
-                            <Form.Select defaultValue="Choose...">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                            </Form.Select>
-                        </Form.Group>
-                    </Row>
+                            <Form.Group as={Col} controlId="formGridState">
+                                <Form.Label>Bath Rooms</Form.Label>
+                                <Form.Control type='number' defaultValue="1" value={bathroom} onChange={(e) => setBathroom(e.target.value)} min='1' required />
+                                <Form.Control.Feedback type="invalid">
+                                    Please choose a bathroom option.
+                                </Form.Control.Feedback>
+                            </Form.Group>
 
-                    <Row style={{ paddingTop: '5px' }}>
+                            <Form.Group as={Col} controlId="formGridZip">
+                                <Form.Label>Beds</Form.Label>
+                                <Form.Control type='number' defaultValue="0" value={beds} onChange={(e) => { setBeds(e.target.value) }} min='0' required />
+                                <Form.Control.Feedback type="invalid">
+                                    Please choose a beds option.
+                                </Form.Control.Feedback>
+                            </Form.Group>
+                        </Row>
 
-                        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                            <Form.Label>Price</Form.Label>
-                            <Form.Control type="text" placeholder="eg:-Rs:5000" />
-                        </Form.Group>
-                        <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-                            <Form.Label>Description</Form.Label>
-                            <Form.Control as="textarea" rows={3} placeholder="Description about your post" />
-                        </Form.Group>
+                        <Row style={{ paddingTop: '5px' }}>
 
-                    </Row>
+                            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                                <Form.Label>Price <small className="text-muted">*RS:</small></Form.Label>
+                                <Form.Control type="number" placeholder="5000" value={price} onChange={(e) => setPrice(e.target.value)} min='0' required />
+                                <Form.Control.Feedback type="invalid">
+                                    Please enter price.
+                                </Form.Control.Feedback>
+                            </Form.Group>
+                            <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+                                <Form.Label>Description</Form.Label>
+                                <Form.Control as="textarea" rows={3} placeholder="Description about your post" value={description} onChange={(e) => setDescription(e.target.value)} required />
+                                <Form.Control.Feedback type="invalid">
+                                    Please enter a description.
+                                </Form.Control.Feedback>
+                            </Form.Group>
 
-                    <hr className="mb-4" style={{ color: "#4D4D4D" }} />
+                        </Row>
 
-                    <Row>
-                        <h6 className="text-center ">Insert Boarding Images</h6>
-                        <Form.Group controlId="formFileMultiple" className="mb-3">
-                            <Form.Label>Boarding House Image</Form.Label>
-                            <Form.Control type="file" multiple />
-                        </Form.Group>
-                        <Form.Group controlId="formFileMultiple" className="mb-3">
-                            <Form.Label>Room Image</Form.Label>
-                            <Form.Control type="file" multiple />
-                        </Form.Group>
-                        <Form.Group controlId="formFileMultiple" className="mb-3">
-                            <Form.Label>Bed Image</Form.Label>
-                            <Form.Control type="file" multiple />
-                        </Form.Group>
-                        <Form.Group controlId="formFileMultiple" className="mb-3">
-                            <Form.Label>Wash Room Image</Form.Label>
-                            <Form.Control type="file" multiple />
-                        </Form.Group>
-                        <Form.Group controlId="formFileMultiple" className="mb-3">
-                            <Form.Label>Additional Image</Form.Label>
-                            <Form.Control type="file" multiple />
-                        </Form.Group>
-                    </Row>
-                    <hr className="mb-4" style={{ color: "#4D4D4D" }} />
+                        <hr className="mb-4" style={{ color: "#4D4D4D" }} />
 
-                    <Row>
-                        <h6 className="text-center">Add Your Boarding Location</h6>
-                        <Form.Group className="mb-3" controlId="formGridAddress1">
-                            <Form.Label>Address</Form.Label>
-                            <Form.Control placeholder="1234 Main St" />
-                        </Form.Group>
+                        <Row>
+                            <h6 className="text-center ">Insert Boarding Images</h6>
+                            <Form.Group controlId="formFileMultiple" className="mb-3">
+                                <Form.Label>Boarding House Image</Form.Label>
+                                <Form.Control type="file" multiple />
+                            </Form.Group>
+                            <Form.Group controlId="formFileMultiple" className="mb-3" >
+                                <Form.Label>Room Image</Form.Label>
+                                <Form.Control type="file" multiple required />
+                                <Form.Control.Feedback type="invalid">
+                                    Please upload a room image.
+                                </Form.Control.Feedback>
+                            </Form.Group>
+                            <Form.Group controlId="formFileMultiple" className="mb-3">
+                                <Form.Label>Bed Image</Form.Label>
+                                <Form.Control type="file" multiple />
+                            </Form.Group>
+                            <Form.Group controlId="formFileMultiple" className="mb-3">
+                                <Form.Label>Wash Room Image</Form.Label>
+                                <Form.Control type="file" multiple />
+                            </Form.Group>
+                            <Form.Group controlId="formFileMultiple" className="mb-3">
+                                <Form.Label>Additional Image</Form.Label>
+                                <Form.Control type="file" multiple />
+                            </Form.Group>
+                        </Row>
+                        <hr className="mb-4" style={{ color: "#4D4D4D" }} />
 
-                        <Form.Group className="mb-3" controlId="formGridAddress2">
-                            <Form.Label>Address 2</Form.Label>
-                            <Form.Control placeholder="Apartment, studio, or floor" />
-                        </Form.Group>
+                        <Row>
+                            <h6 className="text-center">Add Your Boarding Location</h6>
+                            <Form.Group className="mb-3" controlId="formGridAddress1" >
+                                <Form.Label>Address</Form.Label>
+                                <Form.Control placeholder="1234 Main St" required />
+                                <Form.Control.Feedback type="invalid">
+                                    Please enter address Line 1.
+                                </Form.Control.Feedback>
+                            </Form.Group>
 
-                    </Row>
+                            <Form.Group className="mb-3" controlId="formGridAddress2" >
+                                <Form.Label>Address 2</Form.Label>
+                                <Form.Control placeholder="Apartment, studio, or floor" required />
+                                <Form.Control.Feedback type="invalid">
+                                    Please enter Adress Line 2.
+                                </Form.Control.Feedback>
+                            </Form.Group>
 
-                    <hr className="mb-4" style={{ color: "#4D4D4D" }} />
+                        </Row>
 
-                    <Row>
-                        <h6 className="text-center">Your Deatails</h6>
+                        <hr className="mb-4" style={{ color: "#4D4D4D" }} />
 
-                        <Form.Group className="mb-3" controlId="formBasicEmail">
-                            <Form.Label>Name</Form.Label>
-                            <Form.Control type="text" placeholder="Bhanuka Ekanayaka" readOnly />
-                        </Form.Group>
-                        <Form.Group className="mb-3" controlId="formBasicEmail">
-                            <Form.Label>Email address</Form.Label>
-                            <Form.Control type="email" placeholder="epbhanuka98@gmail.com" readOnly />
-                        </Form.Group>
+                        <Row>
+                            <h6 className="text-center">Your Deatails</h6>
 
-                        <Form.Group className="mb-3" controlId="formBasicMobile">
-                            <Form.Label>Mobile Number</Form.Label>
-                            <Form.Control type="text" placeholder="" />
-                        </Form.Group>
+                            <Form.Group className="mb-3" controlId="formBasicEmail">
+                                <Form.Label>Name</Form.Label>
+                                <Form.Control type="text" placeholder="Bhanuka Ekanayaka" readOnly />
+                            </Form.Group>
+                            <Form.Group className="mb-3" controlId="formBasicEmail">
+                                <Form.Label>Email address</Form.Label>
+                                <Form.Control type="email" placeholder="epbhanuka98@gmail.com" readOnly />
+                            </Form.Group>
 
-                    </Row>
-                    <Button variant="primary" type="submit" style={{ marginBottom: '5px', marginRight: '5px' }} className="">
-                        Submit
-                    </Button>
+                            <Form.Group className="mb-3" controlID="formMobileNumber">
+                                <Form.Label>Mobile Number</Form.Label>
+                                <Form.Control type="text" placeholder="0767454068" value={number} onChange={handleChange} isInvalid={!isValid  && number.length > 0} required />
+                                <Form.Control.Feedback type="invalid">
+                                    Please enter a valid ten-digit mobile number.
+                                </Form.Control.Feedback>
 
+                            </Form.Group>
+
+                        </Row>
+                        <Button variant="primary" type="submit" style={{ marginBottom: '5px', marginRight: '5px' }} >
+                            Submit
+                        </Button>
+                     
+                    </Form>
                 </Container>
 
 
