@@ -28,8 +28,8 @@ const BoardingRoom = () => {
     const handleChange = (e) => {
         setNumber(e.target.value.replace(/\D/g,''));
         // Check if the entered value is a valid ten-digit mobile number
-        const mobileNumberRegex = /^0\d{9}$/;
-        if (mobileNumberRegex.test(number) || number === '') {
+        const mobileNumberRegex = /^0\d{8}$/;
+        if ( number.length <= 10 && (mobileNumberRegex.test(number) || number === '')) {
             setMobileNumber(number);
             setIsValid(true);
         } else {
