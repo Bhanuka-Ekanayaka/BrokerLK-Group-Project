@@ -4,6 +4,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Img1 from './Assets/Crd.jpg';
 
+
 const Cards = ({ title, animation, CardAnimate }) => {
     return (
         <section className='post-add-card-home' id={title}>
@@ -31,7 +32,7 @@ const Cards = ({ title, animation, CardAnimate }) => {
                                         Some quick example text to build on the card title and make up the
                                         bulk of the card's content.
                                     </Card.Text>
-                                    <Button href="/home">Read More <i class="bi bi-arrow-right-circle-fill"></i></Button>
+                                    <Button href="/Description">Read More <i class="bi bi-arrow-right-circle-fill"></i></Button>
                                 </Card.Body>
                             </Card>
                         </div>

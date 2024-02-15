@@ -9,10 +9,15 @@ export default function Cdescription() {
     <div>
         <NavBar/>
         <div className='Dd1'>
-            <div className='Dd2'>
+            <div className='Dd2' style={{height: 'auto'}}>
                 <Sshow/>
             </div>
-            <h1>Name of the boarding house</h1>
+            <div className='Dd3' >
+                <br/>
+                <h3>Name of the boarding house</h3>
+                <p className='Dp1'>Boarding Type:<br/>Monthly Fee:<br/>Number of rooms:<br/>Number of Barth Rooms:</p>
+                <h3><br/>Description:</h3>
+            </div>
         </div>
         <Footer/>
     </div>
