@@ -19,6 +19,7 @@ import CreateListingRentalHouse from './Components/PostAd/CreateListingRentalHou
 import CreateListingBoardingHouse from './Components/PostAd/CreateListingBoardingHouse';
 import CreateListingBoardingRoom from './Components/PostAd/CreateListingBoardingRoom';
 import BoardingRoom from './Components/PostADDForm/BoardRoom/BoardingRoom';
+import Cdescription from './Components/Description/Cdescription';
 
 
 function App() {
@@ -43,6 +44,7 @@ function App() {
           <Route path="/create-listing/rental-house" element={<CreateListingRentalHouse />} />
           <Route path="/create-listing/boarding-house" element={<CreateListingBoardingHouse />} />
           <Route path="/create-listing/boarding-room" element={<BoardingRoom />} />
+          <Route path='/Description' element={<Cdescription/>}/>
 
         </Routes>
     </Router>
