@@ -10,7 +10,8 @@ import ForgotPassword from './Components/Login/ForgotPassword';
 import Package from './Components/Package/Package';
 import About from './Components/About/About';
 import Otpinpu from './Components/Otpinput/Otpinput';
-import Welcome from './Components/Welcome/Welcome'
+import Welcome from './Components/Welcome/Welcome';
+import Description from './Components/Description/Description';
 
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
           <Route path='/forgotpassword' element={<ForgotPassword />} />
           <Route path='/Otpinput' element={<Otpinpu/>}/>
           <Route path='/Welcome' element={<Welcome/>}/>
+          <Route path='/Description' element ={<Description/>} />
         </Routes>
     </Router>
     </div>
