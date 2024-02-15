@@ -1,58 +1,25 @@
-
-import { useRef, useEffect, useState } from 'react';
 import NavBar from '../Child/NavBar/NavBar';
-import Footer from '../Child/Footer/Footer';
 import SlideShow from '../Child/SlideShow/SlideShow';
-import PageNavbar from '../Child/PageNavbar/PageNavbar';
-
-import ReportAdd from '../Child/Form/ReportADD/ReportAdd';
-import Otpinput from '../Otpinput/Otpinput';
+import Catergory from './Child-Catergory/Catergory';
+import { showSuccessToast, showErrorToast, CommonToastContainer } from '../../Services/CommonToaster';
 import AutoLayout from '../Card/AutoLayout';
 import './home.css';
+import SearchBar from './Child-SearchBar/SearchBar';
+import Cards from './Child-Card/Cards';
+import Footer from '../Child/Footer/Footer';
 
-
-const Home = () => {
-  const [hasClass, setclass] = useState(false);
-  const [outClass, setOutClass] = useState(true)
-
-  const navRef = useRef();
-
-  const showNavbar = () => {
-    if (!hasClass && outClass) {
-      navRef.current.classList.add('active');
-      setclass(true);
-      setOutClass(false);
-    } else {
-      navRef.current.classList.remove('active');
-      setclass(false);
-      setOutClass(true);
-    }
-  }
-
-  const hadleclickoutside = (event) => {
-    if (navRef.current && !navRef.current.contains(event.target))
-      navRef.current.classList.remove('active');
-    setOutClass(true);
-  }
-  useEffect(() => {
-    document.addEventListener('mousedown', hadleclickoutside);
-    return () => document.removeEventListener('mousedown', hadleclickoutside);
-  }, []);
-
+const Home = ({isAuthenticated}) => {
 
   return (
     <>
-      <NavBar navRef={navRef} showNavBar={showNavbar} title={'BrokerLk.lk'}></NavBar>
-      <SlideShow></SlideShow>
-      <PageNavbar></PageNavbar>
-      
-
-      <div className='hd1'>
-        <AutoLayout/>
-      </div>
-
-
-      <Footer></Footer>
+      <NavBar/>
+      <SlideShow/>
+      <Catergory />
+      <SearchBar/>
+      <Cards title='Boarding Building' animation='flip-right' CardAnimate='flip-down'/>
+      <Cards title='Rental Houses'  animation='flip-left' CardAnimate='flip-up' />
+      <Cards title='Boarding Rooms'  animation='flip-right' CardAnimate='flip-down'/>
+      <Footer animation="flip-right"/>
     </>
   );
 }
