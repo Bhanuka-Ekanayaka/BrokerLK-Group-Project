@@ -19,7 +19,7 @@ export default function Cdescription() {
                 <h3><br/>Description:</h3>
             </div>
         </div>
-        <Footer/>
+        <Footer animation="flip-right"/>
     </div>
   )
 }
