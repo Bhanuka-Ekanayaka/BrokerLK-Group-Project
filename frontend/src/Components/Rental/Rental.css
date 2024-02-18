@@ -6,7 +6,7 @@
 
 .new-card .card {
     flex-direction: row;
-    box-shadow: 0 7px 7px rgba(236, 3, 3, 0.18);
+    box-shadow: 0 7px 7px rgba(15, 15, 15, 0.18);
     margin: 20px 0;
 }
 
