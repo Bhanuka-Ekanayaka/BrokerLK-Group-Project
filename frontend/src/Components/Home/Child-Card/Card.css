@@ -30,4 +30,23 @@
      padding-right: 2px;
 }
 
+.post-add-card-home .container .row .holder .card .custom-image-size{
+    height: 180px;
+    overflow: hidden;
+}
 
+@media only screen and (max-width: 1024px){
+    .post-add-card-home .container .row .holder .card .custom-image-size{
+        height: 150px;
+        overflow: hidden;
+    }
+    
+  }
+@media only screen and (max-width: 768px) {
+
+    .post-add-card-home .container .row .holder .card .custom-image-size{
+        height: 250px;
+        overflow: hidden;
+    }
+
+}

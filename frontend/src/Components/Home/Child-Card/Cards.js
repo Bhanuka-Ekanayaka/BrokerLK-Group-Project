@@ -6,21 +6,21 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 
-const Cards = ({ title, animation, CardAnimate }) => {
+const Cards = ({ title, animation, CardAnimate,type }) => {
 
     const [cards, setCard] = useState([]);
     useEffect(() => {
-        const fetchCardData = async () => {
+        const fetchCardData = async (type) => {
             try {
-                const response = await axios.get('http://localhost:5001/postadd/boarding-room');
+                const response = await axios.get(`http://localhost:5001/postadd/${type}`);
                 console.log('Response:', response.data); // Log the response data
                 setCard(response.data.postData[0]);
             } catch (err) {
                 console.error('can not fetch the card data' + err);
             }
         }
-        fetchCardData();
-    }, [])
+        fetchCardData(type);
+    }, [type])
 
     return (
         <section className='post-add-card-home' id={title}>
@@ -38,7 +38,7 @@ const Cards = ({ title, animation, CardAnimate }) => {
                             <div className='holder' data-aos={CardAnimate}>
                                 <Card >
                                     <Card.Body>
-                                        <Card.Img variant="top" src={`http://localhost:5001/uploads/${card.post_id}/${card.room_inside_img1}`} />
+                                        <Card.Img variant="top" src={`http://localhost:5001/uploads/${card.post_id}/${card.room_inside_img1}`} className='custom-image-size' />
                                         <div className='price-reviews'>
                                             <Card.Link style={{ color: '#FFFFFF', background: 'green', borderRadius: '5px', paddingLeft: '2px', paddingRight: '2px' }}>Rs:{card.advertised_price}</Card.Link>
                                             <Card.Link>{card.district}</Card.Link>
