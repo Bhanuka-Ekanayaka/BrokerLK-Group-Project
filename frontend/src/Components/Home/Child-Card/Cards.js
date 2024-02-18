@@ -2,9 +2,26 @@ import './Card.css';
 import Card from 'react-bootstrap/Card';
 import { Container, Row, Col } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
-import Img1 from './Assets/Crd.jpg';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+
 
 const Cards = ({ title, animation, CardAnimate }) => {
+
+    const [cards, setCard] = useState([]);
+    useEffect(() => {
+        const fetchCardData = async () => {
+            try {
+                const response = await axios.get('http://localhost:5001/postadd/boarding-room');
+                console.log('Response:', response.data); // Log the response data
+                setCard(response.data.postData[0]);
+            } catch (err) {
+                console.error('can not fetch the card data' + err);
+            }
+        }
+        fetchCardData();
+    }, [])
+
     return (
         <section className='post-add-card-home' id={title}>
             <Container>
@@ -15,227 +32,29 @@ const Cards = ({ title, animation, CardAnimate }) => {
                     </div>
                 </div>
                 <Row className='gy-3 my-3'>
-                    <Col sm={6} md={4} lg={3} >
-                        <div className='holder' data-aos={CardAnimate}>
-                            <Card >
-                                <Card.Body>
-                                    <Card.Img variant="top" src={Img1} />
-                                    <div className='price-reviews'>
-                                        <Card.Link  style={{ color: '#FFFFFF', background: 'green', borderRadius: '5px', paddingLeft: '2px', paddingRight: '2px' }}>Rs:5000</Card.Link>
-                                        <Card.Link>Kandy</Card.Link>
-                                    </div>   
-                                
-                                    <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle>
-                                    
-                                    <Card.Text>
-                                        Some quick example text to build on the card title and make up the
-                                        bulk of the card's content.
-                                    </Card.Text>
-                                    <Button href="/home">Read More <i class="bi bi-arrow-right-circle-fill"></i></Button>
-                                </Card.Body>
-                            </Card>
-                        </div>
-                    </Col>
-                    <Col sm={6} md={4} lg={3} >
-                        <div className='holder' data-aos={CardAnimate}>
-                            <Card >
-                                <Card.Body>
-                                    <Card.Img variant="top" src={Img1} />
-                                    <div className='price-reviews'>
-                                        <Card.Link style={{ color: '#FFFFFF', background: 'green', borderRadius: '5px', paddingLeft: '2px', paddingRight: '2px' }}>Rs:5000</Card.Link>
-                                        <Card.Link>Kandy</Card.Link>
-                                    </div>
-                                  
-                                    <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle>
-                                    <Card.Text>
-                                        Some quick example text to build on the card title and make up the
-                                        bulk of the card's content.
-                                    </Card.Text>
-                                    <Button>Read More <i class="bi bi-arrow-right-circle-fill"></i></Button>
-                                </Card.Body>
-                            </Card>
-                        </div>
-                    </Col>
-                    <Col sm={6} md={4} lg={3} >
-                        <div className='holder' data-aos={CardAnimate}>
-                            <Card >
-                                <Card.Body>
-                                    <Card.Img variant="top" src={Img1} />
-                                    <div className='price-reviews'>
-                                        <Card.Link style={{ color: '#FFFFFF', background: 'green', borderRadius: '5px', paddingLeft: '2px', paddingRight: '2px' }}>Rs:5000</Card.Link>
-                                        <Card.Link>Kandy</Card.Link>
-                                    </div>
-                                  
-                                    <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle>
-                                    <Card.Text>
-                                        Some quick example text to build on the card title and make up the
-                                        bulk of the card's content.
-                                    </Card.Text>
-                                    <Button>Read More <i class="bi bi-arrow-right-circle-fill"></i></Button>
-                                </Card.Body>
-                            </Card>
-                        </div>
-                    </Col>
-                    <Col sm={6} md={4} lg={3}>
-                        <div className='holder' data-aos={CardAnimate}>
-                            <Card >
-                                <Card.Body>
-                                    <Card.Img variant="top" src={Img1} />
-                                    <div className='price-reviews'>
-                                        <Card.Link style={{ color: '#FFFFFF', background: 'green', borderRadius: '5px', paddingLeft: '2px', paddingRight: '2px' }}>Rs:5000</Card.Link>
-                                        <Card.Link>Kandy</Card.Link>
-                                    </div>
-                                  
-                                    <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle>
-                                    <Card.Text>
-                                        Some quick example text to build on the card title and make up the
-                                        bulk of the card's content.
-                                    </Card.Text>
-                                    <Button>Read More <i class="bi bi-arrow-right-circle-fill"></i></Button>
-                                </Card.Body>
-                            </Card>
-                        </div>
-                    </Col>
-                    <Col sm={6} md={4} lg={3}>
-                        <div className='holder' data-aos={CardAnimate}>
-                            <Card >
-                                <Card.Body>
-                                    <Card.Img variant="top" src={Img1} />
-                                    <div className='price-reviews'>
-                                        <Card.Link style={{ color: '#FFFFFF', background: 'green', borderRadius: '5px', paddingLeft: '2px', paddingRight: '2px' }}>Rs:5000</Card.Link>
-                                        <Card.Link>Kandy</Card.Link>
-                                    </div>
-                                 
-                                    <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle>
-                                    <Card.Text>
-                                        Some quick example text to build on the card title and make up the
-                                        bulk of the card's content.
-                                    </Card.Text>
-                                    <Button>Read More <i class="bi bi-arrow-right-circle-fill"></i></Button>
-                                </Card.Body>
-                            </Card>
-                        </div>
-                    </Col>
-                    <Col sm={6} md={4} lg={3}>
-                        <div className='holder' data-aos={CardAnimate}>
-                            <Card >
-                                <Card.Body>
-                                    <Card.Img variant="top" src={Img1} />
-                                    <div className='price-reviews'>
-                                        <Card.Link style={{ color: '#FFFFFF', background: 'green', borderRadius: '5px', paddingLeft: '2px', paddingRight: '2px' }}>Rs:5000</Card.Link>
-                                        <Card.Link>Kandy</Card.Link>
-                                    </div>
-                                
-                                    <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle>
-                                    <Card.Text>
-                                        Some quick example text to build on the card title and make up the
-                                        bulk of the card's content.
-                                    </Card.Text>
-                                    <Button>Read More <i class="bi bi-arrow-right-circle-fill"></i></Button>
-                                </Card.Body>
-                            </Card>
-                        </div>
-                    </Col>
-                    <Col sm={6} md={4} lg={3}>
-                        <div className='holder' data-aos={CardAnimate}>
-                            <Card >
-                                <Card.Body>
-                                    <Card.Img variant="top" src={Img1} />
-                                    <div className='price-reviews'>
-                                        <Card.Link style={{ color: '#FFFFFF', background: 'green', borderRadius: '5px', paddingLeft: '2px', paddingRight: '2px' }}>Rs:5000</Card.Link>
-                                        <Card.Link>Kandy</Card.Link>
-                                    </div>
-                               
-                                    <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle>
-                                    <Card.Text>
-                                        Some quick example text to build on the card title and make up the
-                                        bulk of the card's content.
-                                    </Card.Text>
-                                    <Button>Read More <i class="bi bi-arrow-right-circle-fill"></i></Button>
-                                </Card.Body>
-                            </Card>
-                        </div>
-                    </Col>
-                    <Col sm={6} md={4} lg={3}>
-                        <div className='holder' data-aos={CardAnimate}>
-                            <Card >
-                                <Card.Body>
-                                    <Card.Img variant="top" src={Img1} />
-                                    <div className='price-reviews'>
-                                        <Card.Link style={{ color: '#FFFFFF', background: 'green', borderRadius: '5px', paddingLeft: '2px', paddingRight: '2px' }}>Rs:5000</Card.Link>
-                                        <Card.Link>Kandy</Card.Link>
-                                    </div>
-                                
-                                    <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle>
-                                    <Card.Text>
-                                        Some quick example text to build on the card title and make up the
-                                        bulk of the card's content.
-                                    </Card.Text>
-                                    <Button>Read More <i class="bi bi-arrow-right-circle-fill"></i></Button>
-                                </Card.Body>
-                            </Card>
-                        </div>
-                    </Col>
-                    <Col sm={6} md={4} lg={3}>
-                        <div className='holder' data-aos={CardAnimate}>
-                            <Card >
-                                <Card.Body>
-                                    <Card.Img variant="top" src={Img1} />
-                                    <div className='price-reviews'>
-                                        <Card.Link style={{ color: '#FFFFFF', background: 'green', borderRadius: '5px', paddingLeft: '2px', paddingRight: '2px' }}>Rs:5000</Card.Link>
-                                        <Card.Link>Kandy</Card.Link>
-                                    </div>
-                                 
-                                    <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle>
-                                    <Card.Text>
-                                        Some quick example text to build on the card title and make up the
-                                        bulk of the card's content.
-                                    </Card.Text>
-                                    <Button>Read More <i class="bi bi-arrow-right-circle-fill"></i></Button>
-                                </Card.Body>
-                            </Card>
-                        </div>
-                    </Col>
-                    <Col sm={6} md={4} lg={3}>
-                        <div className='holder' data-aos={CardAnimate}>
-                            <Card >
-                                <Card.Body>
-                                    <Card.Img variant="top" src={Img1} />
-                                    <div className='price-reviews'>
-                                        <Card.Link style={{ color: '#FFFFFF', background: 'green', borderRadius: '5px', paddingLeft: '2px', paddingRight: '2px' }}>Rs:5000</Card.Link>
-                                        <Card.Link>Kandy</Card.Link>
-                                    </div>
-                                 
-                                    <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle>
-                                    <Card.Text>
-                                        Some quick example text to build on the card title and make up the
-                                        bulk of the card's content.
-                                    </Card.Text>
-                                    <Button>Read More <i class="bi bi-arrow-right-circle-fill"></i></Button>
-                                </Card.Body>
-                            </Card>
-                        </div>
-                    </Col>
-                    <Col sm={6} md={4} lg={3}>
-                        <div className='holder' data-aos={CardAnimate}>
-                            <Card >
-                                <Card.Body>
-                                    <Card.Img variant="top" src={Img1} />
-                                    <div className='price-reviews'>
-                                        <Card.Link style={{ color: '#FFFFFF', background: 'green', borderRadius: '5px', paddingLeft: '2px', paddingRight: '2px' }}>Rs:5000</Card.Link>
-                                        <Card.Link>Kandy</Card.Link>
-                                    </div>
-                                 
-                                    <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle>
-                                    <Card.Text>
-                                        Some quick example text to build on the card title and make up the
-                                        bulk of the card's content.
-                                    </Card.Text>
-                                    <Button>Read More <i class="bi bi-arrow-right-circle-fill"></i></Button>
-                                </Card.Body>
-                            </Card>
-                        </div>
-                    </Col>
+                    {Array.isArray(cards) && cards.map(card => (
+
+                        <Col sm={6} md={4} lg={3} key={card.post_id}>
+                            <div className='holder' data-aos={CardAnimate}>
+                                <Card >
+                                    <Card.Body>
+                                        <Card.Img variant="top" src={`http://localhost:5001/uploads/${card.post_id}/${card.room_inside_img1}`} />
+                                        <div className='price-reviews'>
+                                            <Card.Link style={{ color: '#FFFFFF', background: 'green', borderRadius: '5px', paddingLeft: '2px', paddingRight: '2px' }}>Rs:{card.advertised_price}</Card.Link>
+                                            <Card.Link>{card.district}</Card.Link>
+                                        </div>
+
+                                        <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle>
+
+                                        <Card.Text>
+                                           {card.description}
+                                        </Card.Text>
+                                        <Button href="/Description">Read More <i class="bi bi-arrow-right-circle-fill"></i></Button>
+                                    </Card.Body>
+                                </Card>
+                            </div>
+                        </Col>
+                    ))}
 
                 </Row>
 
