@@ -2,7 +2,6 @@ import './Card.css';
 import Card from 'react-bootstrap/Card';
 import { Container, Row, Col } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
-import Img1 from './Assets/Crd.jpg';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
