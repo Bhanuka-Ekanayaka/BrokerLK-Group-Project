@@ -6,6 +6,7 @@ import Img1 from './Assets/Crd.jpg';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
+
 const Cards = ({ title, animation, CardAnimate }) => {
 
     const [cards, setCard] = useState([]);
@@ -49,13 +50,12 @@ const Cards = ({ title, animation, CardAnimate }) => {
                                         <Card.Text>
                                            {card.description}
                                         </Card.Text>
-                                        <Button href="/home">Read More <i class="bi bi-arrow-right-circle-fill"></i></Button>
+                                        <Button href="/Description">Read More <i class="bi bi-arrow-right-circle-fill"></i></Button>
                                     </Card.Body>
                                 </Card>
                             </div>
                         </Col>
                     ))}
-
 
                 </Row>
 
