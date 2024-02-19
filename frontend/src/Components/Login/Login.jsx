@@ -9,12 +9,10 @@ import { FaUser, FaLock } from "react-icons/fa";
 import { Link, useNavigate } from 'react-router-dom';
 import { Loginform } from '../../Services/authServices'
 import { showErrorToast, CommonToastContainer } from '../../Services/CommonToaster';
-import { useAuth } from '../../Context/AuthContext';
 
-const Login = ({isAuthenticated, setisAuthenticated}) => {
+const Login = () => {
 
-  const { Login } = useAuth();
-  const [ formData, setFormData ] = useState({ username: 'admin5@gmail.com', password: 'admin' });
+  const [ formData, setFormData ] = useState({ username: 'nanana123@gmail.com', password: 'nanana123' });
   const navigate = useNavigate();
 
   const handleLogin = async() => {
@@ -23,11 +21,9 @@ const Login = ({isAuthenticated, setisAuthenticated}) => {
     const result =  await Loginform(formData.username,formData.password);
       console.log('result login ', result)
     if(result.status === 201){
-      setisAuthenticated(true);
       navigate('/')
     }else{
       console.log('fail')
-      setisAuthenticated(false)
       showErrorToast('Oops! Something went wrong.');
       navigate('/login')
     }

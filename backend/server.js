@@ -1,6 +1,5 @@
 const express = require('express');
 const cors = require('cors');
-const authRoutes = require('./routes/authRoutes');
 const userRoutes = require('./routes/userRoutes');
 const adRoutes = require('./routes/adRoutes');
 const postReports=require('./routes/postReports');
@@ -11,7 +10,7 @@ const PORT = 5001;
 app.use(cors());
 
 app.use(express.json());
-app.use(authRoutes);
+app.use(userRoutes);
 app.use(adRoutes);
 app.use('/Reports',postReports);
 

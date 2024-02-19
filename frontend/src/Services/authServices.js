@@ -6,9 +6,20 @@ export const Loginform = async (email, password) => {
   try {
     const response = await axios.post(`${API_URL}/login`, {email, password});
     console.log('pass',response)
+    if(response.status === 201) {
+      await updateLoginTime(email);
+    }
     return response;
   } catch (error) {
       throw error;
+  }
+};
+
+const updateLoginTime = async (email) => {
+  try {
+    await axios.post(`${API_URL}/updateLoginTime`, { email });
+  } catch (error) {
+    console.error('Error updating login time:', error);
   }
 };
 
