@@ -49,7 +49,7 @@ const Register = () => {
           <div className="featured-image mb-3">
             <img src={image} className="img-fluid" style={{ width: '250px' }} alt="Logo" />
           </div>
-          <p className="text-white fs-2" style={{ fontFamily: 'Courier New', fontWeight: 600 }}>realBROKER</p>
+          <p className="text-white fs-2" style={{ fontFamily: 'Courier New', fontWeight: 600 }}>BrokerLK</p>
           <strong><small className="text-white text-wrap text-center" style={{ width: '17rem', fontFamily: 'Courier New' }}>Create and Sell Your Rooms <br></br>Adopt The Boarding House</small></strong>
         </div>
         <div className="col-md-6 right-box">
