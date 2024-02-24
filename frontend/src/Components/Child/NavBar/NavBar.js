@@ -8,7 +8,7 @@ import { IoMdNotifications } from "react-icons/io";
 
 
 const NavBar = () => {
-    return (
+   return (
         <Navbar expand="lg" className="bg-body-tertiary fixed-top" >
 
             <Container>

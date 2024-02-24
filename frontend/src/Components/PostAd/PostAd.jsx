@@ -84,10 +84,10 @@ const PostAd = () => {
           >
             <img
               src={RentalHouseImage}
-              alt="House Sell or Rent"
+              alt="House Rent"
               style={imageStyle}
             />
-            <div style={textStyle}>House Sell or Rent</div>
+            <div style={textStyle}>House Rent</div>
           </button>
           <button
             className="ml-3"

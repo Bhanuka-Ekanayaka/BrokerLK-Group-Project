@@ -3,14 +3,11 @@ import { toast } from "react-toastify";
 import { v4 as uuidv4 } from "uuid";
 import { useNavigate } from "react-router-dom";
 
-
 const CreateListingRentalHouse = () => {
-
   const navigate = useNavigate();
   const [geolocationEnabled, setGeolocationEnabled] = useState(true);
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
-    type: "rent",
     name: "",
     rooms: 1,
     bathrooms: 1,
@@ -27,7 +24,6 @@ const CreateListingRentalHouse = () => {
     images: {},
   });
   const {
-    type,
     name,
     rooms,
     bathrooms,
@@ -67,7 +63,7 @@ const CreateListingRentalHouse = () => {
       }));
     }
   }
-  
+
   async function onSubmit(e) {
     e.preventDefault();
     setLoading(true);
@@ -104,7 +100,6 @@ const CreateListingRentalHouse = () => {
       geolocation.lng = longitude;
     }
   }
-
 
   return (
     <main className="max-w-md px-2 mx-auto">
@@ -162,7 +157,6 @@ const CreateListingRentalHouse = () => {
               className="w-full px-4 py-2 text-xl text-gray-700 bg-white border border-gray-300 rounded transition duration-150 ease-in-out focus:text-gray-700 focus:bg-white focus:border-slate-600 text-center"
             />
           </div>
-          
         </div>
         <p className="text-lg mt-6 font-semibold">Parking spot</p>
         <div className="flex">
@@ -303,11 +297,6 @@ const CreateListingRentalHouse = () => {
                 required
                 className="w-full px-4 py-2 text-xl text-gray-700 bg-white border border-gray-300 rounded transition duration-150 ease-in-out focus:text-gray-700 focus:bg-white focus:border-slate-600 text-center"
               />
-              {type === "rent" && (
-                <div className="">
-                  <p className="text-md w-full whitespace-nowrap"></p>
-                </div>
-              )}
             </div>
           </div>
         </div>
@@ -326,13 +315,6 @@ const CreateListingRentalHouse = () => {
                   required={offer}
                   className="w-full px-4 py-2 text-xl text-gray-700 bg-white border border-gray-300 rounded transition duration-150 ease-in-out focus:text-gray-700 focus:bg-white focus:border-slate-600 text-center"
                 />
-                {type === "rent" && (
-                  <div className="">
-                    <p className="text-md w-full whitespace-nowrap">
-                      
-                    </p>
-                  </div>
-                )}
               </div>
             </div>
           </div>
@@ -360,7 +342,7 @@ const CreateListingRentalHouse = () => {
         </button>
       </form>
     </main>
-  )
-}
+  );
+};
 
-export default CreateListingRentalHouse
+export default CreateListingRentalHouse;

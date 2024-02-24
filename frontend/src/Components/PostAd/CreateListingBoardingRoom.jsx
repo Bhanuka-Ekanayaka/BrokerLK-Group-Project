@@ -9,7 +9,6 @@ const CreateListingBoardingRoom = () => {
     const [geolocationEnabled, setGeolocationEnabled] = useState(true);
     const [loading, setLoading] = useState(false);
     const [formData, setFormData] = useState({
-      type: "rent",
       name: "",
       bedrooms: 1,
       bathrooms: 1,
@@ -24,7 +23,6 @@ const CreateListingBoardingRoom = () => {
       images: {},
     });
     const {
-      type,
       name,
       bedrooms,
       bathrooms,
@@ -258,11 +256,6 @@ const CreateListingBoardingRoom = () => {
                 required
                 className="w-full px-4 py-2 text-xl text-gray-700 bg-white border border-gray-300 rounded transition duration-150 ease-in-out focus:text-gray-700 focus:bg-white focus:border-slate-600 text-center"
               />
-              {type === "rent" && (
-                <div className="">
-                  <p className="text-md w-full whitespace-nowrap">Rs / Month</p>
-                </div>
-              )}
             </div>
           </div>
         </div>
@@ -281,13 +274,6 @@ const CreateListingBoardingRoom = () => {
                   required={offer}
                   className="w-full px-4 py-2 text-xl text-gray-700 bg-white border border-gray-300 rounded transition duration-150 ease-in-out focus:text-gray-700 focus:bg-white focus:border-slate-600 text-center"
                 />
-                {type === "rent" && (
-                  <div className="">
-                    <p className="text-md w-full whitespace-nowrap">
-                      Rs / Month
-                    </p>
-                  </div>
-                )}
               </div>
             </div>
           </div>
