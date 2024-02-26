@@ -32,21 +32,56 @@
 
 .post-add-card-home .container .row .holder .card .custom-image-size{
     height: 180px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.post-add-card-home .container .row .holder .card:hover{
+    outline: 3px solid #FE6073;
+}
+
+.post-add-card-home .container .row .holder:hover{
+    margin-top: 10px;
+}
+
+.post-add-card-home .container .row .holder .card .card-body .heart-btn{
+    font-size: large;
+}
+.post-add-card-home .container .row .holder .card .card-body .heart-btn:hover{
+    color:red;
+}
+
+.post-add-card-home .container .row .holder .card .card-body .truncated-text{
+    display: -webkit-box;
+    -webkit-line-clamp: 5; /* Number of lines to show */
+    -webkit-box-orient: vertical;
     overflow: hidden;
+    height: 120px;
 }
 
 @media only screen and (max-width: 1024px){
     .post-add-card-home .container .row .holder .card .custom-image-size{
         height: 150px;
-        overflow: hidden;
+        
     }
+
+    .post-add-card-home .container .row .holder .card .card-body .truncated-text{
+       
+        height: auto;
+    }
+    
     
   }
 @media only screen and (max-width: 768px) {
 
     .post-add-card-home .container .row .holder .card .custom-image-size{
         height: 250px;
-        overflow: hidden;
+        
+    }
+
+    .post-add-card-home .container .row .holder .card .card-body .truncated-text{
+       
+        height: auto;
     }
 
 }

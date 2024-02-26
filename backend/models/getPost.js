@@ -9,7 +9,7 @@ const getBoardingRoomPost = async () => {
             'INNER JOIN boarding_roomstb ON accommodationtb.post_id = boarding_roomstb.post_id '+
             'INNER JOIN boarding_room_imgtb ON accommodationtb.post_id = boarding_room_imgtb.room_id '+
             'ORDER BY accommodationtb.post_id DESC ' +
-            'LIMIT 12';
+            'LIMIT 20';
 
         const result = await db.query(sql);
 

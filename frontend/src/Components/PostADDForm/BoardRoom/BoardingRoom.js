@@ -10,6 +10,7 @@ import Button from 'react-bootstrap/Button';
 import NavBar from "../../Child/NavBar/NavBar";
 import { useState } from "react";
 import { Alert } from "react-bootstrap";
+import Message from "../Confirmationmsg/Message";
 import axios from 'axios';
 
 
@@ -107,9 +108,9 @@ const BoardingRoom = () => {
 
                 
 
-                setTimeout(() => {
-                    setShowAlert(false);
-                }, 5000);
+                // setTimeout(() => {
+                //     setShowAlert(false);
+                // }, 5000);
 
              
                
@@ -332,18 +333,20 @@ const BoardingRoom = () => {
                         <Button variant="primary" type="submit" style={{ marginBottom: '5px', marginRight: '5px' }} >
                             Submit
                         </Button>
+                    
                         {showAlert && (
-                            <div style={{
-                                position: 'fixed',
-                                top: '50%',
-                                left: '50%',
-                                transform: 'translate(-50%, -50%)',
-                                zIndex: 9999 // Ensure it's above other elements
-                            }} data-aos="fade-down">
-                                <Alert variant="success" show={showAlert}  style={{ backgroundColor: '#f8d7da', color: '#721c24', border: '1px solid #f5c6cb' }}>
-                                <strong><i class="bi bi-emoji-smile-fill"></i> Success!</strong> Your data has been added successfully!
-                                </Alert>
-                            </div>
+                            // <div style={{
+                            //     position: 'fixed',
+                            //     top: '50%',
+                            //     left: '50%',
+                            //     transform: 'translate(-50%, -50%)',
+                            //     zIndex: 9999 // Ensure it's above other elements
+                            // }} data-aos="fade-down">
+                            //     <Alert variant="success" show={showAlert}  style={{ backgroundColor: '#f8d7da', color: '#721c24', border: '1px solid #f5c6cb' }}>
+                            //     <strong><i class="bi bi-emoji-smile-fill"></i> Success!</strong> Your data has been added successfully!
+                            //     </Alert>
+                            // </div>
+                            <Message />
                         )}
 
                     </Form>

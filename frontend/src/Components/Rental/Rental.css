@@ -46,7 +46,10 @@
 .new-card .card .card-img,
 .new-card .card .card-img-bottom,
 .new-card .card .card-img-top {
-    width: 40%;
+    width: 450px;
+    height: 300px;
+    object-fit: cover;
+    object-position: center center;
 }
 
 .new-card .card .card-body {
@@ -58,6 +61,8 @@
     .new-card .card .card-img-bottom,
     .new-card .card .card-img-top {
         width: 30%;
+        
+       
     }
     
   }
