@@ -3,8 +3,23 @@ import NavBar from '../Child/NavBar/NavBar';
 import Footer from '../Child/Footer/Footer';
 import './Sdescription.css';
 import Sshow from './Sshow';
+import axios from 'axios';
 
 export default function Cdescription() {
+  const [boardingHouseData, setBoardingHouseData] = useState(null);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        // Make a GET request to the backend API endpoint that serves boarding house data
+        const response = await axios.get('/api/boarding-houses');
+        // Update state with the fetched data
+        setBoardingHouseData(response.data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    }
+      fetchData();
+  }, []);
   return (
     <div>
         <NavBar/>
