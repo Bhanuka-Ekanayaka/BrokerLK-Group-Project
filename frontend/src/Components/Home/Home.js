@@ -10,15 +10,20 @@ import Footer from '../Child/Footer/Footer';
 
 const Home = ({isAuthenticated}) => {
 
+
+
+
+  
+
   return (
     <>
       <NavBar/>
       <SlideShow/>
       <Catergory />
-      <SearchBar/>
-      <Cards title='Boarding Building' animation='flip-right' CardAnimate='flip-down' type='boarding-room'/>
-      <Cards title='Rental Houses'  animation='flip-left' CardAnimate='flip-up' type='boarding-room' />
-      <Cards title='Boarding Rooms'  animation='flip-right' CardAnimate='flip-down' type='boarding-room'/>
+      <SearchBar />
+      <Cards title='Boarding Rooms' animation='flip-right' CardAnimate='flip-down' type='boarding-room'/>
+      <Cards title='Rental Houses'  animation='flip-left' CardAnimate='flip-up' type='rental-house' />
+      <Cards title='Boarding Building'  animation='flip-right' CardAnimate='flip-down' type='boarding-building'/>
       <Footer animation="flip-right"/>
     </>
   );

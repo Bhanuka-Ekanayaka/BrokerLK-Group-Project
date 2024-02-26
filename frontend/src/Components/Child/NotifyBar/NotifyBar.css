@@ -1,0 +1,19 @@
+
+.custom-notifyBar{
+    z-index: 1029 !important;
+}
+
+.offcanvas-backdrop{
+    z-index: 100 !important;
+}
+
+.offcanvas-backdrop.show {
+    opacity: 0.2 !important;
+}
+
+.custom-notfycomponent .custom-image-sidebar{
+    width:60px;
+    height:60px;
+    object-fit: cover;
+    object-position: center;
+}

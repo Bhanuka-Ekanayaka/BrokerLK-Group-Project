@@ -3,20 +3,25 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Navbar from 'react-bootstrap/Navbar';
 import InputGroup from 'react-bootstrap/InputGroup';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Collapse from 'react-bootstrap/Collapse';
-import { useNavigate } from 'react-router-dom';
+import HorozontalCard from '../../Rental/Child-HorizontalCard/HorozontalCard';
+import { Link } from 'react-router-dom';
 import './SearchBar.css';
 
 
 
-const SearchBar = () => {
 
+const SearchBar = ({ postData,SearchData }) => {
+
+    console.log('This is Data get by the postData', postData);
+    console.log('This Data sent from the home page to rentalpage',SearchData);
+    
 
     const [open, setOpen] = useState(false);
-    const navigate = useNavigate();
+
 
     const [minTenants, setMinTeanat] = useState('');
     const [type, setType] = useState(1);
@@ -26,9 +31,52 @@ const SearchBar = () => {
     const [size, setSize] = useState(0);
     const [price, setPrice] = useState(1000000000000000);
 
-    // navigate('/rental-post',{state:{minTenants,type,searchText,minBed,is_kitchen,size,price}});
+   
+
+    const [filteredPostData, setfilteredPostData] = useState([]);
 
 
+
+    useEffect(() => {
+        setfilteredPostData(postData);
+        filterItems(searchText, minTenants, minBed, size, price, is_kitchen);
+    }, [postData])
+
+    useEffect(()=>{
+        if(SearchData){
+            setMinTeanat(SearchData.minTenants);
+            setType(SearchData.type);
+            setSearchText(SearchData.searchText);
+            setMinBed(SearchData.minBed);
+            setKitchen(SearchData.is_kitchen);
+            setSize(SearchData.size);
+            setPrice(SearchData.price);
+        }
+    },[SearchData])
+
+    // useEffect(() => {
+    //     filterItems(searchText, minTenants, minBed, size, price, is_kitchen);
+    // }, [searchText, minTenants, minBed, size, price, is_kitchen,postData])
+
+
+    const filterItems = (searchText, minTenants, minBed, size, price, is_kitchen) => {
+
+        if (Array.isArray(postData)) {
+
+            setfilteredPostData(postData.filter((data) => {
+                return (
+                    ((data.district.toLowerCase().includes(searchText.toLowerCase()) || data.address_line2.toLowerCase().includes(searchText.toLowerCase()) )&&
+                        (data.no_tenants >= minTenants) &&
+                        (data.no_bed >= minBed) &&
+                        (data.room_size >= size) &&
+                        (data.advertised_price <= parseInt(price)) &&
+                        (is_kitchen ? data.is_kitchen === 1 : true)
+                    ));
+            }))
+        }
+    }
+
+    console.log('This is filtered data', filteredPostData, minTenants);
 
 
     return (
@@ -41,7 +89,7 @@ const SearchBar = () => {
                     <Container>
 
                         <div style={{ marginLeft: 'auto', marginRight: 'auto' }}>
-                            < Form>
+                            < Form  >
 
                                 <Row>
                                     <Navbar.Toggle aria-controls="basic-navbar-nav" >
@@ -57,22 +105,22 @@ const SearchBar = () => {
                                             </Button>
                                         </Form.Group>
 
-                                        <Form.Group as={Col} lg={2} className="d-flex justify-content-center align-items-center" >
+                                        <Form.Group as={Col} lg={2} className="d-flex justify-content-center align-items-center">
 
-                                            <Form.Control type="number" placeholder="*Min Tenants" value={minTenants} onChange={(e) => setMinTeanat(e.target.value)} min='1'  />
+                                            <Form.Control type="number" placeholder="*Min Tenants" value={minTenants} onChange={(e) => setMinTeanat(e.target.value)} min='1' />
 
                                         </Form.Group>
 
 
                                         <Form.Group as={Col} lg={3} className="d-flex justify-content-center align-items-center">
-
+                                       
                                             <Form.Select aria-label="Default select example" className='text-muted' value={type} onChange={(e)=>setType(e.target.value)}>
                                                 <option value="1">All Types</option>
                                                 <option value="2">Boarding Room</option>
                                                 <option value="3">Boarding Building</option>
                                                 <option value="4">Renatal House</option>
                                             </Form.Select>
-
+                                      
                                         </Form.Group>
 
                                         <Form.Group as={Col} lg={3} className="d-flex justify-content-center align-items-center mx-auto">
@@ -88,7 +136,7 @@ const SearchBar = () => {
 
 
 
-                                        <Form.Group as={Col} lg={3} className="d-flex justify-content-center align-items-center" >
+                                        <Form.Group as={Col}  lg={3} className="d-flex justify-content-center align-items-center" >
                                             <InputGroup >
                                                 <Form.Control
                                                     type="search"
@@ -98,19 +146,7 @@ const SearchBar = () => {
                                                     value={searchText}
                                                     onChange={(e) => setSearchText(e.target.value)}
                                                 />
-                                                <Button className="btn-danger" id="button-addon2" type='button'  onClick={(e) => {
-                                                    navigate('/rental-post', {
-                                                        state: {
-                                                            minTenants,
-                                                            type,
-                                                            searchText,
-                                                            minBed,
-                                                            is_kitchen,
-                                                            size,
-                                                            price
-                                                        }
-                                                    });
-                                                }} >
+                                                <Button className="btn-danger" id="button-addon2" type='submit' as={Link} to='/rental-post' onClick={(e)=>filterItems(searchText, minTenants, minBed, size, price, is_kitchen)}>
                                                     <i class="bi bi-search"></i>
                                                 </Button>
                                             </InputGroup>
@@ -165,6 +201,9 @@ const SearchBar = () => {
                     </Container>
                 </Navbar>
             </div >
+            <div>
+                <HorozontalCard filteredPostData={filteredPostData} />
+            </div>
         </>
     );
 }
