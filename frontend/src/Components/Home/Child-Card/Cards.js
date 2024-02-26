@@ -6,7 +6,9 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 
-const Cards = ({ title, animation, CardAnimate,type }) => {
+const Cards = ({ title, animation, CardAnimate, type }) => {
+
+   
 
     const [cards, setCard] = useState([]);
     useEffect(() => {
@@ -14,7 +16,7 @@ const Cards = ({ title, animation, CardAnimate,type }) => {
             try {
                 const response = await axios.get(`http://localhost:5001/postadd/${type}`);
                 console.log('Response:', response.data); // Log the response data
-                setCard(response.data.postData[0]);
+                setCard(response.data.postData[0].slice(0,4));
             } catch (err) {
                 console.error('can not fetch the card data' + err);
             }
@@ -44,17 +46,23 @@ const Cards = ({ title, animation, CardAnimate,type }) => {
                                             <Card.Link>{card.district}</Card.Link>
                                         </div>
 
-                                        <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle>
+                        
 
-                                        <Card.Text>
-                                           {card.description}
-                                        </Card.Text>
+                                       <Card.Text className='truncated-text text-muted'>
+                                            {card.description}
+                                       </Card.Text>
+
+                                    <div className='d-flex justify-content-between align-items-center'>
                                         <Button href="/Description">Read More <i class="bi bi-arrow-right-circle-fill"></i></Button>
+                                        <button className='heart-btn'><i class="bi bi-heart-fill"></i></button>
+                                    </div>
                                     </Card.Body>
                                 </Card>
                             </div>
                         </Col>
                     ))}
+
+
 
                 </Row>
 
