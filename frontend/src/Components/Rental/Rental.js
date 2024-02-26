@@ -1,15 +1,22 @@
 import NavBar from "../Child/NavBar/NavBar";
 import Footer from "../Child/Footer/Footer";
-import SearchBar from "../Home/Child-SearchBar/SearchBar";
+import SearchBar from "./Child-SearchBar/SearchBar";
 import { useState } from "react";
 import { useEffect } from "react";
+import { useLocation } from 'react-router-dom';
 import axios from "axios";
 
 import './Rental.css';
 
+
 const Rental = () => {
 
     const [postData, setPostData] = useState([]);
+    const [newkeyarray,setNewKeyArray]=useState([]);
+
+    const location = useLocation();
+    const SearchData = location.state;
+    console.log(location,'sending data from the home Searching');
 
 
     useEffect(() => {
@@ -23,7 +30,12 @@ const Rental = () => {
 
                 //getting all boarding building
 
+
+
                 //geting all rental houses
+
+
+
 
                 //adding new key to the all arrays
 
@@ -39,10 +51,23 @@ const Rental = () => {
     }, [])
 
 
+    useEffect(()=>{
+        const newarry=postData.map(item=>({
+            ...item,
+            boarding_type:'Boarding Room'
+        }))
+
+        setNewKeyArray(newarry)
+
+        // shuffle the array
+        console.log(newarry,'new array');
+
+    },[postData])
+
     return ( 
         <>
             <NavBar/>
-            <SearchBar postData={postData}/>
+            <SearchBar postData={newkeyarray} SearchData={SearchData}/>
           
             <Footer animation="flip-right"/>
         </>
