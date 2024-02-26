@@ -6,6 +6,7 @@ const adRoutes = require('./routes/adRoutes');
 const postReports = require('./routes/postReports');
 const postAdd =require('./routes/postAdd');
 const path = require('path');
+const description = require ('./routes/description');
 
 const app = express();
 const PORT = 5001;
@@ -18,7 +19,7 @@ app.use(authRoutes);
 app.use(adRoutes);
 app.use('/Reports', postReports);
 app.use('/postadd',postAdd);
-
+app.use('/description',description);
 
 
 app.use((err, req, res, next) => {
