@@ -8,11 +8,7 @@ import axios from 'axios';
 
 const Cards = ({ title, animation, CardAnimate, type }) => {
 
-    const [expanded, setExpanded] = useState(false);
-
-    const toggleExpanded = () => {
-        setExpanded(!expanded);
-    };
+   
 
     const [cards, setCard] = useState([]);
     useEffect(() => {

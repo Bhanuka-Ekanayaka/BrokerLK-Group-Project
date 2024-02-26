@@ -6,9 +6,10 @@ import logo from './assets/logo.png';
 import './Navbar.css';
 import { IoMdNotifications } from "react-icons/io";
 import { Link } from 'react-router-dom';
-
+import NotifyBar from '../NotifyBar/NotifyBar';
 
 const NavBar = () => {
+
    return (
         <Navbar expand="lg" className="bg-body-tertiary fixed-top" >
 
@@ -43,16 +44,12 @@ const NavBar = () => {
                     </Nav>
                     <Nav>
                         <div className="nav-btn">
-
-                           
-
                             <Nav.Link as={Link} to='postad' >Post-Add</Nav.Link>
-
                         </div>
-                        <Nav.Link href="#memes">
-                       
-                            < IoMdNotifications style={{ fontSize: '25px' }} />
-                           
+                        <Nav.Link href=''>
+                            {/* < IoMdNotifications style={{ fontSize: '25px' }} /> */}
+                            
+                            <NotifyBar/>
                         </Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
