@@ -21,9 +21,9 @@ const Home = ({isAuthenticated}) => {
       <SlideShow/>
       <Catergory />
       <SearchBar />
-      <Cards title='Boarding Building' animation='flip-right' CardAnimate='flip-down' type='boarding-room'/>
-      <Cards title='Rental Houses'  animation='flip-left' CardAnimate='flip-up' type='boarding-room' />
-      <Cards title='Boarding Rooms'  animation='flip-right' CardAnimate='flip-down' type='boarding-room'/>
+      <Cards title='Boarding Rooms' animation='flip-right' CardAnimate='flip-down' type='boarding-room'/>
+      <Cards title='Rental Houses'  animation='flip-left' CardAnimate='flip-up' type='rental-house' />
+      <Cards title='Boarding Building'  animation='flip-right' CardAnimate='flip-down' type='boarding-building'/>
       <Footer animation="flip-right"/>
     </>
   );

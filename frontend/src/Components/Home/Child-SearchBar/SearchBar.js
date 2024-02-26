@@ -3,11 +3,11 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Navbar from 'react-bootstrap/Navbar';
 import InputGroup from 'react-bootstrap/InputGroup';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Collapse from 'react-bootstrap/Collapse';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './SearchBar.css';
 
 
@@ -19,7 +19,7 @@ const SearchBar = () => {
     const navigate = useNavigate();
 
     const [minTenants, setMinTeanat] = useState('');
-    const [type, setType] = useState('');
+    const [type, setType] = useState(1);
     const [searchText, setSearchText] = useState('');
     const [minBed, setMinBed] = useState('');
     const [is_kitchen, setKitchen] = useState('');
@@ -66,7 +66,7 @@ const SearchBar = () => {
 
                                         <Form.Group as={Col} lg={3} className="d-flex justify-content-center align-items-center">
 
-                                            <Form.Select aria-label="Default select example" className='text-muted'>
+                                            <Form.Select aria-label="Default select example" className='text-muted' value={type} onChange={(e)=>setType(e.target.value)}>
                                                 <option value="1">All Types</option>
                                                 <option value="2">Boarding Room</option>
                                                 <option value="3">Boarding Building</option>

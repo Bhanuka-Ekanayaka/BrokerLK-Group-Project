@@ -24,7 +24,7 @@ const SearchBar = ({ postData,SearchData }) => {
 
 
     const [minTenants, setMinTeanat] = useState('');
-    const [type, setType] = useState('');
+    const [type, setType] = useState(1);
     const [searchText, setSearchText] = useState('');
     const [minBed, setMinBed] = useState('');
     const [is_kitchen, setKitchen] = useState('');
@@ -114,7 +114,7 @@ const SearchBar = ({ postData,SearchData }) => {
 
                                         <Form.Group as={Col} lg={3} className="d-flex justify-content-center align-items-center">
                                        
-                                            <Form.Select aria-label="Default select example" className='text-muted'>
+                                            <Form.Select aria-label="Default select example" className='text-muted' value={type} onChange={(e)=>setType(e.target.value)}>
                                                 <option value="1">All Types</option>
                                                 <option value="2">Boarding Room</option>
                                                 <option value="3">Boarding Building</option>
