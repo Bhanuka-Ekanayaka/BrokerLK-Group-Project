@@ -52,8 +52,13 @@ const Home = ({isAuthenticated}) => {
     <>
       <NavBar navRef={navRef} showNavBar={showNavbar} title={'BrokerLk.lk'}></NavBar>
       <SlideShow></SlideShow>
+
+      <PageNavbar className='hp1'></PageNavbar>
+      
+
       <PageNavbar></PageNavbar>
      
+
 
       <div className='hd1'>
         <AutoLayout/>
