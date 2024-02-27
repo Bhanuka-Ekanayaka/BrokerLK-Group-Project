@@ -1,5 +1,15 @@
 import React from "react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import {
+  showSuccessToast,
+  showErrorToast,
+} from "../../Services/services.toasterMessage";
+import validateUser from "../../Services/validate.user";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import CustomTextfield from "./TextField";
+import CustomAutoComplete from "./AutoComplete";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../Register/Register.css";
 import image from "../Login/LoginAssets/image.png";
@@ -11,61 +21,93 @@ import {
   FaUserEdit,
 } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
+import userServices from "../../Services/services.user";
 import { Link } from "react-router-dom";
-import { Registerform } from "../../Services/authServices";
-import {
-  showSuccessToast,
-  showErrorToast,
-  CommonToastContainer,
-} from "../../Services/CommonToaster";
 
 const Register = () => {
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     email: "",
+    username: "",
     password: "",
-    confirmPassword: "",
-    role: "",
+    jobrole: "",
+    confirmPassword: "", // Add confirmPassword to the state
   });
 
-  const handleRegister = async () => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const [errorMessage, setErrorMessage] = useState({
+    email: "",
+    username: "",
+    jobrole: "",
+    confirmPassword: "", // Add confirmPassword to the state
+  });
 
-    if (
-      !formData.email ||
-      !formData.password ||
-      !formData.confirmPassword ||
-      !formData.role
-    ) {
-      showErrorToast("Please fill in all fields.");
-      return;
-    }
-
-    if (!emailRegex.test(formData.email)) {
-      showErrorToast("Invalid email format.");
-      return;
-    }
+  const handleSubmit = async (event) => {
+    event.preventDefault();
 
     if (formData.password !== formData.confirmPassword) {
       showErrorToast("Passwords do not match.");
       return;
     }
 
-    try {
-      const result = await Registerform(formData);
+    const validationErrors = validateUser(formData);
+    setErrorMessage(validationErrors);
 
-      if (result.status === 201) {
-        showSuccessToast("Successfully Registered");
-      } else {
-        showErrorToast(result.data.message || "Oops! Something went wrong.");
-      }
+    if (Object.values(validationErrors).some((error) => error !== "")) {
+      console.log(validationErrors);
+      showErrorToast("Enter valid Input");
+      return;
+    }
+
+    try {
+      const response = await userServices.createUser(formData);
+      showSuccessToast("User successfully added");
+      console.log("User created:", response);
+      handleReset();
+      setTimeout(() => {
+        navigate("/");
+      }, 2000);
     } catch (error) {
-      console.error(error);
-      showErrorToast("An unexpected error occurred. Please try again.");
+      const { message, attributeName } = error.response.data;
+      showErrorToast(`${message}`);
+
+      if (attributeName) {
+        if (attributeName === "Fullname") {
+          setErrorMessage({
+            Fullname: "Name Alredy Taken",
+          });
+        } else if (attributeName === "Username") {
+          setErrorMessage({
+            username: "Username already Exists",
+          });
+        }
+      }
+      console.error("Error:", error);
     }
   };
 
-  const handleSelectChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  const handleChanges = (event) => {
+    const { name, value } = event.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const handleReset = () => {
+    setFormData({
+      email: "",
+      username: "",
+      password: "",
+      jobrole: "",
+      confirmPassword:"",
+    });
+    setErrorMessage({
+      email: "",
+      username: "",
+      jobrole: "",
+      confirmPassword:"",
+    });
   };
 
   return (
@@ -87,7 +129,7 @@ const Register = () => {
             className="text-white fs-2"
             style={{ fontFamily: "Courier New", fontWeight: 600 }}
           >
-            BrokerLK
+            realBROKER
           </p>
           <strong>
             <small
@@ -106,75 +148,80 @@ const Register = () => {
             </div>
             <div className="input-group mb-3">
               <MdEmail className="icon" />
-              <input
-                type="email"
-                className="form-control form-control-lg bg-light fs-6"
-                name="email"
-                placeholder="Email"
-                value={formData.email}
-                onChange={(e) =>
-                  setFormData({ ...formData, email: e.target.value })
-                }
+              <CustomTextfield
+                data={formData.username}
+                error={errorMessage.username}
+                name={"username"}
+                label={"Username"}
+                classtype={"text-line-type1"}
+                handleChanges={handleChanges}
+              />
+              {errorMessage.username && (
+                <label className="error-text">{errorMessage.username}</label>
+              )}
+            </div>
+            <div className="input-group mb-1">
+              <FaLock className="icon" />
+              <CustomTextfield
+                data={formData.password}
+                error={errorMessage.password}
+                name={"password"}
+                label={"Password"}
+                handleChanges={handleChanges}
               />
             </div>
             <div className="input-group mb-1">
               <FaLock className="icon" />
-              <input
-                type="password"
-                className="form-control form-control-lg bg-light fs-6"
-                name="password"
-                placeholder="Password"
-                onChange={(e) =>
-                  setFormData({ ...formData, password: e.target.value })
-                }
-              />
-            </div>
-            <div className="input-group mb-1">
-              <FaLock className="icon" />
-              <input
-                type="password"
-                className="form-control form-control-lg bg-light fs-6"
-                name="confirmPassword"
-                placeholder="Confirm Password"
-                onChange={(e) =>
-                  setFormData({ ...formData, confirmPassword: e.target.value })
-                }
+              <CustomTextfield
+                data={formData.confirmPassword}
+                error={errorMessage.confirmPassword}
+                name={"confirmPassword"}
+                label={"Confirm Password"}
+                handleChanges={handleChanges}
               />
             </div>
             <div className="input-group mb-3">
               <FaLock className="icon" />
-              <select
-                name="role"
-                className="form-control form-control-lg bg-light fs-6"
-                value={formData.role}
-                onChange={handleSelectChange}
-              >
-                <option
-                  value="admin"
-                  className="form-control form-control-lg bg-light fs-6"
-                >
-                  Admin
-                </option>
-                <option
-                  value="owner"
-                  className="form-control form-control-lg bg-light fs-6"
-                >
-                  Owner
-                </option>
-                <option
-                  value="tenant"
-                  className="form-control form-control-lg bg-light fs-6"
-                >
-                  Tenant
-                </option>
-              </select>
+              <CustomAutoComplete
+                data={formData.jobrole}
+                error={errorMessage.jobrole}
+                list={[{ label: "Tenant" }, { label: "User" }]}
+                name={"jobrole"}
+                label={"Job Role"}
+                handleChanges={handleChanges}
+                setFormData={setFormData}
+              />
+              {errorMessage.jobrole && (
+                <label className="error-text">{errorMessage.jobrole}</label>
+              )}
+            </div>
+            <div className="input-group mb-1">
+              <FaLock className="icon" />
+              <CustomTextfield
+                data={formData.email}
+                error={errorMessage.email}
+                name={"email"}
+                label={"Email"}
+                handleChanges={handleChanges}
+              />
+              {errorMessage.email && (
+                <label className="error-text">{errorMessage.email}</label>
+              )}
             </div>
             <div className="input-group mb-3">
               <button
-                onClick={handleRegister}
+                type="submit"
+                onClick={handleSubmit}
                 className="btn btn-lg btn-danger w-100 fs-6"
               >
                 Sign Up
+              </button>
+              <button
+                type="reset"
+                className="reset-button"
+                onClick={handleReset}
+              >
+                Reset
               </button>
             </div>
             <div className="row">
@@ -185,7 +232,7 @@ const Register = () => {
           </div>
         </div>
       </div>
-      <CommonToastContainer />
+      <ToastContainer />
     </div>
   );
 };

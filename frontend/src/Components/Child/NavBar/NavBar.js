@@ -7,7 +7,10 @@ import './Navbar.css';
 import { IoMdNotifications } from "react-icons/io";
 
 
-const NavBar = () => {
+const NavBar = ({ updateAuthentication }) => {
+    const toggleUpdateAuthentication = () => {
+        updateAuthentication(false)
+      };
    return (
         <Navbar expand="lg" className="bg-body-tertiary fixed-top" >
 
@@ -35,7 +38,7 @@ const NavBar = () => {
                             </NavDropdown.Item>
                             <NavDropdown.Item href="#action/3.2">DashBoard</NavDropdown.Item>
                             <NavDropdown.Divider />
-                            <NavDropdown.Item href="/login">
+                            <NavDropdown.Item toggleUpdateAuthentication={toggleUpdateAuthentication} href='/login'>
                                 Log Out
                             </NavDropdown.Item>
                         </NavDropdown>

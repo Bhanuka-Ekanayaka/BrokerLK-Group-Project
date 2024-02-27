@@ -1,64 +1,64 @@
 
 
 *{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 };
 
 
 .box-area{
-    width: 930px;
+  width: 930px;
 }
 
 
 .right-box{
-    padding: 40px 30px 40px 40px;
+  padding: 40px 30px 40px 40px;
 }
 
 
 ::placeholder{
-    font-size: 16px;
+  font-size: 16px;
 }
 
 .rounded-4{
-    border-radius: 20px;
+  border-radius: 20px;
 }
 .rounded-5{
-    border-radius: 30px;
+  border-radius: 30px;
 }
 
 .icon {
-    width: 25px; 
-    height: 25px; 
-    position: relative; 
-    top: 10px;
-    left: -5px; 
-  }
+  width: 25px; 
+  height: 25px; 
+  position: relative; 
+  top: 10px;
+  left: -5px; 
+}
 
-  .icon1 {
-    width: 25px; 
-    height: 25px; 
-    position: relative; 
-    top: 120px;
-    left: -40px; 
-  }
- 
-   .input-group {
-    left: 5px;
-  } 
+.icon1 {
+  width: 25px; 
+  height: 25px; 
+  position: relative; 
+  top: 120px;
+  left: -40px; 
+}
 
-  /* button {
-    left: 20px;
-  } */
+ .input-group {
+  left: 5px;
+} 
+
+/* button {
+  left: 20px;
+} */
 
 @media only screen and (max-width: 768px){
 
-  .container {
-    width: 100%;
+.container {
+  width: 100%;
 
-    .box-area{
-      width: 100%;
-    }
+  .box-area{
+    width: 100%;
   }
+}
 }

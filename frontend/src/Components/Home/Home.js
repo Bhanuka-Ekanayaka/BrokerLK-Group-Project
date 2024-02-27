@@ -8,11 +8,15 @@ import SearchBar from './Child-SearchBar/SearchBar';
 import Cards from './Child-Card/Cards';
 import Footer from '../Child/Footer/Footer';
 
-const Home = ({isAuthenticated}) => {
+const Home = (updateAuthentication) => {
+
+  const toggleUpdateAuthentication = () => {
+    updateAuthentication(false)
+  };
 
   return (
     <>
-      <NavBar/>
+      <NavBar toggleUpdateAuthentication={toggleUpdateAuthentication}/>
       <SlideShow/>
       <Catergory />
       <SearchBar/>
