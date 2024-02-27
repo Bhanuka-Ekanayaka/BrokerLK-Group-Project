@@ -4,9 +4,13 @@ import Catergory from './Child-Catergory/Catergory';
 import { showSuccessToast, showErrorToast, CommonToastContainer } from '../../Services/CommonToaster';
 import AutoLayout from '../Card/AutoLayout';
 import './home.css';
+
 import SearchBar from './Child-SearchBar/SearchBar';
 import Cards from './Child-Card/Cards';
 import Footer from '../Child/Footer/Footer';
+
+
+
 
 const Home = ({isAuthenticated}) => {
 
