@@ -1,0 +1,87 @@
+.post-add-card-home .container .row .holder .card .card-body .btn-primary{
+    --bs-btn-bg:#FF3951;
+    --bs-btn-border-color:#FF3951;
+    --bs-btn-active-border-color:#FF3951;
+    --bs-btn-hover-border-color:#FF3951;
+    opacity: 0.9;
+}
+
+.post-add-card-home .container .row .holder .card .card-body .btn-primary:hover{
+    --bs-btn-hover-bg:var(--bs-btn-bg);
+    --bs-btn-active-bg:var(--bs-btn-bg);
+    --bs-btn-active-border-color:var(var(--bs-btn-bg));
+    
+    opacity: 1.0;
+}
+
+.post-add-card-home .container .row .holder .card .card-body .price-reviews {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0.5rem;
+}
+
+.post-add-card-home .container .row .holder .card .card-body .price-reviews .card-link{
+    text-decoration: none;
+    color: #FFFFFF;
+    background-color:#8A3DFD;
+    border-radius :5px;
+     padding-left: 2px;
+     padding-right: 2px;
+}
+
+.post-add-card-home .container .row .holder .card .custom-image-size{
+    height: 180px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.post-add-card-home .container .row .holder .card:hover{
+    outline: 3px solid #FE6073;
+}
+
+.post-add-card-home .container .row .holder:hover{
+    margin-top: 10px;
+}
+
+.post-add-card-home .container .row .holder .card .card-body .heart-btn{
+    font-size: large;
+}
+.post-add-card-home .container .row .holder .card .card-body .heart-btn:hover{
+    color:red;
+}
+
+.post-add-card-home .container .row .holder .card .card-body .truncated-text{
+    display: -webkit-box;
+    -webkit-line-clamp: 5; /* Number of lines to show */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    height: 120px;
+}
+
+@media only screen and (max-width: 1024px){
+    .post-add-card-home .container .row .holder .card .custom-image-size{
+        height: 150px;
+        
+    }
+
+    .post-add-card-home .container .row .holder .card .card-body .truncated-text{
+       
+        height: auto;
+    }
+    
+    
+  }
+@media only screen and (max-width: 768px) {
+
+    .post-add-card-home .container .row .holder .card .custom-image-size{
+        height: 250px;
+        
+    }
+
+    .post-add-card-home .container .row .holder .card .card-body .truncated-text{
+       
+        height: auto;
+    }
+
+}

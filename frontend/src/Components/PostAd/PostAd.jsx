@@ -1,136 +1,113 @@
-import React, { useState } from "react";
-import { FaCloudUploadAlt } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
-import './PostAd.css'
-import { useRef } from "react";
-import NavBar from "../Child/NavBar/NavBar";
-import { showSuccessToast, showErrorToast, CommonToastContainer } from '../../Services/CommonToaster';
-
-import Footer from "../Child/Footer/Footer";
-import { PostingAd } from "../../Services/authServices";
-
-const categories = ["Room", "House", "Boarding"];
-const locations = ["Matara Town", "Meddawaththa", "Wellamadama", "Gandara", "SK Town"];
+import React from "react";
+import { Link, useNavigate } from "react-router-dom";
+import BoardingBuildingImage from "../PostAd/assets/Boarding-Building.jpg";
+import RentalHouseImage from "../PostAd/assets/Rental-House.webp";
+import BoardingRoomImage from "../PostAd/assets/Boarding-Room.jpg";
 
 const PostAd = () => {
-
-  const navRef = useRef();
-
-    const showNavbar =()=>{
-        navRef.current.classList.toggle('active');
-    }
   const navigate = useNavigate();
 
-  const [values, setValues] = useState({
-    images: [],
-    title: "",
-    category: "",
-    price: "",
-    location: "",
-    contact: "",
-    description: "",
-    error: "",
-    loading: false,
-  });
+  const handleCategoryClick = (category) => {
+    // Navigate to the corresponding route based on the selected category
+    navigate(`/create-listing/${category.toLowerCase()}`);
+  };
 
-  const {
-    images,
-    title,
-    category,
-    price,
-    location,
-    contact,
-    description,
-    error,
-    loading,
-  } = values;
+  const containerStyle = {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    minHeight: "80vh", // Set your desired height
+    justifyContent: "center",
+  };
 
-  const handleChange = (e) =>
-  setValues({ ...values, [e.target.name]: e.target.value });
+  const buttonContainerStyle = {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: "20px", // Adjust the space between the buttons and profile link
+  };
 
-const handleSubmit = async (e) => {
-  e.preventDefault(); // Prevent the default form submission behavior
+  const buttonStyle = {
+    width: "400px", // Increase the width for larger buttons
+    height: "fit-content", // Adjust height based on content
+    margin: "15px", // Increase the margin for spacing between buttons
+    border: "2px solid #4A5568", // Set your desired border color
+    borderRadius: "10px", // Set your desired border radius
+    overflow: "hidden",
+    transition: "transform 0.2s ease-in-out",
+    textAlign: "center",
+  };
 
-  console.log('data', values);
+  const imageStyle = {
+    width: "100%", // Ensure the image takes up the full width of the button
+    height: "auto", // Maintain the aspect ratio of the image
+  };
 
-  try {
-    const result = await PostingAd(values);
-    console.log('result AD', result);
+  const textStyle = {
+    marginTop: "10px", // Space between image and text
+    fontSize: "20px",
+    fontWeight: "Bold",
+  };
 
-    if (result.status === 201) {
-      showSuccessToast('Successfully Posted');
-      navigate('/');
-    } else {
-      console.log('fail');
-      showErrorToast('Oops! Something went wrong.');
-    }
-  } catch (error) {
-    showErrorToast('Try Again.');
-  }
-};
-    
+
   return (
-    <>
-    <NavBar navRef={navRef} showNavBar={showNavbar} />
-    <div className="container d-flex justify-content-center align-items-center" >
-    <form className="form shadow rounded p-3 mt-5" onSubmit={handleSubmit}>
-      <h3 className="text-center mb-3">Create An Ad</h3>
-      <div className="mb-3 text-center">
-        <label htmlFor="image">
-          <div className="btn btn-secondary btn-sm">
-            <FaCloudUploadAlt size={30} /> Upload Image
-          </div>
-        </label>
-        <input type="file" id="image" style={{ display: "none" }} accept="image/*" multiple onChange={(e) => setValues({ ...values, images: e.target.files })} />
+    <main className="max-w-md px-2 mx-auto">
+      <h1 className="text-3xl text-center mt-20 font-bold">
+        Select Listing Category
+      </h1>
+      <div style={containerStyle}>
+        <div style={buttonContainerStyle}>
+          <button
+            className="mr-3"
+            style={buttonStyle}
+            onClick={() => handleCategoryClick("boarding-house")}
+            onMouseEnter={(e) =>
+              (e.currentTarget.style.transform = "scale(1.15)")
+            }
+            onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
+          >
+            <img
+              src={BoardingBuildingImage}
+              alt="Boarding Building"
+              style={imageStyle}
+            />
+            <div style={textStyle}>Boarding Building</div>
+          </button>
+          <button
+            className="mx-3"
+            style={buttonStyle}
+            onClick={() => handleCategoryClick("rental-house")}
+            onMouseEnter={(e) =>
+              (e.currentTarget.style.transform = "scale(1.15)")
+            }
+            onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
+          >
+            <img
+              src={RentalHouseImage}
+              alt="House Sell or Rent"
+              style={imageStyle}
+            />
+            <div style={textStyle}>House Sell or Rent</div>
+          </button>
+          <button
+            className="ml-3"
+            style={buttonStyle}
+            onClick={() => handleCategoryClick("boarding-room")}
+            onMouseEnter={(e) =>
+              (e.currentTarget.style.transform = "scale(1.15)")
+            }
+            onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
+          >
+            <img
+              src={BoardingRoomImage}
+              alt="Boarding Room"
+              style={imageStyle}
+            />
+            <div style={textStyle}>Boarding Room</div>
+          </button>
+        </div>
       </div>
-      <div className="mb-3">
-        <label className="form-label">Title</label>
-        <input type="text" className="form-control" name="title" value={title} onChange={handleChange} />
-      </div>
-      <div className="mb-3">
-        <select name="category" className="form-select" onChange={handleChange}>
-          <option value="">Select Category</option>
-          {categories.map((category) => (
-            <option value={category} key={category}>
-              {category}
-            </option>
-          ))}
-        </select>
-      </div>
-      <div className="mb-3">
-        <label className="form-label">Price</label>
-        <input type="number" className="form-control"  name="price"  value={price} onChange={handleChange} />
-      </div>
-      <div className="mb-3">
-        <select name="location" className="form-select" onChange={handleChange}>
-          <option value="">Select Location</option>
-          {locations.map((location) => (
-            <option value={location} key={location}>
-              {location}
-            </option>
-          ))}
-        </select>
-      </div>
-      <div className="mb-3">
-        <label className="form-label">Contact</label>
-        <input type="text" className="form-control" name="contact" value={contact} onChange={handleChange} />
-      </div>
-      <div className="mb-3">
-        <label className="form-label">Description</label>
-        <textarea name="description" cols="30" rows="3" className="form-control" value={description} onChange={handleChange}
-        ></textarea>
-      </div>
-      {error ? <p className="text-center text-danger">{error}</p> : null}
-      <div className="mb-3 text-center">
-        <button className="btn btn-secondary btn-sm" disabled={loading}>
-          Create
-        </button>
-      </div>
-    </form>
-    </div>
-    <Footer></Footer>
-    <CommonToastContainer/>
-    </>
+    </main>
   );
 };
 

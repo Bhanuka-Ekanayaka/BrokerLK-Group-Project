@@ -1,46 +1,60 @@
-
-import { FaBars } from 'react-icons/fa';
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import NavDropdown from 'react-bootstrap/NavDropdown';
 import logo from './assets/logo.png';
-import MenuBar from './MenuBar';
+import './Navbar.css';
+import { IoMdNotifications } from "react-icons/io";
 import { Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet';
+import NotifyBar from '../NotifyBar/NotifyBar';
 
-const NavBar = ({ showNavBar, navRef,title }) => {
-  
-    return (
-        <>
-            <Helmet>
-                <title> {title}</title>
-            </Helmet>
-            <header>
-                    <div className="title-content">
+const NavBar = () => {
 
-                        <button className='nav-btn' onClick={showNavBar}>
-                            <FaBars></FaBars>
-                        </button>
+   return (
+        <Navbar expand="lg" className="bg-body-tertiary fixed-top" >
 
-                        <img src={logo} alt="brand logo" />
+            <Container>
+                <Navbar.Brand as={Link} to="/">
+                    <img
+                        alt=""
+                        src={logo}
+                        width="40"
+                        height="30"
+                        className="d-inline-block align-top"
+                    />{'BrokerLk'}
 
-                        <div className="brand-title">
-                            <h1>BrokerLk.lk</h1>
-                            <p>Your home away  from home, at your fingertips</p>
+                </Navbar.Brand>
+
+                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                <Navbar.Collapse id="basic-navbar-nav">
+                    <Nav className="me-auto">
+                        <Nav.Link as={Link} to="/">Home</Nav.Link>
+                        <Nav.Link as={Link} to="/rental-post">Rental</Nav.Link>
+                        <NavDropdown title="Account" id="basic-nav-dropdown">
+
+                            <NavDropdown.Item href="#action/3.1">
+                                Profile
+                            </NavDropdown.Item>
+                            <NavDropdown.Item href="#action/3.2">DashBoard</NavDropdown.Item>
+                            <NavDropdown.Divider />
+                            <NavDropdown.Item as={Link} to="/login">
+                                Log Out
+                            </NavDropdown.Item>
+                        </NavDropdown>
+                    </Nav>
+                    <Nav>
+                        <div className="nav-btn">
+                            <Nav.Link as={Link} to='postad' >Post-Add</Nav.Link>
                         </div>
-                    </div>
-
-
-                    <nav className='additional'>
-
-                        <Link to='/login'>Sign-In</Link>
-                        <Link to='/postad'>Post-Add</Link>
-
-                    </nav>
-              
-            </header>
-
-            <MenuBar navRef={navRef}></MenuBar>
-
-        </>
-
+                        <Nav.Link href=''>
+                            {/* < IoMdNotifications style={{ fontSize: '25px' }} /> */}
+                            
+                            <NotifyBar/>
+                        </Nav.Link>
+                    </Nav>
+                </Navbar.Collapse>
+            </Container>
+        </Navbar>
     );
 }
 
