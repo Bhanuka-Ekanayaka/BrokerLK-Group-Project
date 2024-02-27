@@ -7,7 +7,7 @@ const getPost = require('../models/getPost');
 
 
 
-
+//home page request for card boarding room
 router.get('/boarding-room',async(req,res)=>{
     try{
         const response = await getPost.getBoardingRoomPost();
@@ -29,6 +29,55 @@ router.get('/boarding-room',async(req,res)=>{
     }
 })
 
+//home page request for the rental-house
+
+router.get('/rental-house',async(req,res)=>{
+    console.log('getting rental house req from home page');
+    try{
+        const response = await getPost.getRenatalHousePost();
+        if(response.success){
+            res.status(200).json({
+                success:true,
+                postData:response.result,
+                message:response.message
+                
+            });
+        }else{
+            res.status(500).json({
+                success:false,
+                message:response.message
+            })
+        }
+
+    } catch(err) {
+        console.log('cannot fetching a data'+err);
+    }
+})
+
+//home page request for the boarding building
+
+router.get('/boarding-building',async(req,res)=>{
+    console.log('getting request for the boarding building');
+    //here has a error in here add twice post add twcise
+    try{
+    const response = getPost.getBoardingBuildingPost();
+    if(response.success){
+        res.status(200).json({
+            sucess:true,
+            postData:response.result,
+            message:response.message
+        });
+    }else{
+        res.status(500).json({
+            success:false,
+            message:response.message
+        })
+    }        
+
+    }catch(err){
+        console.log('cannot fetching a data'+err);
+    }
+})
 
 
 //handling boarding room formdata uplaod

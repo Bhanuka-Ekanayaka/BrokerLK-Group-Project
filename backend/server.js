@@ -7,6 +7,7 @@ const postAdd =require('./routes/postAdd');
 const listingRoutes = require('./routes/CreateBoardingHouseRoute');
 const boardingHouseRoutes = require('./routes/CreateBoardingHouseRoute');
 const path = require('path');
+const description = require ('./routes/description');
 
 const app = express();
 const PORT = 5001;
@@ -19,8 +20,12 @@ app.use('/users',userRoute);
 app.use('/Reports', postReports);
 app.use('/postadd/boarding-house',boardingHouseRoutes);
 app.use('/postadd',postAdd);
+<<<<<<< HEAD
 app.use('/listing',listingRoutes);
 
+=======
+app.use('/description',description);
+>>>>>>> main
 
 
 app.use((err, req, res, next) => {
