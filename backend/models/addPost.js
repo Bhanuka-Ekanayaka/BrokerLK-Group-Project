@@ -24,6 +24,11 @@ const CreateBoardingRoom = async (formData) => {
             formData.beds,formData.description,formData.tenant,formData.kitchen,formData.bathroom,formData.size,post_ID
         ]);
 
+        //add data to the notify table
+        await connection.query('INSERT INTO notification_tb (username,description,date,time) VALUES(?,?,?,?)',[
+            formData.owner_id,formData.notifyDescription,formData.currrentDate,formData.currentTime
+        ]);
+
         await connection.commit();
         connection.release();
         console.log('transaction is succesffuly complete postid is'+ post_ID);

@@ -8,15 +8,14 @@ import Footer from "../../Child/Footer/Footer";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import NavBar from "../../Child/NavBar/NavBar";
-import { useState } from "react";
-import { Alert } from "react-bootstrap";
+import { useState, useEffect } from "react";
 import Message from "../Confirmationmsg/Message";
 import axios from 'axios';
-
+import moment from 'moment';
 
 const BoardingRoom = () => {
 
-    
+
     const [district, setDistrict] = useState('Colombo');
     const [size, setSize] = useState('');
     const [kitchen, setKitchen] = useState(0);
@@ -38,12 +37,27 @@ const BoardingRoom = () => {
     const [kithchenImage, setKitchenImage] = useState(null);
     const [additionalImage, setAdditionalImage] = useState(null);
     const [showAlert, setShowAlert] = useState(false);
+    const [currentTime, setCurrentTime] = useState('');
+    const [currrentDate, setCurrentDate] = useState('');
+    const notifyDescription = 'Your post is Successfully added to our website';
     const owner_id = '3';
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            const time = moment().format('hh:mm A');
+            const date = moment().format('DD/MM/YYYY');
+            setCurrentDate(date);
+            setCurrentTime(time);
+        }, 1000);
+
+        return () => clearInterval(interval);
+    }, [])
+
 
 
 
     const handleChange = (e) => {
-        const inputValue = e.target.value.replace(/\D/g,'');
+        const inputValue = e.target.value.replace(/\D/g, '');
         setNumber(inputValue);
         // Check if the entered value is a valid ten-digit mobile number
         const mobileNumberRegex = /^0\d{9}$/;
@@ -77,7 +91,10 @@ const BoardingRoom = () => {
                 mobileNumber,
                 addressLine1,
                 addressLine2,
-                owner_id
+                owner_id,
+                currentTime,
+                currrentDate,
+                notifyDescription
             };
 
             const formPhoto = new FormData();
@@ -106,14 +123,7 @@ const BoardingRoom = () => {
 
                 setShowAlert(true);
 
-                
 
-                // setTimeout(() => {
-                //     setShowAlert(false);
-                // }, 5000);
-
-             
-               
                 console.log('Images Upload SuccessFully', responseUplodPhotos.data);
             } catch (err) {
                 console.error('Image Uplaod or Form Data Upload error', (err));
@@ -122,7 +132,7 @@ const BoardingRoom = () => {
 
 
 
-         
+
 
             // For demonstration purposes, let's just log the data to the console
             console.log('Form data:', formData);
@@ -323,7 +333,7 @@ const BoardingRoom = () => {
 
                             <Form.Group className="mb-3" controlID="formMobileNumber">
                                 <Form.Label>Mobile Number</Form.Label>
-                                <Form.Control type="text" placeholder="0767454068" value={number} onChange={handleChange} isInvalid={!isValid} maxLength={10}  required />
+                                <Form.Control type="text" placeholder="0767454068" value={number} onChange={handleChange} isInvalid={!isValid} maxLength={10} required />
                                 <Form.Control.Feedback type="invalid">
                                     Please enter a valid ten-digit mobile number.
                                 </Form.Control.Feedback>
@@ -333,19 +343,10 @@ const BoardingRoom = () => {
                         <Button variant="primary" type="submit" style={{ marginBottom: '5px', marginRight: '5px' }} >
                             Submit
                         </Button>
-                    
+                        <h2>{currentTime}</h2>
+                        <h2>{currrentDate}</h2>
+
                         {showAlert && (
-                            // <div style={{
-                            //     position: 'fixed',
-                            //     top: '50%',
-                            //     left: '50%',
-                            //     transform: 'translate(-50%, -50%)',
-                            //     zIndex: 9999 // Ensure it's above other elements
-                            // }} data-aos="fade-down">
-                            //     <Alert variant="success" show={showAlert}  style={{ backgroundColor: '#f8d7da', color: '#721c24', border: '1px solid #f5c6cb' }}>
-                            //     <strong><i class="bi bi-emoji-smile-fill"></i> Success!</strong> Your data has been added successfully!
-                            //     </Alert>
-                            // </div>
                             <Message />
                         )}
 
