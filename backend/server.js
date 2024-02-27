@@ -20,12 +20,9 @@ app.use('/users',userRoute);
 app.use('/Reports', postReports);
 app.use('/postadd/boarding-house',boardingHouseRoutes);
 app.use('/postadd',postAdd);
-<<<<<<< HEAD
 app.use('/listing',listingRoutes);
 
-=======
 app.use('/description',description);
->>>>>>> main
 
 
 app.use((err, req, res, next) => {
