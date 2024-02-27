@@ -9,16 +9,17 @@ import Col from 'react-bootstrap/Col';
 import Collapse from 'react-bootstrap/Collapse';
 import HorozontalCard from '../../Rental/Child-HorizontalCard/HorozontalCard';
 import { Link } from 'react-router-dom';
+import { getClosestMatches } from 'fuzzy';
 import './SearchBar.css';
 
 
 
 
-const SearchBar = ({ postData,SearchData }) => {
+const SearchBar = ({ postData, SearchData }) => {
 
     console.log('This is Data get by the postData', postData);
-    console.log('This Data sent from the home page to rentalpage',SearchData);
-    
+    console.log('This Data sent from the home page to rentalpage', SearchData);
+
 
     const [open, setOpen] = useState(false);
 
@@ -30,8 +31,9 @@ const SearchBar = ({ postData,SearchData }) => {
     const [is_kitchen, setKitchen] = useState('');
     const [size, setSize] = useState(0);
     const [price, setPrice] = useState(1000000000000000);
-
+    const [suggestions, setSuggestions] = useState([]);
    
+
 
     const [filteredPostData, setfilteredPostData] = useState([]);
 
@@ -42,8 +44,8 @@ const SearchBar = ({ postData,SearchData }) => {
         filterItems(searchText, minTenants, minBed, size, price, is_kitchen);
     }, [postData])
 
-    useEffect(()=>{
-        if(SearchData){
+    useEffect(() => {
+        if (SearchData) {
             setMinTeanat(SearchData.minTenants);
             setType(SearchData.type);
             setSearchText(SearchData.searchText);
@@ -52,8 +54,9 @@ const SearchBar = ({ postData,SearchData }) => {
             setSize(SearchData.size);
             setPrice(SearchData.price);
         }
-    },[SearchData])
+    }, [SearchData])
 
+  
     // useEffect(() => {
     //     filterItems(searchText, minTenants, minBed, size, price, is_kitchen);
     // }, [searchText, minTenants, minBed, size, price, is_kitchen,postData])
@@ -65,7 +68,7 @@ const SearchBar = ({ postData,SearchData }) => {
 
             setfilteredPostData(postData.filter((data) => {
                 return (
-                    ((data.district.toLowerCase().includes(searchText.toLowerCase()) || data.address_line2.toLowerCase().includes(searchText.toLowerCase()) )&&
+                    ((data.district.toLowerCase().includes(searchText.toLowerCase()) || data.address_line2.toLowerCase().includes(searchText.toLowerCase())) &&
                         (data.no_tenants >= minTenants) &&
                         (data.no_bed >= minBed) &&
                         (data.room_size >= size) &&
@@ -113,14 +116,14 @@ const SearchBar = ({ postData,SearchData }) => {
 
 
                                         <Form.Group as={Col} lg={3} className="d-flex justify-content-center align-items-center">
-                                       
-                                            <Form.Select aria-label="Default select example" className='text-muted' value={type} onChange={(e)=>setType(e.target.value)}>
+
+                                            <Form.Select aria-label="Default select example" className='text-muted' value={type} onChange={(e) => setType(e.target.value)}>
                                                 <option value="1">All Types</option>
                                                 <option value="2">Boarding Room</option>
                                                 <option value="3">Boarding Building</option>
                                                 <option value="4">Renatal House</option>
                                             </Form.Select>
-                                      
+
                                         </Form.Group>
 
                                         <Form.Group as={Col} lg={3} className="d-flex justify-content-center align-items-center mx-auto">
@@ -136,7 +139,7 @@ const SearchBar = ({ postData,SearchData }) => {
 
 
 
-                                        <Form.Group as={Col}  lg={3} className="d-flex justify-content-center align-items-center" >
+                                        <Form.Group as={Col} lg={3} className="d-flex justify-content-center align-items-center" >
                                             <InputGroup >
                                                 <Form.Control
                                                     type="search"
@@ -146,7 +149,7 @@ const SearchBar = ({ postData,SearchData }) => {
                                                     value={searchText}
                                                     onChange={(e) => setSearchText(e.target.value)}
                                                 />
-                                                <Button className="btn-danger" id="button-addon2" type='submit' as={Link} to='/rental-post' onClick={(e)=>filterItems(searchText, minTenants, minBed, size, price, is_kitchen)}>
+                                                <Button className="btn-danger" id="button-addon2" type='submit' as={Link} to='/rental-post' onClick={(e) => filterItems(searchText, minTenants, minBed, size, price, is_kitchen)}>
                                                     <i class="bi bi-search"></i>
                                                 </Button>
                                             </InputGroup>
