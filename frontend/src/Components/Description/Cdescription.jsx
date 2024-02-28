@@ -5,6 +5,11 @@ import './Sdescription.css';
 import Sshow from './Sshow';
 import  { useState, useEffect } from 'react';
 import axios from 'axios';
+import Button from 'react-bootstrap/Button';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPhone } from '@fortawesome/free-solid-svg-icons';
+import { faComments } from '@fortawesome/free-solid-svg-icons';
+
 
 export default function Cdescription() {
   const [boardingHouseData, setBoardingHouseData] = useState(null);
@@ -30,6 +35,16 @@ export default function Cdescription() {
                 <Sshow/>
             </div>
             <div className='Dd3' >
+                <div className="d-grid gap-2 Dd4">
+                  <Button variant="primary" className="custom-primary-button" size="lg">
+                  <FontAwesomeIcon icon={faPhone} style={{color: "#ffffff", marginRight:'10px'}} />
+                     Call
+                  </Button>
+                  <Button variant="secondary" size="lg">
+                  <FontAwesomeIcon icon={faComments} style={{color: "#ffffff",marginRight:'10px' }} />
+                     Chat
+                  </Button>
+                </div>
                 <br/>
                 <h1>Name of the boarding house</h1>
                 <p className='Dp1'>Boarding Type:<br/>Monthly Fee:<br/>Number of rooms:<br/>Number of Barth Rooms:</p>

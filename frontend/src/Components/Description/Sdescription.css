@@ -5,21 +5,25 @@
 }
 
 .Dd1{
-    margin: 50px;
+    margin-top: 60px;
     margin-left: 200px;
     margin-right: 200px;
-    padding-bottom: 2px;
+    margin-bottom: 5px;
+    display: flex;
+    border: 1px solid rgb(70, 70, 70);
     background-color:rgb(221, 221, 221);
 }
 
 .Dd2{
-    padding-left: 125px;
-    padding-right: 125px;
-    padding-top: 50px;
+    width: 60%;
+    padding-left:0px;
+    padding-right:0px;
+    padding-top: 0px;
 }
 
 .Dd3{
-    margin: 5px;
+    width: 40%;
+    margin: 0px;
     background-color: white;
 }
 .Dd3 h1 {
@@ -31,6 +35,23 @@
     margin-bottom: 0px;
     margin-left: 10px;
 }
+
+.Dd4{
+    margin: 10px;
+}
+
+.custom-primary-button {
+    color: #fff; /* Text color */
+    background-color: #FF3951; /* Background color */
+    border-color: #FF3951; /* Border color */
+    font-weight: bold;
+}
+
+.custom-primary-button:hover {
+    background-color: #a00f1e; /* Background color on hover */
+    border-color: #a00f1e; /* Border color on hover */
+}
+
 
 @media (max-width: 1200px){
     .Dd1{
@@ -51,15 +72,15 @@
 @media (max-width: 992px){
     .Dd1{
         margin: 50px;
-        margin-left: 100px;
-        margin-right: 100px;
+        margin-left: 50px;
+        margin-right: 50px;
         background-color:rgb(221, 221, 221);
     }
     
     .Dd2{
-        padding-left: 75px;
-        padding-right: 75px;
-        padding-top: 30px;
+        padding-left: 50px;
+        padding-right: 50px;
+        padding-top: 20px;
     }
 
 }
@@ -67,8 +88,8 @@
 @media (max-width: 768px){
     .Dd1{
         margin: 50px;
-        margin-left: 50px;
-        margin-right: 50px;
+        margin-left: 0px;
+        margin-right: 0px;
         background-color:rgb(221, 221, 221);
     }
     

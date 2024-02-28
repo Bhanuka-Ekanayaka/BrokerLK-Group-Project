@@ -8,16 +8,14 @@ const Sshow = () => {
     
    
     return (
-        <Carousel data-bs-theme="dark">
+      <Carousel data-bs-theme="dark">
       <Carousel.Item>
         <img style={{height: '75vh', width:'auto'}}
           className="d-block w-100"
           src={im1}
           alt="First slide"
         />
-        <Carousel.Caption>
-         
-        </Carousel.Caption>
+        
       </Carousel.Item>
       <Carousel.Item>
         <img style={{height: '75vh'}}
@@ -25,9 +23,7 @@ const Sshow = () => {
           src={im2}
           alt="Second slide"
         />
-        <Carousel.Caption>
-        
-        </Carousel.Caption>
+       
       </Carousel.Item>
       <Carousel.Item>
         <img style={{height: '75vh'}}
@@ -35,9 +31,25 @@ const Sshow = () => {
           src={im3}
           alt="Third slide"
         />
-        <Carousel.Caption>
-         
-        </Carousel.Caption>
+       
+      </Carousel.Item>
+
+      <Carousel.Item>
+        <img style={{height: '75vh'}}
+          className="d-block w-100"
+          src={im3}
+          alt="Third slide"
+        />
+       
+      </Carousel.Item>
+
+      <Carousel.Item>
+        <img style={{height: '75vh'}}
+          className="d-block w-100"
+          src={im3}
+          alt="Third slide"
+        />
+       
       </Carousel.Item>
     </Carousel>
     );
