@@ -24,7 +24,6 @@ const Login = ({isAuthenticated, setisAuthenticated}) => {
       console.log('result login ', result)
     if(result.status === 201){
       setisAuthenticated(true);
-      localStorage.setItem('token',result.data.token);
       navigate('/')
     }else{
       console.log('fail')
