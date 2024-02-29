@@ -1,5 +1,4 @@
 const db = require('../db');
-//const nodemailer = require('nodemailer');
 
 const getUsers = async () => {
   try {
@@ -36,9 +35,9 @@ const GetuserID =async(id)=>{
   const addUser = async (userData) => {
     try {
       const connection = await db.getConnection();
-      const { Fullname, email, username, password, NIC, jobrole, contactno, address, city} = userData;
-      const sqlQuery = 'INSERT INTO users (Email, Username, Password, JobRole, Status) VALUES ( ?, ?, ?, ?, 1)';
-      const [result] = await connection.execute(sqlQuery, [ email, username, password, jobrole]);
+      const { email, username, password } = userData;
+      const sqlQuery = 'INSERT INTO users (Email, Username, Password, Status) VALUES ( ?, ?, ?, 1)';
+      const [result] = await connection.execute(sqlQuery, [ email, username, password ]);
       connection.release();
       return result.insertId;
     } catch (err) {
@@ -65,15 +64,15 @@ const GetuserID =async(id)=>{
     try {
       const connection = await db.getConnection();
   
-      const { Fullname, email, username, password, NIC, jobrole, contactno, address, city } = newuserData;
+      const {  email, username, password } = newuserData;
       let sqlQuery = '';
       let values = [];
   
       if (password) {
-        sqlQuery = 'UPDATE users SET  Email = ?, Username = ?, Password = ?, JobRole = ? WHERE ID = ?;';
+        sqlQuery = 'UPDATE users SET  Email = ?, Username = ?, Password = ? WHERE ID = ?;';
         values = [ email, username, password, jobrole, id];
       } else {
-        sqlQuery = 'UPDATE users SET  Email = ?, Username = ? JobRole = ? WHERE ID = ?;';
+        sqlQuery = 'UPDATE users SET  Email = ?, Username = ?  WHERE ID = ?;';
         values = [ email, username, jobrole, id];
       }
   

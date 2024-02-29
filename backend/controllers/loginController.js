@@ -25,13 +25,7 @@ const loginUser = async (req, res) => {
                 const token = jwt.sign({
                   userid : loginResult[0].ID,
                   username: loginResult[0].Username,
-                  fullname: loginResult[0].Fullname,
                   email: loginResult[0].Email,
-                  nic: loginResult[0].NIC,
-                  jobrole: loginResult[0].JobRole,
-                  contactno: loginResult[0].ContactNo,
-                  address: loginResult[0].Address,
-                  city: loginResult[0].City,
                   loginflag: loginResult[0].Loginflag,
                 }, process.env.JWT_SECRET, {
                   expiresIn: '1h',

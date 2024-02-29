@@ -31,14 +31,12 @@ const Register = () => {
     email: "",
     username: "",
     password: "",
-    jobrole: "",
     confirmPassword: "", // Add confirmPassword to the state
   });
 
   const [errorMessage, setErrorMessage] = useState({
     email: "",
     username: "",
-    jobrole: "",
     confirmPassword: "", // Add confirmPassword to the state
   });
 
@@ -99,13 +97,11 @@ const Register = () => {
       email: "",
       username: "",
       password: "",
-      jobrole: "",
       confirmPassword:"",
     });
     setErrorMessage({
       email: "",
       username: "",
-      jobrole: "",
       confirmPassword:"",
     });
   };
@@ -129,7 +125,7 @@ const Register = () => {
             className="text-white fs-2"
             style={{ fontFamily: "Courier New", fontWeight: 600 }}
           >
-            realBROKER
+            brokerLK
           </p>
           <strong>
             <small
@@ -179,21 +175,6 @@ const Register = () => {
                 label={"Confirm Password"}
                 handleChanges={handleChanges}
               />
-            </div>
-            <div className="input-group mb-3">
-              <FaLock className="icon" />
-              <CustomAutoComplete
-                data={formData.jobrole}
-                error={errorMessage.jobrole}
-                list={[{ label: "Tenant" }, { label: "User" }]}
-                name={"jobrole"}
-                label={"Job Role"}
-                handleChanges={handleChanges}
-                setFormData={setFormData}
-              />
-              {errorMessage.jobrole && (
-                <label className="error-text">{errorMessage.jobrole}</label>
-              )}
             </div>
             <div className="input-group mb-1">
               <FaLock className="icon" />
