@@ -4,13 +4,12 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import logo from './assets/logo.png';
 import './Navbar.css';
-import { IoMdNotifications } from "react-icons/io";
 import { Link } from 'react-router-dom';
 import NotifyBar from '../NotifyBar/NotifyBar';
 
 const NavBar = () => {
-
-   return (
+   
+    return (
         <Navbar expand="lg" className="bg-body-tertiary fixed-top" >
 
             <Container>
@@ -47,9 +46,7 @@ const NavBar = () => {
                             <Nav.Link as={Link} to='postad' >Post-Add</Nav.Link>
                         </div>
                         <Nav.Link href=''>
-                            {/* < IoMdNotifications style={{ fontSize: '25px' }} /> */}
-                            
-                            <NotifyBar/>
+                            <NotifyBar />
                         </Nav.Link>
                     </Nav>
                 </Navbar.Collapse>

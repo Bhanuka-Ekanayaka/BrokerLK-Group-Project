@@ -16,7 +16,7 @@ const Cards = ({ title, animation, CardAnimate, type }) => {
             try {
                 const response = await axios.get(`http://localhost:5001/postadd/${type}`);
                 console.log('Response:', response.data); // Log the response data
-                setCard(response.data.postData[0].slice(0,4));
+                setCard(response.data.postData[0].slice(0,12));
             } catch (err) {
                 console.error('can not fetch the card data' + err);
             }
