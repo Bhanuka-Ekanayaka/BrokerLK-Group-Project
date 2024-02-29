@@ -4,40 +4,45 @@ import Image from 'react-bootstrap/Image';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from "react-bootstrap/esm/Button";
+import { useEffect } from "react";
 
 
-const NotifyShow = () => {
+
+
+const NotifyShow = ({ mynotify,markasread }) => {
+
+    useEffect(()=>{
+
+    },[mynotify])
+
+
     return (
         <>
             <div className="custom-notfycomponent" >
                 <Container>
 
-                    <Row className="my-2" style={{ backgroundColor: '#F8F9FA' }}>
-                        <div className="d-flex justify-content-around align-items-center" style={{ height: '100px', width: 'auto' }}>
-                            <Col lg={4}>
-                                <Image src={Img} className="custom-image-sidebar" roundedCircle></Image>
-                            </Col>
-                            <Col lg={8}>
-                                <h8>Successfully Added your Add to the website.</h8>
-                                <div className="notify-tools d-flex justify-content-end align-items-center">
-                                    <Button size='sm' variant="danger">Mark as Read</Button>
-                                    <div>  <i class="bi bi-trash2-fill"></i></div>
-                                </div>
-                            </Col>
-                        </div>
-
-                        <div className="d-flex justify-content-around align-items-center" style={{ height: '100px', width: 'auto' }}>
-                            <Col lg={4}>
-                                <Image src={Img} className="custom-image-sidebar"  roundedCircle></Image>
-                            </Col>
-                            <Col lg={8}>
-                                <h8>Your add will be shown soon in website</h8>
-                                <div className="notify-tools d-flex justify-content-end ">
-                                    <Button size='sm' variant="danger">Mark as Read</Button>
-                                    <div>  <i class="bi bi-trash2-fill"></i></div>
-                                </div>
-                            </Col>
-                        </div>
+                    <Row className="my-1">
+                        {Array.isArray(mynotify) && mynotify.map(detail => (
+                            <div className="mark-read" style={{ backgroundColor: detail.mark_as_read === 0 ? '#CCCCCC' : '#F8F9FA' }} key={detail.notify_id}>
+                                <Col lg={3}>
+                                    <Image src={Img} className="custom-image-sidebar mx-auto" roundedCircle></Image>
+                                </Col>
+                                <Col lg={9}>
+                                    <div>
+                                        <p style={{ marginBottom: '0', fontSize: '11px' }} className="text-muted d-flex justify-content-end ">{detail.date} {detail.time}</p>
+                                        <p className="text-muted" style={{ marginBottom: '0' }}><small>{detail.description}</small></p>
+                                    </div>
+                                    <div className="notify-tools">
+                                        {detail.mark_as_read === 0 ?
+                                            <Button size='sm' variant="danger" className="mx-1" onClick={(e) => markasread(detail.notify_id)}>Mark as Read</Button>
+                                            :
+                                            <div></div>
+                                        }
+                                        <div className="mx-1">  <i class="bi bi-trash2-fill"></i></div>
+                                    </div>
+                                </Col>
+                            </div>
+                        ))}
                     </Row>
 
                 </Container>
