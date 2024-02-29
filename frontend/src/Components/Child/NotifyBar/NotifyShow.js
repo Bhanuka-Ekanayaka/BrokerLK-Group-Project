@@ -9,7 +9,7 @@ import { useEffect } from "react";
 
 
 
-const NotifyShow = ({ mynotify,markasread }) => {
+const NotifyShow = ({ mynotify,markasread,deleteNotify}) => {
 
     useEffect(()=>{
 
@@ -38,7 +38,7 @@ const NotifyShow = ({ mynotify,markasread }) => {
                                             :
                                             <div></div>
                                         }
-                                        <div className="mx-1">  <i class="bi bi-trash2-fill"></i></div>
+                                        <button onClick={(e)=>deleteNotify(detail.notify_id)}><div className="mx-1">  <i class="bi bi-trash2-fill"></i></div></button>
                                     </div>
                                 </Col>
                             </div>
