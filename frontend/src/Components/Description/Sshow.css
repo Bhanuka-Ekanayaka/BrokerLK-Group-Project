@@ -1,4 +1,18 @@
-.Si1{
+
+
+.horizontal-list {
+    list-style-type: none; /* Remove default bullet points */
+    padding: 0; /* Remove default padding */
+    margin: 0; /* Remove default margin */
+    display: flex; /* Use flexbox to display list items in one row */
+  }
+  
+  .horizontal-list li {
+    margin-right: 10px; /* Add spacing between list items */
+    
+  }
+  
+  .horizontal-list li img{
+    height: 75px;
     width: auto;
-    height: auto;
-}
+  }
