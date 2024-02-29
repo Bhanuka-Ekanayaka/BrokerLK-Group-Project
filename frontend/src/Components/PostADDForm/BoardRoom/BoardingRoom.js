@@ -39,7 +39,7 @@ const BoardingRoom = () => {
     const [showAlert, setShowAlert] = useState(false);
     const [currentTime, setCurrentTime] = useState('');
     const [currrentDate, setCurrentDate] = useState('');
-    const notifyDescription = 'Your post is Successfully added to our website';
+    const notifyDescription = 'Your new post is added successfully to our website.';
     const owner_id = '3';
 
     useEffect(() => {

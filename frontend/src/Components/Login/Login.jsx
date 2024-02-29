@@ -14,7 +14,7 @@ import { useAuth } from '../../Context/AuthContext';
 const Login = ({isAuthenticated, setisAuthenticated}) => {
 
   const { Login } = useAuth();
-  const [ formData, setFormData ] = useState({ username: 'admin5@gmail.com', password: 'admin' });
+  const [ formData, setFormData ] = useState({ username: 'test@gmail.com', password: 'test' });
   const navigate = useNavigate();
 
   const handleLogin = async() => {
@@ -24,6 +24,7 @@ const Login = ({isAuthenticated, setisAuthenticated}) => {
       console.log('result login ', result)
     if(result.status === 201){
       setisAuthenticated(true);
+      localStorage.setItem('token',result.data.token);
       navigate('/')
     }else{
       console.log('fail')

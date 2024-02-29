@@ -17,3 +17,18 @@
     object-fit: cover;
     object-position: center;
 }
+
+.custom-notfycomponent .mark-read{
+    height: 100px;
+    width: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    /* background-color: #CCCCCC; */
+}
+
+.custom-notfycomponent .notify-tools{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
