@@ -6,12 +6,20 @@ import logo from './assets/logo.png';
 import './Navbar.css';
 import { Link } from 'react-router-dom';
 import NotifyBar from '../NotifyBar/NotifyBar';
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
+import Usertoken from '../../../Services/token.userToken';
 
 const NavBar = () => {
 
+    const user = Usertoken();
+    const [userLogin, setUserLogin] = useState(false);
+    console.log(user);
 
-    const [userLogin, setUserLogin] = useState(true);
+    useEffect(()=>{
+        if(user !== null){
+            setUserLogin(true);
+        }
+    },[user])
 
     return (
         <Navbar expand="lg" className="bg-body-tertiary fixed-top" >
@@ -55,7 +63,7 @@ const NavBar = () => {
                         <Nav>
 
                             <div className="nav-btn">
-                                <Nav.Link as={Link} to='postad' >Post-Add</Nav.Link>
+                                <Nav.Link as={Link} to='/postad' >Post-Add</Nav.Link>
                             </div>
                             <Nav.Link href=''>
                                 <NotifyBar />

@@ -15,3 +15,6 @@ export const Usertoken = () => {
   }
   return null;
 };
+
+
+export default Usertoken;

@@ -12,10 +12,11 @@ import { useState, useEffect } from "react";
 import Message from "../Confirmationmsg/Message";
 import axios from 'axios';
 import moment from 'moment';
+import Usertoken from "../../../Services/token.userToken";
 
 const BoardingRoom = () => {
 
-
+    const token = Usertoken();
     const [district, setDistrict] = useState('Colombo');
     const [size, setSize] = useState('');
     const [kitchen, setKitchen] = useState(0);
@@ -41,6 +42,7 @@ const BoardingRoom = () => {
     const [currrentDate, setCurrentDate] = useState('');
     const notifyDescription = 'Your new post is added successfully to our website.';
     const owner_id = '3';
+    //const owner_id = user.username;
 
     useEffect(() => {
         const interval = setInterval(() => {

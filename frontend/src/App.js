@@ -47,26 +47,31 @@ function App() {
             path="/login"
             element={<Login updateAuthentication={setIsAuthenticated} />}
           />
-          <Route path="/register" element={<Register />} />
-
-          <Route path="/postadd" element={<PostAd />} />
           <Route path="/forgotpassword" element={<ForgotPassword />} />
-          <Route path="/Otpinput" element={<Otpinpu />} />
-          <Route path="/Welcome" element={<Welcome />} />
-          <Route path="/postad" element={<PostAd />} />
-          <Route
-            path="/create-listing/rental-house"
-            element={<CreateListingRentalHouse />}
-          />
-          <Route
-            path="/create-listing/boarding-house"
-            element={<CreateListingBoardingHouse />}
-          />
-          <Route
-            path="/create-listing/boarding-room"
-            element={<BoardingRoom />}
-          />
+          <Route path="/register" element={<Register />} />
           <Route path="/Description" element={<Cdescription />} />
+          {isAuthenticated ?
+            <>
+              <Route path="/postadd" element={<PostAd />} />
+              <Route path="/Otpinput" element={<Otpinpu />} />
+              <Route path="/Welcome" element={<Welcome />} />
+              <Route path="/postad" element={<PostAd />} />
+              <Route
+                path="/create-listing/rental-house"
+                element={<CreateListingRentalHouse />}
+              />
+              <Route
+                path="/create-listing/boarding-house"
+                element={<CreateListingBoardingHouse />}
+              />
+              <Route
+                path="/create-listing/boarding-room"
+                element={<BoardingRoom />}
+              />
+            </>
+            :
+            <>
+            </>}
         </Routes>
       </Router>
     </div>
