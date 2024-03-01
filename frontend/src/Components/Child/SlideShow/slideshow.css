@@ -3,6 +3,14 @@
     left: 85%;
 }
 
+.Cover-Image .cover-image-size{
+    height: 100vh;
+    width: 100vw;
+    object-fit: cover;
+    object-position: center;
+    overflow: hidden;
+}
+
 .Cover-Image .btn-primary{
     --bs-btn-bg:black;
     --bs-btn-border-color: black;
@@ -23,6 +31,10 @@
     .Cover-Image .custom-position{
         left: 85%;
     }
+
+    .Cover-Image .cover-image-size{
+        height: auto;
+    }
   }
 
   @media (max-width: 600px) {
@@ -31,5 +43,9 @@
     }
     .Cover-Image .custom-position{
         left: 80%;
+    }
+
+    .Cover-Image .cover-image-size{
+        height: auto;
     }
   }
