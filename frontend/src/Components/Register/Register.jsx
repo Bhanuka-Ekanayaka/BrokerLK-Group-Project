@@ -50,11 +50,11 @@ const Register = () => {
     const validationErrors = validateUser(formData);
     setErrorMessage(validationErrors);
 
-    if (Object.values(validationErrors).some((error) => error !== "")) {
-      console.log(validationErrors);
-      showErrorToast("Enter valid Input");
-      return;
-    }
+    // if (Object.values(validationErrors).some((error) => error !== "")) {
+    //   console.log(validationErrors);
+    //   showErrorToast("Enter valid Input");
+    //   return;
+    // }
 
     try {
       const response = await userServices.createUser(formData);
