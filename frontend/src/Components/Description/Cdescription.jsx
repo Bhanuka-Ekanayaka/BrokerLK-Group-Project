@@ -9,6 +9,7 @@ import Button from 'react-bootstrap/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPhone } from '@fortawesome/free-solid-svg-icons';
 import { faComments } from '@fortawesome/free-solid-svg-icons';
+import Map from './map';
 
 
 export default function Cdescription() {
@@ -50,7 +51,9 @@ export default function Cdescription() {
                 <p className='Dp1'>Boarding Type:<br/>Monthly Fee:<br/>Number of rooms:<br/>Number of Barth Rooms:</p>
                 <h3><br/>Description:</h3>
             </div>
+            
         </div>
+        <Map/>
         <Footer/>
     </div>
   )

@@ -5,11 +5,15 @@ import { Link } from 'react-router-dom';
 import Image from './Inputimage/verifiy.jpg';
 import Otpinput from 'otp-input-react';
 import { useState } from 'react';
+import {CgSpinner} from "react-icons/cg";
+import {PhoneInput} from "react-phone-input-2";
 
 
 
 export default function Otpinpu() {
-  const [otp , setOtp] = useState("")
+  const [otp , setOtp] = useState("");
+  const [ph , setph] = useState("");
+  const [loading ,setLoading] = useState(false);
   return (
     <div className=' d-flex justify-content-center align-items-center min-vh-100'>
       <div className='oc1 '>
@@ -19,16 +23,44 @@ export default function Otpinpu() {
             <p className='op3'>Please enter the 6-digit code sent to your <br/>
 email contact.uiuxexperts@gmail.com for <br></br>verification.
             </p>
-            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '20vh' }}className='od4'>
-              <>  
-                <div>
+            <div style={{  justifyContent: 'center', alignItems: 'center', height: '20vh' }}className='od4 '>
+              {/*<>  
+                <div   className='parent '>
                   <Otpinput value={otp} onChange={setOtp} OTPLength ={6} otpType = 'number' disabled={false} autoFocus className="otp-container"   ></Otpinput>
                 </div>
-              </> 
-            </div>
+            
            
-            <div className="d-flex justify-content-center align-items-center" style={{ height: '30px' }}>
-                <button  className="custom-button custom-button-danger  ">Verify</button>
+           
+              <div className="d-flex justify-content-center align-items-center" style={{ height: '50px' }}>  
+                  <button  className="custom-button custom-button-danger   "> 
+                  {
+
+                    loading
+                  }
+                  <span > Verify</span>
+                  
+                  </button> 
+              </div>
+                </>*/}
+              <> 
+                <div   className='parent '>
+                  <PhoneInput country ={'in'} value ={ph}   onChange = {setph}/>  
+                </div>
+              
+            
+            
+                <div className="d-flex justify-content-center align-items-center" style={{ height: '50px' }}>  
+                    <button  className="custom-button custom-button-danger   "> 
+                    {
+
+                      loading
+                    }
+                    <span > Verify</span>
+                    
+                    </button> 
+                </div>
+              
+              </>
             </div>
             <div  className=" justify-content-center align-items-center">
                 <p className='op1'>Didn’t receive any code? Resend Again</p>

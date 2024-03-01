@@ -138,15 +138,25 @@ h2{
 
 .otp-container{
    
-    font-size: 10px;
-   
+    font-size: 5px;
+   margin-right: 0px;
     
    text-align: center;
 
 }
 
+.spinner{
+    align-items: center;
+}
+
 .od1{
     padding-left: 10px;
+}
+.parent {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
 }
 
 
