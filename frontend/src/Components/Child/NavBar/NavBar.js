@@ -6,9 +6,13 @@ import logo from './assets/logo.png';
 import './Navbar.css';
 import { Link } from 'react-router-dom';
 import NotifyBar from '../NotifyBar/NotifyBar';
+import { useState } from 'react';
 
 const NavBar = () => {
-   
+
+
+    const [userLogin, setUserLogin] = useState(true);
+
     return (
         <Navbar expand="lg" className="bg-body-tertiary fixed-top" >
 
@@ -29,26 +33,42 @@ const NavBar = () => {
                     <Nav className="me-auto">
                         <Nav.Link as={Link} to="/">Home</Nav.Link>
                         <Nav.Link as={Link} to="/rental-post">Rental</Nav.Link>
-                        <NavDropdown title="Account" id="basic-nav-dropdown">
+                        {userLogin ?
+                            <NavDropdown title="Account" id="basic-nav-dropdown">
+                                <NavDropdown.Item href="#action/3.1">
+                                    Profile
+                                </NavDropdown.Item>
+                                <NavDropdown.Item href="#action/3.2">DashBoard</NavDropdown.Item>
+                                <NavDropdown.Divider />
+                                <NavDropdown.Item as={Link} to="/login">
+                                    Log Out
+                                </NavDropdown.Item>
+                            </NavDropdown>
+                            :
+                            <div></div>
+                        }
 
-                            <NavDropdown.Item href="#action/3.1">
-                                Profile
-                            </NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.2">DashBoard</NavDropdown.Item>
-                            <NavDropdown.Divider />
-                            <NavDropdown.Item as={Link} to="/login">
-                                Log Out
-                            </NavDropdown.Item>
-                        </NavDropdown>
+                        <Nav.Link as={Link} to='#about-us'>About us</Nav.Link>
                     </Nav>
-                    <Nav>
-                        <div className="nav-btn">
-                            <Nav.Link as={Link} to='postad' >Post-Add</Nav.Link>
-                        </div>
-                        <Nav.Link href=''>
-                            <NotifyBar />
-                        </Nav.Link>
-                    </Nav>
+
+                    {userLogin ?
+                        <Nav>
+
+                            <div className="nav-btn">
+                                <Nav.Link as={Link} to='postad' >Post-Add</Nav.Link>
+                            </div>
+                            <Nav.Link href=''>
+                                <NotifyBar />
+                            </Nav.Link>
+
+                        </Nav>
+                        :
+                        <Nav>
+                            <div className="nav-btn">
+                                <Nav.Link as={Link} to='login' >Sign-In</Nav.Link>
+                            </div>
+                        </Nav>
+                    }
                 </Navbar.Collapse>
             </Container>
         </Navbar>

@@ -1,8 +1,7 @@
 const express = require('express');
 const cors = require('cors');
-const authRoutes = require('./routes/authRoutes');
-const userRoutes = require('./routes/userRoutes');
-const adRoutes = require('./routes/adRoutes');
+const userRoute = require('./routes/userRoutes');
+const loginRoute = require('./routes/loginRoute');const adRoutes = require('./routes/adRoutes');
 const postReports = require('./routes/postReports');
 const postAdd =require('./routes/postAdd');
 const path = require('path');
@@ -16,12 +15,13 @@ app.use(cors());
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 app.use(express.json());
-app.use(authRoutes);
 app.use(adRoutes);
 app.use('/Reports', postReports);
 app.use('/postadd',postAdd);
 app.use('/description',description);
 app.use('/notification',Notification);
+app.use('/',loginRoute)
+app.use('/users',userRoute);
 
 
 app.use((err, req, res, next) => {
