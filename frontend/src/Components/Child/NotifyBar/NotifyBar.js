@@ -8,6 +8,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import './NotifyBar.css';
 import NotifyShow from './NotifyShow';
+import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 import axios from 'axios';
 
 const NotifyBar = () => {
@@ -16,18 +17,35 @@ const NotifyBar = () => {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    const username = '3';
+    //const username = '3';
+    const [username, setUserName] = useState('3');
     const [mynotify, setMyNotify] = useState([]);
     const [count, setCount] = useState(0);
-    const [reload,setReload] = useState(false);
-   
+    const [reload, setReload] = useState(false);
+
+    const markasallread = async (username) => {
+        try {
+
+            const response = await axios.put(`http://localhost:5001/notification/details/update-all/${username}`);
+            console.log('all notification mark as read', response.data);
+            if (response.data.success) {
+                setReload(!reload);
+            } else {
+                console.log('cannot mark all notify read');
+            }
+        } catch (err) {
+            console.log('All read notifications are deleted' + err);
+        }
+    }
+
 
     const markasread = async (notifyid) => {
         try {
             const response = await axios.put(`http://localhost:5001/notification/details/update/${notifyid}`);
-            console.log('update reqest sent to the backend',response);
-            if (response.success) {
+            console.log('update notify reqest sent to the backend', response.data);
+            if (response.data.success) {
                 console.log('identify your notify is read');
+                // setUserName('3');
                 setReload(!reload);
             } else {
                 console.log('cannot update the backend table');
@@ -38,24 +56,57 @@ const NotifyBar = () => {
         }
     }
 
-    const fetchNotifyData = async (username) => {
+    const deleteAllReadNotify = async (username) => {
         try {
-            const response = await axios.get(`http://localhost:5001/notification/details/${username}`);
-            setMyNotify(response.data.result[0]);
+            const response = await axios.delete(`http://localhost:5001/notification/details/delete-all/${username}`);
+            if (response.data.success) {
+                console.log('all read data are deleted', response);
+                setReload(!reload);
+            } else {
+                console.log('all read notification are not deleted');
+            }
         } catch (err) {
-            console.log('cannot fetch the notification data' + err);
+            console.log('cannot delete all read notify' + err);
         }
     }
 
-    useEffect(() => {  
+    const deleteNotify = async (notifyid) => {
+        try {
+            const response = await axios.delete(`http://localhost:5001/notification/details/delete/${notifyid}`);
+            console.log('delete the notify', response.data);
+            if (response.data.success) {
+                console.log('delete your notofucation');
+                //setUserName('3');
+                setReload(!reload);
+            } else {
+                console.log('cannot delete your notofiction');
+            }
+
+        } catch (err) {
+            console.log('cannot delete the notify' + err);
+        }
+    }
+
+
+
+    useEffect(() => {
+        const fetchNotifyData = async (username) => {
+            try {
+                const response = await axios.get(`http://localhost:5001/notification/details/${username}`);
+                console.log('notify data mine', response);
+                setMyNotify(response.data.result[0]);
+            } catch (err) {
+                console.log('cannot fetch the notification data' + err);
+            }
+        }
         fetchNotifyData(username);
-    }, [username,reload])
+    }, [username, reload])
 
     useEffect(() => {
         setCount(mynotify.filter(notify => notify.mark_as_read === 0));
-    }, [mynotify])
+    }, [mynotify, reload])
 
-  
+
 
 
     return (
@@ -90,24 +141,34 @@ const NotifyBar = () => {
                             <Container>
                                 <Nav >
                                     <NavDropdown title="Notifications" id="basic-nav-dropdown">
-                                        <NavDropdown.Item href="#action/3.1">Mark All as Read</NavDropdown.Item>
-                                        <NavDropdown.Item href="#action/3.1">Delete All</NavDropdown.Item>
+                                        <NavDropdown.Item onClick={(e) => markasallread(username)}>Mark All as Read</NavDropdown.Item>
+                                        <NavDropdown.Item onClick={(e) => deleteAllReadNotify(username)}>Delete All Read</NavDropdown.Item>
                                     </NavDropdown>
                                 </Nav>
                                 <Nav>
-                                    <Nav.Link>
-                                        <i class="bi bi-book-fill"></i>
+                                    <Nav.Link onClick={(e) => markasallread(username)}>
+                                        <OverlayTrigger
+                                            placement="top"
+                                            overlay={<Tooltip>Mark All as Read</Tooltip>}
+                                        >
+                                            <i class="bi bi-book-fill"></i>
+                                        </OverlayTrigger>
                                     </Nav.Link>
 
-                                    <Nav.Link>
-                                        <i class="bi bi-trash2-fill"></i>
+                                    <Nav.Link onClick={(e) => deleteAllReadNotify(username)}>
+                                        <OverlayTrigger
+                                            placement="top"
+                                            overlay={<Tooltip>Delete All Read</Tooltip>}
+                                        >
+                                            <i class="bi bi-trash3-fill"></i>
+                                        </OverlayTrigger>
                                     </Nav.Link>
                                 </Nav>
 
                             </Container>
                         </Navbar>
                         <Container>
-                            <NotifyShow mynotify={mynotify} markasread={markasread}/>
+                            <NotifyShow mynotify={mynotify} markasread={markasread} deleteNotify={deleteNotify} />
                         </Container>
 
                     </div>
