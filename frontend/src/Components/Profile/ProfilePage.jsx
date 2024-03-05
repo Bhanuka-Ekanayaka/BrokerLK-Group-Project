@@ -1,13 +1,11 @@
-
-
 import React from 'react'
 import Template from '../Template/Template'
 
-export default function About() {
-    const page = 1;
+export default function ProfilePage() {
+    const page = 0;
   return (
-    <div>
+   
       <Template page={page} />
-    </div>
+    
   )
 }
