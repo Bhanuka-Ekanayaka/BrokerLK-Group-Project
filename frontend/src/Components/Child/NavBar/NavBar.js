@@ -43,10 +43,10 @@ const NavBar = () => {
                         <Nav.Link as={Link} to="/rental-post">Rental</Nav.Link>
                         {userLogin ?
                             <NavDropdown title="Account" id="basic-nav-dropdown">
-                                <NavDropdown.Item href="#action/3.1">
+                                <NavDropdown.Item as={Link} to="/profile">
                                     Profile
                                 </NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.2">DashBoard</NavDropdown.Item>
+                                <NavDropdown.Item as={Link} to="/dashboard">DashBoard</NavDropdown.Item>
                                 <NavDropdown.Divider />
                                 <NavDropdown.Item as={Link} to="/login">
                                     Log Out
@@ -56,7 +56,7 @@ const NavBar = () => {
                             <div></div>
                         }
 
-                        <Nav.Link as={Link} to='#about-us'>About us</Nav.Link>
+                        <Nav.Link as={Link} to='about'>About us</Nav.Link>
                     </Nav>
 
                     {userLogin ?
