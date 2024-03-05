@@ -20,6 +20,9 @@ import CreateListingBoardingHouse from "./Components/PostAd/CreateListingBoardin
 import CreateListingBoardingRoom from "./Components/PostAd/CreateListingBoardingRoom";
 import BoardingRoom from "./Components/PostADDForm/BoardRoom/BoardingRoom";
 import Cdescription from "./Components/Description/Cdescription";
+import ProfilePage from "./Components/Profile/ProfilePage";
+import TenentComponenet from "./Components/DashBoard/Tenent/TenentComponenet";
+
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -68,6 +71,9 @@ function App() {
                 path="/create-listing/boarding-room"
                 element={<BoardingRoom />}
               />
+               <Route path="/profile" element={<ProfilePage/>} />
+               <Route path="/dashboard/tenent" element={<TenentComponenet/>} />
+               
             </>
             :
             <>
