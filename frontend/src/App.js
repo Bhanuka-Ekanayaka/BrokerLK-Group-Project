@@ -20,6 +20,14 @@ import CreateListingBoardingHouse from './Components/PostAd/CreateListingBoardin
 import CreateListingBoardingRoom from './Components/PostAd/CreateListingBoardingRoom';
 import BoardingRoom from './Components/PostADDForm/BoardRoom/BoardingRoom';
 import Cdescription from './Components/Description/Cdescription';
+import Template from './Components/Template/Template';
+import ProfilePage from './Components/Profile/ProfilePage';
+import DashBoard from './Components/DashBoard/DashBoard';
+
+import Bills from './Components/DashBoard/Tenent/Bills';
+import Tenent from './Components/DashBoard/Tenent/Tenent';
+
+
 
 
 function App() {
@@ -45,6 +53,19 @@ function App() {
           <Route path="/create-listing/boarding-house" element={<CreateListingBoardingHouse />} />
           <Route path="/create-listing/boarding-room" element={<BoardingRoom />} />
           <Route path='/Description' element={<Cdescription/>}/>
+
+
+          <Route path='/template' element={<Template/>} />
+          <Route path='/profile' element={<ProfilePage/>} />
+         
+          <Route path='/about' element={<About/>} />
+          <Route path='/dashboard' element={<DashBoard/>} />
+        
+          <Route path='/bills' element={<Bills/>} />
+          <Route path='/tenent' element={<Tenent/>} />
+          
+          
+        
 
         </Routes>
     </Router>
