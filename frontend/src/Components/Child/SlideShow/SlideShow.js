@@ -7,7 +7,7 @@ import img from './Assets/Cover.jpg';
 const SlideShow = () => {
   return (
     <div className='position-relative Cover-Image'>
-    <Image src={img} fluid />
+    <Image src={img} className='cover-image-size' fluid />
     <Button href ="#find" className='position-absolute custom-position'>Get Started</Button>
   </div>
   );
