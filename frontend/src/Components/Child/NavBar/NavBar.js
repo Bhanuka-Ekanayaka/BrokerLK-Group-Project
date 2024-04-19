@@ -21,6 +21,10 @@ const NavBar = () => {
         }
     },[user])
 
+    const logout = () => {
+        localStorage.removeItem('token');
+      };
+
     return (
         <Navbar expand="lg" className="bg-body-tertiary fixed-top" >
 
@@ -48,7 +52,7 @@ const NavBar = () => {
                                 </NavDropdown.Item>
                                 <NavDropdown.Item as={Link} to="/dashboard">DashBoard</NavDropdown.Item>
                                 <NavDropdown.Divider />
-                                <NavDropdown.Item as={Link} to="/login">
+                                <NavDropdown.Item as={Link} to="/login" onClick={logout}>
                                     Log Out
                                 </NavDropdown.Item>
                             </NavDropdown>
