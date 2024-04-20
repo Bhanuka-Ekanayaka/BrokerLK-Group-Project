@@ -10,6 +10,7 @@ import './NotifyBar.css';
 import NotifyShow from './NotifyShow';
 import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 import axios from 'axios';
+import Usertoken from '../../../Services/token.userToken';
 
 const NotifyBar = () => {
 
@@ -17,11 +18,14 @@ const NotifyBar = () => {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    //const username = '3';
-    const [username, setUserName] = useState('3');
+    const token = Usertoken();
+
+    const [username,setUserName] = useState(token.userid);
     const [mynotify, setMyNotify] = useState([]);
     const [count, setCount] = useState(0);
     const [reload, setReload] = useState(false);
+
+    console.log("This is username"+username);
 
     const markasallread = async (username) => {
         try {
