@@ -59,7 +59,6 @@ export default function ProfilePageComponent() {
                       </div>
                     </div>
                     <div className='profile_details'>
-
                       <h4>{results[0].Email}</h4>
                       <h6>{results[0].contact_number}</h6>
                     </div>
