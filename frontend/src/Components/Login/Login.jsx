@@ -4,8 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "../Login/Login.css";
 import validateUser from "../../Services/validate.userLogin";
 import { Usertoken } from "../../Services/token.userToken";
-import "./LoginAssets/image.png";
-import image from "./LoginAssets/image.png";
+import img from "./LoginAssets/image.png";
 import google from "./LoginAssets/google.png";
 import { FaUser, FaLock } from "react-icons/fa";
 import {
@@ -186,7 +185,7 @@ const Login = ({ updateAuthentication }) => {
         >
           <div className="featured-image mb-3">
             <img
-              src={image}
+              src={img}
               className="img-fluid"
               style={{ width: "250px" }}
               alt="Logo"
