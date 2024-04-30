@@ -2,27 +2,15 @@ import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Home from "./Components/Home/Home";
-import Login from "./Components/Login/Login";
-import Register from "./Components/Register/Register";
 import Rental from "./Components/Rental/Rental";
 import PostAd from "./Components/PostAd/PostAd";
-import ForgotPassword from "./Components/Login/ForgotPassword";
-
-import About from "./Components/About/About";
-
-import Otpinpu from "./Components/Otpinput/Otpinput";
-import Welcome from "./Components/Welcome/Welcome";
-
-import Otpinput from "./Components/Otpinput/Otpinput";
-
 import CreateListingRentalHouse from "./Components/PostAd/CreateListingRentalHouse";
 import CreateListingBoardingHouse from "./Components/PostAd/CreateListingBoardingHouse";
-import CreateListingBoardingRoom from "./Components/PostAd/CreateListingBoardingRoom";
 import BoardingRoom from "./Components/PostADDForm/BoardRoom/BoardingRoom";
 import Cdescription from "./Components/Description/Cdescription";
-import ProfilePage from "./Components/Profile/ProfilePage";
 import TenentComponenet from "./Components/DashBoard/Tenent/TenentComponenet";
-
+import RegisterPage from "./pages/Register/Register";
+import LoginPage from "./pages/Login/Login";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -45,19 +33,13 @@ function App() {
             element={<Home updateAuthentication={updateAuthentication} />}
           />
           <Route path="/rental-post" element={<Rental />} />
-          <Route path="/about" element={<About />} />
-          <Route
-            path="/login"
-            element={<Login updateAuthentication={setIsAuthenticated} />}
-          />
-          <Route path="/forgotpassword" element={<ForgotPassword />} />
-          <Route path="/register" element={<Register />} />
           <Route path="/Description" element={<Cdescription />} />
+          <Route path="/register" element={<RegisterPage/>} />
+          <Route path="/login" element={<LoginPage/>}/>
           {isAuthenticated ?
             <>
               <Route path="/postadd" element={<PostAd />} />
-              <Route path="/Otpinput" element={<Otpinpu />} />
-              <Route path="/Welcome" element={<Welcome />} />
+            
               <Route path="/postad" element={<PostAd />} />
               <Route
                 path="/create-listing/rental-house"
@@ -71,7 +53,6 @@ function App() {
                 path="/create-listing/boarding-room"
                 element={<BoardingRoom />}
               />
-               <Route path="/profile" element={<ProfilePage/>} />
                <Route path="/dashboard/tenent" element={<TenentComponenet/>} />
                
             </>

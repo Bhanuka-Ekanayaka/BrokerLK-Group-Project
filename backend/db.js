@@ -10,6 +10,8 @@ const db = mysql.createPool({
   user: process.env.DATABASE_USER,
   password: process.env.DATABASE_PASSWORD,
   database: process.env.DATABASE_NAME,
+  port:process.env.PORT_NO,
+  connectTimeout:60000,
   waitForConnections: true,
   connectionLimit: 10,
   queueLimit: 0
@@ -22,6 +24,7 @@ db.getConnection()
   })
   .catch(error => {
     console.error('Error ocured while connecting to the database');
+    console.log(error);
   });
 
 module.exports = db;
