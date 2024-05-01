@@ -4,26 +4,25 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import logo from './assets/logo.png';
 import './Navbar.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import NotifyBar from '../NotifyBar/NotifyBar';
-import { useState,useEffect } from 'react';
-import Usertoken from '../../../Services/token.userToken';
+import {  useContext } from 'react';
+import { AuthContext } from '../../../Context/AuthContext';
+import {apiRequest} from '../../../lib/apiRequest';
+
 
 const NavBar = () => {
 
-    const user = Usertoken();
-    const [userLogin, setUserLogin] = useState(false);
-    console.log(user);
+    const {currentUser,updateUser} = useContext(AuthContext);
+    const navigate = useNavigate();
 
-    useEffect(()=>{
-        if(user !== null){
-            setUserLogin(true);
-        }
-    },[user])
+    const handleLogout = async ()=>{
+        await apiRequest.post("/auth/logout");
+        updateUser(null);
+        navigate("/");
+    }
 
-    const logout = () => {
-        localStorage.removeItem('token');
-      };
+    console.log("home page",currentUser);
 
     return (
         <Navbar expand="lg" className="bg-body-tertiary fixed-top" >
@@ -45,14 +44,14 @@ const NavBar = () => {
                     <Nav className="me-auto">
                         <Nav.Link as={Link} to="/">Home</Nav.Link>
                         <Nav.Link as={Link} to="/rental-post">Rental</Nav.Link>
-                        {userLogin ?
+                        {currentUser ?
                             <NavDropdown title="Account" id="basic-nav-dropdown">
                                 <NavDropdown.Item as={Link} to="/profile">
                                     Profile
                                 </NavDropdown.Item>
                                 <NavDropdown.Item as={Link} to="/dashboard">DashBoard</NavDropdown.Item>
                                 <NavDropdown.Divider />
-                                <NavDropdown.Item as={Link} to="/login" onClick={logout}>
+                                <NavDropdown.Item as={Link} to="/" onClick={handleLogout}>
                                     Log Out
                                 </NavDropdown.Item>
                             </NavDropdown>
@@ -63,7 +62,7 @@ const NavBar = () => {
                         <Nav.Link as={Link} to='about'>About us</Nav.Link>
                     </Nav>
 
-                    {userLogin ?
+                    {currentUser ?
                         <Nav>
 
                             <div className="nav-btn">

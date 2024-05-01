@@ -1,39 +1,23 @@
-import { createContext, useContext, useState } from 'react';
-import { Loginform as loginApi } from '../Services/authServices';
+import {  createContext, useEffect, useState } from "react";
 
-const AuthContext = createContext();
+export const AuthContext = createContext();
 
-export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
+export const AuthContextProvider = ({children})=>{
+    const [currentUser,setCurrentUser] = useState(
+        JSON.parse(localStorage.getItem("user")) || null
+    )
 
-  const Loginform = async (formData) => {
-    try {
-      const response = await loginApi(formData);
-      if (response.success) {
-        setUser({ username: formData.username, token: response.token });
-      }
-    } catch (error) {
-      console.error('Login failed:', error);
+    const updateUser =(data) =>{
+        setCurrentUser(data);
     }
-  };
 
-  const logout = () => {
-    setUser(null);
-  };
+    useEffect(()=>{
+        localStorage.setItem("user",JSON.stringify(currentUser));
+    },[currentUser])
 
-  return (
-    <AuthContext.Provider value={{ user, Loginform, logout}}>
-      {children}
-    </AuthContext.Provider>
-  );
-};
-
-export const useAuth = () => useContext(AuthContext);
-
-
-/* Purpose: The AuthContext.js file typically defines a React context that provides information about the authentication status 
-of the user to components throughout the application.
-Reason for Use: Managing authentication state across different components can be challenging. 
-The AuthContext allows you to create a centralized place to store and update the authentication state. 
-Components that need access to this information can subscribe to the context, making it easier to handle scenarios like displaying 
-different UI elements based on whether a user is authenticated. */
+    return (
+        <AuthContext.Provider value={{currentUser,updateUser}}>
+            {children}
+        </AuthContext.Provider>
+    )
+}

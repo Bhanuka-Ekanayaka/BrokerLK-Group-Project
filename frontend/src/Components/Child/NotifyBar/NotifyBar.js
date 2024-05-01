@@ -1,5 +1,5 @@
 import Badge from 'react-bootstrap/Badge';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import { IoMdNotifications } from "react-icons/io";
 import Container from 'react-bootstrap/Container';
@@ -10,7 +10,7 @@ import './NotifyBar.css';
 import NotifyShow from './NotifyShow';
 import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 import axios from 'axios';
-import Usertoken from '../../../Services/token.userToken';
+import { AuthContext } from '../../../Context/AuthContext';
 
 const NotifyBar = () => {
 
@@ -18,9 +18,9 @@ const NotifyBar = () => {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    const token = Usertoken();
-
-    const [username,setUserName] = useState(token.userid);
+    const {currentUser} = useContext(AuthContext);
+   
+    const [username,setUserName] = useState(currentUser.ID);
     const [mynotify, setMyNotify] = useState([]);
     const [count, setCount] = useState(0);
     const [reload, setReload] = useState(false);

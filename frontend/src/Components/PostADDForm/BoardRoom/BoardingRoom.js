@@ -301,21 +301,24 @@ const BoardingRoom = () => {
 
                         <Row>
                             <h6 className="text-center">Add Your Boarding Location</h6>
-                            <Form.Group className="mb-3" controlId="formGridAddress1" >
-                                <Form.Label>Address Line 1</Form.Label>
-                                <Form.Control placeholder="1234 Main St" value={addressLine1} onChange={(e) => setAddressLine1(e.target.value)} required />
-                                <Form.Control.Feedback type="invalid">
-                                    Please enter address Line 1.
-                                </Form.Control.Feedback>
-                            </Form.Group>
+                            <Row>
+                                <Form.Group className="mb-3" controlId="formGridAddress1" >
+                                    <Form.Label>Address Line 1</Form.Label>
+                                    <Form.Control placeholder="1234 Main St" value={addressLine1} onChange={(e) => setAddressLine1(e.target.value)} required />
+                                    <Form.Control.Feedback type="invalid">
+                                        Please enter address Line 1.
+                                    </Form.Control.Feedback>
+                                </Form.Group>
 
-                            <Form.Group className="mb-3" controlId="formGridAddress2" >
-                                <Form.Label>Address Line 2</Form.Label>
-                                <Form.Control placeholder="Apartment, studio, or floor" value={addressLine2} onChange={(e) => setAddressLine2(e.target.value)} required />
-                                <Form.Control.Feedback type="invalid">
-                                    Please enter Adress Line 2.
-                                </Form.Control.Feedback>
-                            </Form.Group>
+                                <Form.Group className="mb-3" controlId="formGridAddress2" >
+                                    <Form.Label>Address Line 2</Form.Label>
+                                    <Form.Control placeholder="Apartment, studio, or floor" value={addressLine2} onChange={(e) => setAddressLine2(e.target.value)} required />
+                                    <Form.Control.Feedback type="invalid">
+                                        Please enter Adress Line 2.
+                                    </Form.Control.Feedback>
+                                </Form.Group>
+                            </Row>
+                            
 
                         </Row>
 

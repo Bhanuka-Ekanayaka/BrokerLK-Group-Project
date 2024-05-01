@@ -1,0 +1,89 @@
+.registerPage{
+    height: 100vh;
+    background-color: #FFFFFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 80px 100px;
+    box-sizing: border-box;
+}
+
+.registerPage .registerwrapper{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.registerPage .regiterpagedescription{
+    flex: 3;
+    /* border: 1px solid black; */
+    /* height: 100%; */
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    flex-direction: column;
+}
+
+.registerPage .regiterpagedescription .title{
+    display: flex;
+    align-items: center;
+}
+
+.registerPage .regiterpagedescription .title img{
+    height: 100px;
+    width: 100px;
+}
+.registerPage .regiterpagedescription .title span{
+    font-size: 48px;
+    font-weight: 600;
+}
+
+.registerPage .regiterpagedescription .description{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap:10px;
+    padding: 0px 10px;
+}
+
+.registerPage .regiterpagedescription .description h1{
+   font-size: 28px; 
+}
+
+.registerPage .regiterpagedescription .description p{
+    font-size: 12px;
+    text-align: center;
+ }
+
+ .registerPage .regiterpagedescription .description img{
+    width: auto;
+    height: 200px;
+ }
+.registerPage .registerPageFormelements{
+    flex: 5;
+    /* border: 1px solid black; */
+    /* height: 100%; */
+}
+
+.registerPage .registerPageFormelements .wrapper{
+    height: 100%;
+    padding: 20px;
+}
+
+.registerPage .registerPageFormelements .wrapper .input-group img{
+    height: 40px;
+    width: 40px;
+}
+
+.registerPage .registerPageFormelements .wrapper hr{
+    margin-top: 0.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.registerPage .show-alert{
+    position: absolute;
+    top:50%;
+    left: 50%;
+}
