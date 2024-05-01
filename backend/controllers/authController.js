@@ -1,6 +1,7 @@
 
 const db = require("../db");
 const bcrypt = require("bcrypt");
+const jwt = require('jsonwebtoken');
 
 const registerUser = async (req, res) => {
     const { password, ...inputs } = req.body;
@@ -40,18 +41,46 @@ const loginUser = async (req,res) =>{
     const {password,email} = req.body;
     console.log(password,email);
     try{
-        const hashedPassword = await bcrypt.hash(password,10);
-
         const sql = 'SELECT * FROM usersregistrationtb '+
-                    'WHERE Email=? and Password = ?';
-        
-        const user = await db.query(sql,[email,hashedPassword]);
+                    'WHERE Email=?';
+        const user = await db.query(sql,[email]);
 
-        res.status(200).json(user);
+        console.log(user[0][0].Password);
+
+        if(!user[0][0]){
+           return res.status(401).json({message:"User Cannot Found!"})
+        }
+
+        const isPasswordValid = await bcrypt.compare(password,user[0][0].Password);
+
+        if(!isPasswordValid){
+           return res.status(401).json({message:"User Cannot Found!"})
+        }
+
+        const age = 1000*60*60*24*7;
+
+        const token = jwt.sign({
+            id : user[0][0]. ID,
+            email:user[0][0]. Email,
+           },process.env.JWT_SECRET,{
+            expiresIn:age
+           });
+        
+        const {Password, ...userdata} = user[0][0];
+
+        res.cookie("token",token,{
+            httpOnly:true,
+            maxAge:age,
+        }).status(200).json(userdata);
+
     }catch(err){
         console.log(err);
         res.status(401).json({message:"User Cannot Found!"})
     }
 }
 
-module.exports = {registerUser,loginUser};
+const logoutUser = async (req,res)=>{
+    res.clearCookie("token").status(200).json({message:"User Logout SuccessFully"});
+}
+
+module.exports = {registerUser,loginUser,logoutUser};

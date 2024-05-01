@@ -9,10 +9,7 @@ import Footer from '../Child/Footer/Footer';
 
 
 
-const Home = ({isAuthenticated}) => {
-
-
- 
+const Home = () => {
 
   return (
     <>

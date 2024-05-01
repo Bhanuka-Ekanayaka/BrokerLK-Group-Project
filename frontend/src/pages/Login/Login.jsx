@@ -1,12 +1,15 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './login.css';
 import { Button, Form, InputGroup } from 'react-bootstrap';
 import { apiRequest } from '../../lib/apiRequest';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { AuthContext } from '../../Context/AuthContext';
 
 const Login = () => {
 
+    const {updateUser} = useContext(AuthContext)
     const [validated, setValidated] = useState(false);
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -18,7 +21,10 @@ const Login = () => {
             const inputs = Object.fromEntries(formData);
             console.log(inputs)
             try {
-                const data = await apiRequest.post('/auth/logins', inputs);
+                const user = await apiRequest.post('/auth/logins', inputs);
+                console.log("Response Data",user.data);
+                updateUser(user.data);
+                navigate("/");
             } catch (err) {
                 console.log(err);
             }

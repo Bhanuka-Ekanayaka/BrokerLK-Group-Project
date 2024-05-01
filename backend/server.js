@@ -8,6 +8,7 @@ const path = require('path');
 const description = require ('./routes/description');
 const Notification = require('./routes/Notification');
 const profileDeatails = require('./routes/profileDetails');
+const cookieParser = require('cookie-parser');
 
 const app = express();
 const PORT = process.env.PORT_NO;
@@ -17,6 +18,7 @@ app.use(cors({
   credentials:true,
 }));
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+app.use(cookieParser());
 
 app.use(express.json());
 app.use(adRoutes);
