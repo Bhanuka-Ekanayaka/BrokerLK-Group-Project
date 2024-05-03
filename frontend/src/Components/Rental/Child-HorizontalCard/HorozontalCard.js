@@ -27,7 +27,7 @@ const HorizontalCard = ({filteredPostData}) => {
             <Container>
                 {Array.isArray(postData) && postData.map(data => (
                     <Card data-aos='fade-up' key={data.post_id}>
-                        <Card.Img variant="top" src={`http://localhost:5001/uploads/${data.post_id}/${data.room_inside_img1}`} />
+                        <Card.Img variant="top" src={`http://localhost:26792/uploads/${data.post_id}/${data.room_inside_img1}`} />
                       
                         <Card.Body>
                             <div className='d-flex align-items-center justify-content-between'>

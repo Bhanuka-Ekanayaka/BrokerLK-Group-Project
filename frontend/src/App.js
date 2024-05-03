@@ -8,7 +8,10 @@ import Cdescription from "./Components/Description/Cdescription";
 import TenentComponenet from "./Components/DashBoard/Tenent/TenentComponenet";
 import RegisterPage from "./pages/Register/Register";
 import LoginPage from "./pages/Login/Login";
+import BoardingBuilding from "./Components/PostADDForm/BoardingBuilding/BoardingBuilding";
+import RentalHouse from "./Components/PostADDForm/RentalHouse/RentalHouse";
 import { AuthContext } from "./Context/AuthContext";
+
 
 function App() {
 
@@ -31,6 +34,14 @@ function App() {
               <Route
                 path="/create-listing/boarding-room"
                 element={<BoardingRoom />}
+              />
+              <Route
+                path="/create-listing/boarding-building"
+                element={<BoardingBuilding />}
+              />
+              <Route
+                path="/create-listing/rental-house"
+                element={<RentalHouse />}
               />
               <Route path="/dashboard/tenent" element={<TenentComponenet />} />
 

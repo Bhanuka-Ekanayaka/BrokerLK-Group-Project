@@ -30,13 +30,13 @@ const PostSelectBar = () => {
                                 </Link>
                             </div>
                             <div className='catergory'>
-                                <Link to="/create-listing/boarding-room">
+                                <Link to="/create-listing/boarding-building">
                                     <img src='/boarding_building.jpg' alt='' />
                                     <h2>Boarding Building</h2>
                                 </Link>
                             </div>
                             <div className='catergory'>
-                                <Link to="/create-listing/boarding-room">
+                                <Link to="/create-listing/rental-house">
                                     <img src='/rentalhouse.jpg' alt='' />
                                     <h2>Rental House</h2>
                                 </Link>

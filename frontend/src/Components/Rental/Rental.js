@@ -7,6 +7,7 @@ import { useLocation } from 'react-router-dom';
 import axios from "axios";
 
 import './Rental.css';
+import { apiRequest } from "../../lib/apiRequest";
 
 
 const Rental = () => {
@@ -24,7 +25,7 @@ const Rental = () => {
         const fetchData = async () => {
             try {
                 //getting the all boarding-rooms
-                const postAddData = await axios.get('http://localhost:5001/postadd/boarding-room');
+                const postAddData = await apiRequest.get('/postadd/boarding-room');
                 console.log('fetch the data from the backend', postAddData.data)
                 setPostData(postAddData.data.postData[0]);
 
