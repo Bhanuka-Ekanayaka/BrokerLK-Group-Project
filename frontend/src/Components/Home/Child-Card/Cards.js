@@ -3,6 +3,7 @@ import Card from 'react-bootstrap/Card';
 import { Container, Row, Col } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import { useState, useEffect } from 'react';
+import {apiRequest} from '../../../lib/apiRequest';
 import axios from 'axios';
 
 
@@ -14,7 +15,7 @@ const Cards = ({ title, animation, CardAnimate, type }) => {
     useEffect(() => {
         const fetchCardData = async (type) => {
             try {
-                const response = await axios.get(`http://localhost:5001/postadd/${type}`);
+                const response = await apiRequest.get(`/postadd/${type}`);
                 console.log('Response:', response.data); // Log the response data
                 setCard(response.data.postData[0].slice(0,12));
             } catch (err) {
@@ -40,7 +41,7 @@ const Cards = ({ title, animation, CardAnimate, type }) => {
                             <div className='holder' data-aos={CardAnimate}>
                                 <Card >
                                     <Card.Body>
-                                        <Card.Img variant="top" src={`http://localhost:5001/uploads/${card.post_id}/${card.room_inside_img1}`} className='custom-image-size' />
+                                        <Card.Img variant="top" src={`http://localhost:26792/uploads/${card.post_id}/${card.room_inside_img1}`} className='custom-image-size' />
                                         <div className='price-reviews'>
                                             <Card.Link style={{ color: '#FFFFFF', background: 'green', borderRadius: '5px', paddingLeft: '2px', paddingRight: '2px' }}>Rs:{card.advertised_price}</Card.Link>
                                             <Card.Link>{card.district}</Card.Link>

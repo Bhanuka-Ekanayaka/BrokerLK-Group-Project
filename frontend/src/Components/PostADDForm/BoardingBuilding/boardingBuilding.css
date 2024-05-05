@@ -1,0 +1,16 @@
+.boardingbuilding .btn-primary{
+    --bs-btn-bg:#FF3951;
+    --bs-btn-border-color:#FF3951;
+    --bs-btn-active-border-color:#FF3951;
+    --bs-btn-hover-border-color:#FF3951;
+    
+    opacity: 0.9;
+}
+
+.boardingbuilding .btn-primary:hover{
+    --bs-btn-hover-bg:var(--bs-btn-bg);
+    --bs-btn-active-bg:var(--bs-btn-bg);
+    --bs-btn-active-border-color:var(var(--bs-btn-bg));
+    
+    opacity: 1.0;
+}

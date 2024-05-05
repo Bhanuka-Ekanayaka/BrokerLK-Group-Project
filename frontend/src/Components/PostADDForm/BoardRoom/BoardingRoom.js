@@ -8,15 +8,16 @@ import Footer from "../../Child/Footer/Footer";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import NavBar from "../../Child/NavBar/NavBar";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Message from "../Confirmationmsg/Message";
-import axios from 'axios';
 import moment from 'moment';
-import Usertoken from "../../../Services/token.userToken";
+import { apiRequest } from "../../../lib/apiRequest";
+import { AuthContext } from "../../../Context/AuthContext";
 
 const BoardingRoom = () => {
 
-    const token = Usertoken();
+    const {currentUser} = useContext(AuthContext);
+
     const [district, setDistrict] = useState('Colombo');
     const [size, setSize] = useState('');
     const [kitchen, setKitchen] = useState(0);
@@ -41,7 +42,7 @@ const BoardingRoom = () => {
     const [currentTime, setCurrentTime] = useState('');
     const [currrentDate, setCurrentDate] = useState('');
     const notifyDescription = 'Your new post is added successfully to our website.';
-    const owner_id = '3';
+    const owner_id = currentUser.ID;
     //const owner_id = user.username;
 
     useEffect(() => {
@@ -108,13 +109,13 @@ const BoardingRoom = () => {
             formPhoto.append('additionalImage', additionalImage);
 
             try {
-                const responsePostData = await axios.post('http://localhost:5001/postadd/boarding-room', formData);
+                const responsePostData = await apiRequest.post('/postadd/boarding-room', formData);
                 console.log('Form Data Insert Successfully', responsePostData.data);
 
 
 
 
-                const responseUplodPhotos = await axios.post('http://localhost:5001/postadd/boarding-room/upload', formPhoto, {
+                const responseUplodPhotos = await apiRequest.post('/postadd/boarding-room/upload', formPhoto, {
                     headers: {
                         'Content-Type': 'multipart/form-data'
                     },
@@ -348,9 +349,6 @@ const BoardingRoom = () => {
                         <Button variant="primary" type="submit" style={{ marginBottom: '5px', marginRight: '5px' }} >
                             Submit
                         </Button>
-                        <h2>{currentTime}</h2>
-                        <h2>{currrentDate}</h2>
-
                         {showAlert && (
                             <Message />
                         )}

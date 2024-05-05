@@ -1,29 +1,32 @@
 const express = require('express');
 const cors = require('cors');
-const userRoute = require('./routes/userRoutes');
-const loginRoute = require('./routes/loginRoute');const adRoutes = require('./routes/adRoutes');
-const postReports = require('./routes/postReports');
-const postAdd =require('./routes/postAdd');
+const authRoute = require('./routes/auth.Route');
+const adRoutes = require('./routes/adRoutes');
+const postRoute = require('./routes/post.route');
 const path = require('path');
 const description = require ('./routes/description');
-const Notification = require('./routes/Notification');
+const Notification = require('./routes/user.notification');
 const profileDeatails = require('./routes/profileDetails');
+const cookieParser = require('cookie-parser');
 
 const app = express();
-const PORT = 5001;
+const PORT = process.env.PORT_NO;
 
-app.use(cors());
+app.use(cors({
+  origin:'http://localhost:3000',
+  credentials:true,
+}));
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+app.use(cookieParser());
 
 app.use(express.json());
 app.use(adRoutes);
-app.use('/Reports', postReports);
-app.use('/postadd',postAdd);
+app.use('/api/auth',authRoute);
+app.use('/api/postadd',postRoute);
 app.use('/description',description);
 app.use('/profile',profileDeatails);
-app.use('/notification',Notification);
-app.use('/',loginRoute)
-app.use('/users',userRoute);
+app.use('/api/notification',Notification);
+
 
 
 app.use((err, req, res, next) => {

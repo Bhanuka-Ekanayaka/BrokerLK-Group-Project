@@ -1,5 +1,5 @@
 import Badge from 'react-bootstrap/Badge';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import { IoMdNotifications } from "react-icons/io";
 import Container from 'react-bootstrap/Container';
@@ -9,8 +9,8 @@ import Navbar from 'react-bootstrap/Navbar';
 import './NotifyBar.css';
 import NotifyShow from './NotifyShow';
 import { OverlayTrigger, Tooltip } from 'react-bootstrap';
-import axios from 'axios';
-import Usertoken from '../../../Services/token.userToken';
+import { AuthContext } from '../../../Context/AuthContext';
+import { apiRequest } from '../../../lib/apiRequest';
 
 const NotifyBar = () => {
 
@@ -18,19 +18,19 @@ const NotifyBar = () => {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    const token = Usertoken();
-
-    const [username,setUserName] = useState(token.userid);
+    const {currentUser} = useContext(AuthContext);
+   
+    const [username,setUserName] = useState(currentUser.ID);
     const [mynotify, setMyNotify] = useState([]);
     const [count, setCount] = useState(0);
     const [reload, setReload] = useState(false);
 
-    console.log("This is username"+username);
+    console.log("This is username"+ username);
 
     const markasallread = async (username) => {
         try {
 
-            const response = await axios.put(`http://localhost:5001/notification/details/update-all/${username}`);
+            const response = await apiRequest.put(`/notification/details/update-all/${username}`);
             console.log('all notification mark as read', response.data);
             if (response.data.success) {
                 setReload(!reload);
@@ -45,11 +45,10 @@ const NotifyBar = () => {
 
     const markasread = async (notifyid) => {
         try {
-            const response = await axios.put(`http://localhost:5001/notification/details/update/${notifyid}`);
+            const response = await apiRequest.put(`/notification/details/update/${notifyid}`);
             console.log('update notify reqest sent to the backend', response.data);
             if (response.data.success) {
                 console.log('identify your notify is read');
-                // setUserName('3');
                 setReload(!reload);
             } else {
                 console.log('cannot update the backend table');
@@ -62,7 +61,7 @@ const NotifyBar = () => {
 
     const deleteAllReadNotify = async (username) => {
         try {
-            const response = await axios.delete(`http://localhost:5001/notification/details/delete-all/${username}`);
+            const response = await apiRequest.delete(`/notification/details/delete-all/${username}`);
             if (response.data.success) {
                 console.log('all read data are deleted', response);
                 setReload(!reload);
@@ -76,11 +75,10 @@ const NotifyBar = () => {
 
     const deleteNotify = async (notifyid) => {
         try {
-            const response = await axios.delete(`http://localhost:5001/notification/details/delete/${notifyid}`);
+            const response = await apiRequest.delete(`/notification/details/delete/${notifyid}`);
             console.log('delete the notify', response.data);
             if (response.data.success) {
                 console.log('delete your notofucation');
-                //setUserName('3');
                 setReload(!reload);
             } else {
                 console.log('cannot delete your notofiction');
@@ -96,7 +94,7 @@ const NotifyBar = () => {
     useEffect(() => {
         const fetchNotifyData = async (username) => {
             try {
-                const response = await axios.get(`http://localhost:5001/notification/details/${username}`);
+                const response = await apiRequest.get(`/notification/details/${username}`);
                 console.log('notify data mine', response);
                 setMyNotify(response.data.result[0]);
             } catch (err) {
