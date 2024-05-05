@@ -9,7 +9,7 @@ import NotifyBar from '../NotifyBar/NotifyBar';
 import {  useContext } from 'react';
 import { AuthContext } from '../../../Context/AuthContext';
 import {apiRequest} from '../../../lib/apiRequest';
-
+import PostSelectBar from '../PostSelectBar/PostSelectBar';
 
 const NavBar = () => {
 
@@ -66,7 +66,8 @@ const NavBar = () => {
                         <Nav>
 
                             <div className="nav-btn">
-                                <Nav.Link as={Link} to='/postad' >Post-Add</Nav.Link>
+                                {/* <Nav.Link as={Link}> <PostSelectBar /></Nav.Link> */}
+                                <PostSelectBar />
                             </div>
                             <Nav.Link href=''>
                                 <NotifyBar />

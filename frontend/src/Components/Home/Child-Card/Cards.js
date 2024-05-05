@@ -3,6 +3,7 @@ import Card from 'react-bootstrap/Card';
 import { Container, Row, Col } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import { useState, useEffect } from 'react';
+import {apiRequest} from '../../../lib/apiRequest';
 import axios from 'axios';
 
 
@@ -14,7 +15,7 @@ const Cards = ({ title, animation, CardAnimate, type }) => {
     useEffect(() => {
         const fetchCardData = async (type) => {
             try {
-                const response = await axios.get(`http://localhost:26792/postadd/${type}`);
+                const response = await apiRequest.get(`/postadd/${type}`);
                 console.log('Response:', response.data); // Log the response data
                 setCard(response.data.postData[0].slice(0,12));
             } catch (err) {

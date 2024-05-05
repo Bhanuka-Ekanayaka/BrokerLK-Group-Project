@@ -2,11 +2,10 @@ const express = require('express');
 const cors = require('cors');
 const authRoute = require('./routes/auth.Route');
 const adRoutes = require('./routes/adRoutes');
-const postReports = require('./routes/postReports');
-const postAdd =require('./routes/postAdd');
+const postRoute = require('./routes/post.route');
 const path = require('path');
 const description = require ('./routes/description');
-const Notification = require('./routes/Notification');
+const Notification = require('./routes/user.notification');
 const profileDeatails = require('./routes/profileDetails');
 const cookieParser = require('cookie-parser');
 
@@ -23,11 +22,10 @@ app.use(cookieParser());
 app.use(express.json());
 app.use(adRoutes);
 app.use('/api/auth',authRoute);
-app.use('/Reports', postReports);
-app.use('/postadd',postAdd);
+app.use('/api/postadd',postRoute);
 app.use('/description',description);
 app.use('/profile',profileDeatails);
-app.use('/notification',Notification);
+app.use('/api/notification',Notification);
 
 
 
