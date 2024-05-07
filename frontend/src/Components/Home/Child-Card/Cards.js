@@ -41,7 +41,10 @@ const Cards = ({ title, animation, CardAnimate, type }) => {
                             <div className='holder' data-aos={CardAnimate}>
                                 <Card >
                                     <Card.Body>
-                                        <Card.Img variant="top" src={`http://localhost:26792/uploads/${card.post_id}/${card.room_inside_img1}`} className='custom-image-size' />
+                                        {type === 'rental-house' ?
+                                        <Card.Img variant="top"  src={`http://localhost:26792/uploads/${card.post_id}/${card.outdoor_img1}`} className='custom-image-size' />
+                                        :
+                                        <Card.Img variant="top"  src={`http://localhost:26792/uploads/${card.post_id}/${card.room_inside_img1}`} className='custom-image-size' />}
                                         <div className='price-reviews'>
                                             <Card.Link style={{ color: '#FFFFFF', background: 'green', borderRadius: '5px', paddingLeft: '2px', paddingRight: '2px' }}>Rs:{card.advertised_price}</Card.Link>
                                             <Card.Link>{card.district}</Card.Link>
